@@ -1,0 +1,125 @@
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>org.s23m.cell</groupId>
+	<artifactId>org.s23m.cell.eclipse</artifactId>
+	<version>1.0.0</version>
+	<packaging>pom</packaging>
+	<modules>
+		<!-- Plugins -->
+		<module>org.s23m.cell.eclipse.connector.database</module>
+		<module>org.s23m.cell.eclipse.connector.database.db2</module>
+		<module>org.s23m.cell.eclipse.connector.database.mysql</module>
+		<module>org.s23m.cell.eclipse.connector.database.postgresql</module>
+		<module>org.s23m.cell.eclipse.connector.database.ui</module>
+		<module>org.s23m.cell.eclipse.openarchitectureware</module>
+		<module>org.s23m.cell.eclipse.preferences</module>
+		<module>org.s23m.cell.eclipse.preferences.ui</module>
+		<module>org.s23m.cell.eclipse.search.widget</module>
+		<module>org.s23m.cell.eclipse.visualization.containmenttree</module>
+		<module>org.s23m.cell.eclipse.visualization.graph</module>
+		<module>org.s23m.cell.eclipse.visualization.html</module>
+
+		<!-- Tests -->
+		<module>org.s23m.cell.eclipse.openarchitectureware.tests</module>
+		
+		<!-- Features -->
+		<module>tycho-build/org.s23m.cell.eclipse.feature</module>
+
+		<!-- Update site -->
+		<module>tycho-build/p2-updatesite</module>
+	</modules>
+	<properties>
+		<tycho-version>0.13.0</tycho-version>
+	</properties>
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.eclipse.tycho</groupId>
+				<artifactId>tycho-maven-plugin</artifactId>
+				<version>${tycho-version}</version>
+				<extensions>true</extensions>
+			</plugin>
+			<plugin>
+				<groupId>org.eclipse.tycho</groupId>
+				<artifactId>target-platform-configuration</artifactId>
+				<version>${tycho-version}</version>
+				<configuration>
+					<resolver>p2</resolver>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.eclipse.tycho</groupId>
+				<artifactId>maven-osgi-test-plugin</artifactId>
+				<version>${tycho-version}</version>
+			</plugin>
+			<!-- See http://wiki.eclipse.org/Tycho/Packaging_Types#eclipse-repository -->
+      <plugin>
+        <groupId>org.eclipse.tycho</groupId>
+        <artifactId>tycho-p2-repository-plugin</artifactId>
+        <version>${tycho-version}</version>
+        <configuration>
+          <includeAllDependencies>true</includeAllDependencies>
+        </configuration>
+      </plugin>
+
+			<plugin> 
+      	<groupId>org.eclipse.tycho</groupId> 
+      	<artifactId>maven-osgi-packaging-plugin</artifactId>
+				<version>${tycho-version}</version>
+      	<configuration> 
+        	<deployableFeature>true</deployableFeature> 
+      	</configuration> 
+      </plugin> 
+
+<!--
+			<plugin>
+				<groupId>org.eclipse.tycho</groupId>
+				<artifactId>tycho-packaging-plugin</artifactId>
+				<version>${tycho-version}</version>
+				<configuration>
+				  <archiveSite>true</archiveSite>
+				</configuration>
+			</plugin>
+-->
+		</plugins>
+	</build>
+	<repositories>
+		<repository>
+			 <id>galileo</id>
+			 <layout>p2</layout>
+			 <url>http://download.eclipse.org/releases/galileo</url>
+		</repository>
+
+		<!-- Use local p2 repository, which is maintained manually -->
+		<repository>
+			 <id>local-p2</id>
+			 <layout>p2</layout>
+			 <url>file://${user.dir}/tycho-p2-repository</url>
+		</repository>
+
+<!--
+		<repository>
+			 <id>nexus-releases</id>
+			 <layout>maven2</layout>
+			 <url>http://localhost:8081/nexus/content/repositories/releases</url>
+			 <releases>
+			    <enabled>true</enabled>
+       </releases>
+       <snapshots>
+          <enabled>true</enabled>
+       </snapshots>
+		</repository>
+		<repository>
+			 <id>nexus-snapshots</id>
+			 <layout>maven2</layout>
+			 <url>http://localhost:8081/nexus/content/repositories/snapshots</url>
+			 <releases>
+			    <enabled>true</enabled>
+       </releases>
+       <snapshots>
+          <enabled>true</enabled>
+       </snapshots>
+		</repository>
+-->
+	</repositories>
+</project>

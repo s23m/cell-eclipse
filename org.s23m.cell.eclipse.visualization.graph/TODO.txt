@@ -1,0 +1,16 @@
+Fix bug with kernel limit
+
+Hyperlinking improvements in diagrams
+
+Add hyperlinks to Visibility flavored Sets which are Vertex flavored Sets
+
+Improve diagram layouts - see JUNG project:
+http://dev.eclipse.org/newslists/news.eclipse.tools.gef/msg19754.html
+
+Move tests for HTML generation to the right place - new org.s23m.cell.eclipse.visualization.html.tests project
+
+Centralise colour choices (can still be hardwired)
+
+Eclipse "memento" to remember that Containment Tree view opened and which files were open
+
+Toolbar for navigation - add "breadcrumbs" based on containment tree

@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: org.s23m.cell.eclipse.connector.database.postgresql
+Bundle-SymbolicName: org.s23m.cell.eclipse.connector.database.postgresql;singleton:=true
+Fragment-Host: org.s23m.cell.eclipse.connector.database
+Bundle-Version: 1.0.0
+Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Import-Package: org.hibernate.cfg
+Bundle-ClassPath: lib/postgresql-8.4-701.jdbc3.jar,
+ .

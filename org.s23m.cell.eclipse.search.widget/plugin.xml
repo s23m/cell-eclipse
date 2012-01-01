@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+
+   <extension
+         point="org.eclipse.ui.editors">
+      <editor
+            name="Search Results"
+            icon="icons/search.png"
+            contributorClass="org.s23m.cell.eclipse.search.widget.editors.ResultsViewContributor"
+            class="org.s23m.cell.eclipse.search.widget.editors.ResultsView"
+            id="org.s23m.cell.eclipse.search.widget.editors.ResultsView">
+      </editor>
+   </extension>
+
+</plugin>

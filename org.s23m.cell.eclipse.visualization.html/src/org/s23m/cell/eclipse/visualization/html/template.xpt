@@ -1,0 +1,214 @@
+«EXTENSION org::gmodel::openarchitectureware::kernel»
+
+«DEFINE main FOR org::gmodel::core::Vertex»
+
+«FILE "documentation.html"»
+
+<html>
+	<head>
+		<style type="text/css">
+			span, td, th, h2 {
+				font-family: sans-serif;
+			}
+
+			th, h2 {
+				color: gray;
+			}
+			
+			table, td, th {
+				cell-spacing: 0px;
+				cell-padding: 0px; 
+			}
+			
+			table {
+				border-collapse: collapse;
+			}
+		
+			td, th {
+				padding: 3px;
+				padding-left: 10px;
+				padding-right: 10px;
+				vertical-align: top;
+			}
+				
+			span.metaArtifactName {
+				color: #808080;
+			}
+			
+			span.setName {
+			}
+			
+			sub.flavored {
+				font-size: 9pt;
+				font-variant: small-caps;
+			}
+			
+			span.arrow {
+				font-size: 150%;
+			}
+			
+			div.flavorContainer {
+				margin: 0px 10px 10px;
+				padding: 0px 10px 10px;
+			}
+			
+			div.artifactContainer {
+				padding: 0px 5px;
+			}
+			
+			div.artifactContainer h2 {
+				margin: 10px;
+			}
+			
+			div.flavorContainer h2 {
+				margin: 10px 10px 10px 0;
+			}
+			
+			table, td, th, div.flavorContainer, div.artifactContainer {
+				border: 1px solid #c3c3c3;
+			}
+			
+			div.artifactContainer, div.flavorContainer {
+				// ignore for IE
+				border-radius: 5px;
+				-moz-border-radius: 5px;
+				-webkit-border-radius: 5px;
+			}
+			
+			span.cardinality {
+				color: red;
+			}
+		</style>
+	</head>
+	<body>
+		«REM»
+			WORKING - minCardinality: "«getKernelValues().minCardinality()»"
+			minCardinality: "«getKernelValues().minCardinality.identity().getName()»"
+			isAbstract: "«getKernelValues().isAbstract.identity().getName()»"
+		«ENDREM»
+	
+		«REM»Artifact container - START«ENDREM»
+		<div class="artifactContainer">
+			<h2>«EXPAND displaySet FOR this»</h2>
+			
+			«REM»Display  <category name> :  <name> in a simple one column table «ENDREM»
+			«REM»Vertex-flavored container - START«ENDREM»
+			<div class="flavorContainer">
+				<h2>«getKernelVertex().identity().getName()»«EXPAND flavored»</h2>
+				«LET flavoredSet(getKernelVertex()) AS vertexFlavored»
+					«IF vertexFlavored.isEmpty»
+						«EXPAND emptySet»
+					«ELSE»
+						<table>
+						«FOREACH vertexFlavored AS set»
+							<tr>
+								«REM» Condition is consistent with other views «ENDREM» 
+								<td>«IF set.instanceSet().isEmpty()»«EXPAND displaySet FOR set»«ELSE»«EXPAND displayVertexFlavoredSet FOR set»«ENDIF»</td>
+							</tr>
+						«ENDFOREACH»
+						</table>
+					«ENDIF»
+				«ENDLET»
+			</div>
+			«REM»Vertex-flavored container - END«ENDREM»
+			
+			«REM»SuperSetReference-flavored container - START«ENDREM»
+			<div class="flavorContainer">
+				<h2>«getKernelSuperSetReference().identity().getPluralName()»</h2>
+				«LET flavoredSet(getKernelSuperSetReference()) AS superSetReferenceFlavored»
+					«IF superSetReferenceFlavored.isEmpty»
+						«EXPAND emptySet»
+					«ELSE»
+						<table>
+							<tr>
+								<th>sub set</th>
+								<th>super set</th>
+							</tr>
+							«FOREACH superSetReferenceFlavored AS set»
+							<tr>
+								<td>«EXPAND displaySet FOR set.fromSubSet()»</td>
+								<td>«EXPAND displaySet FOR set.toSuperSet()»</td>
+							</tr>
+							«ENDFOREACH»
+						</table>
+					«ENDIF»
+				«ENDLET»
+			</div>
+			«REM»SuperSetReference-flavored container - END«ENDREM»
+		
+			«REM»Edge-flavored container - START«ENDREM»
+			<div class="flavorContainer">
+				<h2>«getKernelEdge().identity().getName()»«EXPAND flavored»</h2>
+				«LET flavoredSet(getKernelEdge()) AS edgeFlavored»
+					«IF edgeFlavored.isEmpty»
+						«EXPAND emptySet»
+					«ELSE»
+						<table>
+							<tr>
+								<th><span class="arrow">&larr;</span></th>
+								<th>1<sup>st</sup>&nbsp;[min,&nbsp;max]</th>
+								<th>«getKernelEdge().identity().getName()»«EXPAND flavored»</th>
+								<th>2<sup>nd</sup>&nbsp;[min,&nbsp;max]</th>
+								<th><span class="arrow">&rarr;</span></th>
+							</tr>
+							«FOREACH edgeFlavored AS set»
+							«LET getKernelValues().minCardinality() AS minCardinality»
+							«LET getKernelValues().maxCardinality() AS maxCardinality»
+								<tr>
+									<td>«EXPAND displaySet FOR set.fromConnectedInstance()»</td>
+									«LET set.fromEdgeEndFlavored() AS from»
+										<td>«EXPAND displaySet FOR from»&nbsp;<span class="cardinality">«from.value(minCardinality).identity().getName()»,«from.value(maxCardinality).identity().getName()»</span></td>
+									«ENDLET»
+									<td>«EXPAND displaySet FOR set»</td>
+									«LET set.toEdgeEndFlavored() AS to»
+										<td>«EXPAND displaySet FOR to»&nbsp;<span class="cardinality">«to.value(minCardinality).identity().getName()»,«to.value(maxCardinality).identity().getName()»</span></td>
+									«ENDLET»
+									<td>«EXPAND displaySet FOR set.toConnectedInstance()»</td>
+								</tr>
+							«ENDLET»
+							«ENDLET»
+							«ENDFOREACH»
+						</table>
+					«ENDIF»
+				«ENDLET»
+			</div>
+			«REM»Edge-flavored container - END«ENDREM»
+			
+			«REM»Visibility-flavored container - START«ENDREM»
+			<div class="flavorContainer">
+				<h2>«getKernelVisibility().identity().getName()»«EXPAND flavored»</h2>	
+				«LET flavoredSet(getKernelVisibility()) AS visibilityFlavored»
+					«IF visibilityFlavored.isEmpty»
+						«EXPAND emptySet»
+					«ELSE»
+						<table>
+							<tr>
+								<th>from</th>
+								<th>to</th>
+							</tr>
+							«FOREACH visibilityFlavored AS set»
+							<tr>
+								<td>«EXPAND displaySet FOR set.fromSubGraph()»</td>
+								<td>«EXPAND displaySet FOR set.toSubGraph()»</td>
+							</tr>
+							«ENDFOREACH»
+						</table>
+					«ENDIF»
+				«ENDLET»
+			</div>
+			«REM»Visibility-flavored container - END«ENDREM»
+	
+		</div>
+		«REM»Artifact container - END«ENDREM»
+	</body>
+</html>
+«ENDFILE»
+«ENDDEFINE»
+
+«DEFINE displayVertexFlavoredSet FOR org::gmodel::api::SetType»<span class="metaArtifactName">«category().identity().getName()»</span> : <span class="setName"><a href="«identity().getIdentifier()»">«identity().getName()»</a></span>«ENDDEFINE»
+
+«DEFINE displaySet FOR org::gmodel::api::SetType»<span class="metaArtifactName">«category().identity().getName()»</span> : <span class="setName">«identity().getName()»</span>«ENDDEFINE»
+
+«DEFINE flavored FOR Object»<sub class="flavored">flavored</sub>«ENDDEFINE»
+
+«DEFINE emptySet FOR Object»<span><i>None</i></span>«ENDDEFINE»

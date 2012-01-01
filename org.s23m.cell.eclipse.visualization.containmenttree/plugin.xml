@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.ui.views">
+      <category
+            id="org.s23m.cell.eclipse.visualization.containmenttree.viewer"
+            name="Gmodel">
+      </category>
+      <view
+            category="org.s23m.cell.eclipse.visualization.containmenttree.viewer"
+            class="org.s23m.cell.eclipse.visualization.containmenttree.viewer.Viewer"
+            icon="icons/tree.png"
+            id="org.s23m.cell.eclipse.visualization.containmenttree.viewer.Viewer"
+            name="Containment Tree">
+      </view>
+   </extension>
+   <extension
+         point="org.eclipse.ui.menus">
+   </extension>
+   <extension
+         point="org.eclipse.ui.commands">
+      <command
+            defaultHandler="org.s23m.cell.eclipse.visualization.containmenttree.viewer.commands.Retrieve"
+            description="Retrieve Root"
+            id="org.s23m.cell.eclipse.visualization.containmenttree.viewer.commands.retrieve"
+            name="Retrieve">
+      </command>
+      <command
+            defaultHandler="org.s23m.cell.eclipse.visualization.containmenttree.viewer.commands.Search"
+            id="org.s23m.cell.eclipse.visualization.containmenttree.viewer.commands.search"
+            name="Search">
+      </command>
+      <command
+            defaultHandler="org.s23m.cell.eclipse.visualization.containmenttree.viewer.commands.InstanceSelection"
+            id="org.s23m.cell.eclipse.visualization.containmenttree.viewer.commands.instanceSelection"
+            name="Instance Selection">
+      </command>
+      <command
+            defaultHandler="org.s23m.cell.eclipse.visualization.containmenttree.viewer.commands.StoreRoot"
+            id="org.s23m.cell.eclipse.visualization.containmenttree.viewer.commands.storeroot"
+            name="Store Root">
+      </command>
+   </extension>
+
+</plugin>
