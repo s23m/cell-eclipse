@@ -3,7 +3,10 @@
 
 <target name="Target Platform" sequenceNumber="16">
 <locations>
+<!--
 <location path="${project_loc}/../tycho-p2-repository/plugins" type="Directory"/>
+-->
+<location path="${project_loc}/../tycho-build/p2-updatesite/target/repository/plugins" type="Directory"/>
 <location path="${eclipse_home}" type="Profile"/>
 </locations>
 </target>
