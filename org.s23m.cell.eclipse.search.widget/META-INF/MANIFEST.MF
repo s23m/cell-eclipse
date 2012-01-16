@@ -1,11 +1,11 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: Search Result Widget
+Bundle-Name: org.s23m.cell.eclipse.search.widget
 Bundle-SymbolicName: org.s23m.cell.eclipse.search.widget; singleton:=true
 Bundle-Version: 1.0.0
 Bundle-Activator: org.s23m.cell.eclipse.search.widget.Activator
 Require-Bundle: org.eclipse.ui,
- org.eclipse.swt;bundle-version="3.4.0",
+ org.eclipse.swt,
  org.eclipse.core.runtime,
  org.eclipse.jface.text,
  org.eclipse.core.resources,
@@ -20,3 +20,4 @@ Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
 Export-Package: org.s23m.cell.eclipse.search.widget,
  org.s23m.cell.eclipse.search.widget.editors
+

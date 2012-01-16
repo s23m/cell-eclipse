@@ -5,6 +5,7 @@ Bundle-SymbolicName: org.s23m.cell.eclipse.preferences.ui;singleton:=true
 Bundle-Version: 1.0.0
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
 Require-Bundle: org.s23m.cell.eclipse.connector.database.ui,
+ org.eclipse.swt,
  org.eclipse.ui,
  org.s23m.cell.eclipse.connector.database,
  org.s23m.cell.eclipse.preferences
