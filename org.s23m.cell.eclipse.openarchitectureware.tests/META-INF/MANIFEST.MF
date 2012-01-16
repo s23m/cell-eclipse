@@ -9,11 +9,7 @@ Require-Bundle: org.junit4,
  org.s23m.cell.kernel.tests
 Bundle-ActivationPolicy: lazy
 Import-Package: org.antlr.runtime,
- org.aopalliance.intercept,
- org.eclipse.emf.ecore.xmi.impl,
- org.eclipse.emf.mwe.utils,
  org.eclipse.xpand2,
  org.eclipse.xpand2.output,
- org.eclipse.xtend.typesystem.emf,
  org.s23m.cell;bundle-version="1.0.0",
  org.s23m.cell.eclipse.openarchitectureware;bundle-version="1.0.0"
