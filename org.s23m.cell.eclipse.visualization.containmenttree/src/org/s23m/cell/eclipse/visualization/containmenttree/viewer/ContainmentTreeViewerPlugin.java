@@ -27,9 +27,9 @@
 package org.s23m.cell.eclipse.visualization.containmenttree.viewer;
 
 import org.eclipse.ui.plugin.AbstractUIPlugin;
+import org.osgi.framework.BundleContext;
 import org.s23m.cell.serialization.serializer.SerializationType;
 import org.s23m.cell.serialization.serializer.SerializerHolder;
-import org.osgi.framework.BundleContext;
 
 /**
  * The activator class controls the plug-in life cycle
@@ -37,7 +37,7 @@ import org.osgi.framework.BundleContext;
 public class ContainmentTreeViewerPlugin extends AbstractUIPlugin {
 
 	// The plug-in ID
-	public static final String PLUGIN_ID = "org.s23m.cell.eclipse.visualization.containmenttree.viewer";
+	public static final String PLUGIN_ID = "org.s23m.cell.eclipse.visualization.containmenttree";
 
 	// The shared instance
 	private static ContainmentTreeViewerPlugin plugin;
