@@ -20,7 +20,7 @@ then
 		# Generate the jars
 		echo "Building dependent jars..."
 		cd "$CELL_DIR"
-		#./sbt.sh clean package
+		./sbt.sh clean package
 		cd $DIR
 
 		# Copy the jars to a temporary directory
