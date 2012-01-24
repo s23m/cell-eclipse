@@ -76,7 +76,9 @@ public final class Retrieve extends AbstractHandler {
 	        }
 
 			private void initialFulldeserialization() throws IllegalArgumentException, IllegalAccessException {
-				bootstrappingWithRepository();
+				//bootstrappingWithRepository();
+				bootstrappingByScripts();
+
 				display.asyncExec(new Runnable() {
 		        public void run() {
 		                final Tree tree = Viewer.getContainmentTreeViewer().getTree();
