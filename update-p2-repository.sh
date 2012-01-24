@@ -15,8 +15,6 @@ if [ -n "${ECLIPSE_HOME+x}" ] && [ -d $ECLIPSE_HOME ]
 then
   if [ -f $ECLIPSE_EXEC ]
   then
-		echo "TEMP_DIR "$TEMP_DIR
-
 		# Generate the jars
 		echo "Building dependent jars..."
 		cd "$CELL_DIR"
