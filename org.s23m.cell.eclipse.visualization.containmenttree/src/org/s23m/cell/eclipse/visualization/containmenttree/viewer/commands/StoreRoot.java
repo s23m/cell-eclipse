@@ -97,7 +97,7 @@ public class StoreRoot extends AbstractHandler {
 			private void bootstrappingByScripts() {
 				org.s23m.cell.G.completeOpenSourceKernelInitialization();
 				SemanticExtensions.instantiateFeature();
-				org.s23m.cell.kernel.artifactinstantiation.InstantiationSequences.run();
+				org.s23m.cell.kernel.artifactinstantiation.RunInstantiationSequence.run();
 				G.goLiveWithGmodelEditor();
 			}
 

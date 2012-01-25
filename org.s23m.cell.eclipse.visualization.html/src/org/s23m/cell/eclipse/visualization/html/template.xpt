@@ -1,6 +1,10 @@
 «EXTENSION org::gmodel::openarchitectureware::kernel»
 
-«DEFINE main FOR org::gmodel::core::Vertex»
+«REM»
+	We should not be using org.s23m.cell.core package in definitions
+«ENDREM»
+
+«DEFINE main FOR org::s23m::cell::core::Vertex»
 
 «FILE "documentation.html"»
 
@@ -83,8 +87,8 @@
 	<body>
 		«REM»
 			WORKING - minCardinality: "«getKernelValues().minCardinality()»"
-			minCardinality: "«getKernelValues().minCardinality.identity().getName()»"
-			isAbstract: "«getKernelValues().isAbstract.identity().getName()»"
+			minCardinality: "«getKernelValues().minCardinality.identity().name()»"
+			isAbstract: "«getKernelValues().isAbstract.identity().name()»"
 		«ENDREM»
 	
 		«REM»Artifact container - START«ENDREM»
@@ -94,7 +98,7 @@
 			«REM»Display  <category name> :  <name> in a simple one column table «ENDREM»
 			«REM»Vertex-flavored container - START«ENDREM»
 			<div class="flavorContainer">
-				<h2>«getKernelVertex().identity().getName()»«EXPAND flavored»</h2>
+				<h2>«getKernelVertex().identity().name()»«EXPAND flavored»</h2>
 				«LET flavoredSet(getKernelVertex()) AS vertexFlavored»
 					«IF vertexFlavored.isEmpty»
 						«EXPAND emptySet»
@@ -138,7 +142,7 @@
 		
 			«REM»Edge-flavored container - START«ENDREM»
 			<div class="flavorContainer">
-				<h2>«getKernelEdge().identity().getName()»«EXPAND flavored»</h2>
+				<h2>«getKernelEdge().identity().name()»«EXPAND flavored»</h2>
 				«LET flavoredSet(getKernelEdge()) AS edgeFlavored»
 					«IF edgeFlavored.isEmpty»
 						«EXPAND emptySet»
@@ -147,7 +151,7 @@
 							<tr>
 								<th><span class="arrow">&larr;</span></th>
 								<th>1<sup>st</sup>&nbsp;[min,&nbsp;max]</th>
-								<th>«getKernelEdge().identity().getName()»«EXPAND flavored»</th>
+								<th>«getKernelEdge().identity().name()»«EXPAND flavored»</th>
 								<th>2<sup>nd</sup>&nbsp;[min,&nbsp;max]</th>
 								<th><span class="arrow">&rarr;</span></th>
 							</tr>
@@ -157,11 +161,11 @@
 								<tr>
 									<td>«EXPAND displaySet FOR set.fromConnectedInstance()»</td>
 									«LET set.fromEdgeEndFlavored() AS from»
-										<td>«EXPAND displaySet FOR from»&nbsp;<span class="cardinality">«from.value(minCardinality).identity().getName()»,«from.value(maxCardinality).identity().getName()»</span></td>
+										<td>«EXPAND displaySet FOR from»&nbsp;<span class="cardinality">«from.value(minCardinality).identity().name()»,«from.value(maxCardinality).identity().name()»</span></td>
 									«ENDLET»
 									<td>«EXPAND displaySet FOR set»</td>
 									«LET set.toEdgeEndFlavored() AS to»
-										<td>«EXPAND displaySet FOR to»&nbsp;<span class="cardinality">«to.value(minCardinality).identity().getName()»,«to.value(maxCardinality).identity().getName()»</span></td>
+										<td>«EXPAND displaySet FOR to»&nbsp;<span class="cardinality">«to.value(minCardinality).identity().name()»,«to.value(maxCardinality).identity().name()»</span></td>
 									«ENDLET»
 									<td>«EXPAND displaySet FOR set.toConnectedInstance()»</td>
 								</tr>
@@ -176,7 +180,7 @@
 			
 			«REM»Visibility-flavored container - START«ENDREM»
 			<div class="flavorContainer">
-				<h2>«getKernelVisibility().identity().getName()»«EXPAND flavored»</h2>	
+				<h2>«getKernelVisibility().identity().name()»«EXPAND flavored»</h2>	
 				«LET flavoredSet(getKernelVisibility()) AS visibilityFlavored»
 					«IF visibilityFlavored.isEmpty»
 						«EXPAND emptySet»
@@ -205,9 +209,9 @@
 «ENDFILE»
 «ENDDEFINE»
 
-«DEFINE displayVertexFlavoredSet FOR org::gmodel::api::SetType»<span class="metaArtifactName">«category().identity().getName()»</span> : <span class="setName"><a href="«identity().getIdentifier()»">«identity().getName()»</a></span>«ENDDEFINE»
+«DEFINE displayVertexFlavoredSet FOR org::s23m::cell::SetType»<span class="metaArtifactName">«category().identity().name()»</span> : <span class="setName"><a href="«identity().getIdentifier()»">«identity().name()»</a></span>«ENDDEFINE»
 
-«DEFINE displaySet FOR org::gmodel::api::SetType»<span class="metaArtifactName">«category().identity().getName()»</span> : <span class="setName">«identity().getName()»</span>«ENDDEFINE»
+«DEFINE displaySet FOR org::s23m::cell::SetType»<span class="metaArtifactName">«category().identity().name()»</span> : <span class="setName">«identity().name()»</span>«ENDDEFINE»
 
 «DEFINE flavored FOR Object»<sub class="flavored">flavored</sub>«ENDDEFINE»
 

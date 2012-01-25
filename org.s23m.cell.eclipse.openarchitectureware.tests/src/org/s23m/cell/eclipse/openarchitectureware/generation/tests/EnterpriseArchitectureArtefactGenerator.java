@@ -28,6 +28,7 @@ package org.s23m.cell.eclipse.openarchitectureware.generation.tests;
 
 import org.s23m.cell.Set;
 import org.s23m.cell.kernel.artifactinstantiation.InstantiationSequences;
+import org.s23m.cell.kernel.artifactinstantiation.RunInstantiationSequence;
 
 public class EnterpriseArchitectureArtefactGenerator extends AbstractHtmlGenerator {
 
@@ -36,13 +37,8 @@ public class EnterpriseArchitectureArtefactGenerator extends AbstractHtmlGenerat
 	}
 
 	public static void main(final String[] args) {
-		// final EnterpriseArchitectureExample example = new EnterpriseArchitectureExample();
-		// final Set set = example.getCentrelinkEA();
-		// new EnterpriseArchitectureArtefactGenerator(set);
-		org.s23m.cell.G.boot();
-		InstantiationSequences.run();
-		final Set set = InstantiationSequences.acmeEA;
+		RunInstantiationSequence.run();
+		final Set set = InstantiationSequences.getInstance().acmeEA;
 		new EnterpriseArchitectureArtefactGenerator(set);
-
 	}
 }

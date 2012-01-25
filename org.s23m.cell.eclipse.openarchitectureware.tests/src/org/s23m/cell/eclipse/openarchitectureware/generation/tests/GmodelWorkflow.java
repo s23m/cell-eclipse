@@ -35,7 +35,7 @@ import org.eclipse.emf.mwe.core.monitor.ProgressMonitor;
 import org.eclipse.emf.mwe.utils.DirectoryCleaner;
 import org.eclipse.xpand2.output.Outlet;
 import org.s23m.cell.Set;
-import org.s23m.cell.eclipse.xpand2.GmodelGenerator;
+import org.s23m.cell.eclipse.xpand2.CellGenerator;
 
 /**
  * Roughly the equivalent of a basic MWE workflow
@@ -54,7 +54,7 @@ public final class GmodelWorkflow {
 	public void execute() {
 		final String path = "src-gen";
 
-		final GmodelGenerator generator = new GmodelGenerator(set);
+		final CellGenerator generator = new CellGenerator(set);
 		generator.setTemplateName(templateName);
 		final Outlet outlet = new Outlet();
 		outlet.setPath(path);

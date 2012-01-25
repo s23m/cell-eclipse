@@ -27,6 +27,7 @@ package org.s23m.cell.eclipse.openarchitectureware.generation.tests;
 
 import org.s23m.cell.Set;
 import org.s23m.cell.kernel.artifactinstantiation.InstantiationSequences;
+import org.s23m.cell.kernel.artifactinstantiation.RunInstantiationSequence;
 
 public class CrmArtefactGenerator extends AbstractHtmlGenerator {
 
@@ -35,14 +36,8 @@ public class CrmArtefactGenerator extends AbstractHtmlGenerator {
 	}
 
 	public static void main(final String[] args) {
-		// final CrmExample example = new CrmExample();
-		// final Set set = example.getDomainanalysis();
-		// new CrmArtefactGenerator(set);
-		org.s23m.cell.G.boot();
-		InstantiationSequences.run();
-		// final Set set = RepositoryStructure.domainengineering;
-		final Set set = InstantiationSequences.crm;
+		RunInstantiationSequence.run();
+		final Set set = InstantiationSequences.getInstance().crm;
 		new CrmArtefactGenerator(set);
-
 	}
 }

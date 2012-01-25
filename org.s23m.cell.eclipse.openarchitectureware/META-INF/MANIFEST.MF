@@ -13,5 +13,6 @@ Import-Package: com.ibm.icu.text,
  org.s23m.cell;bundle-version="1.0.0",
  org.s23m.cell.api;bundle-version="1.0.0",
  org.s23m.cell.core;bundle-version="1.0.0"
-Export-Package: org.s23m.cell.eclipse.xpand2,
- org.s23m.cell.eclipse.openarchitectureware
+Export-Package: org.gmodel.openarchitectureware,
+ org.s23m.cell.eclipse.openarchitectureware,
+ org.s23m.cell.eclipse.xpand2

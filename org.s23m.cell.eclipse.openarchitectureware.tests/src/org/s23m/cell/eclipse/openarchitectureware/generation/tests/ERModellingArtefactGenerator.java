@@ -27,6 +27,7 @@ package org.s23m.cell.eclipse.openarchitectureware.generation.tests;
 
 import org.s23m.cell.Set;
 import org.s23m.cell.kernel.artifactinstantiation.InstantiationSequences;
+import org.s23m.cell.kernel.artifactinstantiation.RunInstantiationSequence;
 
 public class ERModellingArtefactGenerator extends AbstractHtmlGenerator {
 
@@ -35,10 +36,8 @@ public class ERModellingArtefactGenerator extends AbstractHtmlGenerator {
 	}
 
 	public static void main(final String[] args) {
-		org.s23m.cell.G.boot();
-		InstantiationSequences.run();
-		final Set set = InstantiationSequences.entityrelationshipschema;
-
+		RunInstantiationSequence.run();
+		final Set set = InstantiationSequences.getInstance().entityrelationshipschema;
 		new ERModellingArtefactGenerator(set);
 	}
 }

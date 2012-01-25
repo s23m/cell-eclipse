@@ -113,16 +113,16 @@ public final class Retrieve extends AbstractHandler {
 			}
 
 			private void bootstrappingByScripts() {
-				org.s23m.cell.G.completeOpenSourceKernelInitialization();
+				org.s23m.cell.G.boot();
+				org.s23m.cell.kernel.artifactinstantiation.RunInstantiationSequence.run();
 				SemanticExtensions.instantiateFeature();
-				org.s23m.cell.kernel.artifactinstantiation.InstantiationSequences.run();
 				G.goLiveWithGmodelEditor();
 			}
 
 			private void retrievalInitialization() throws IllegalArgumentException, IllegalAccessException {
 				if (!SemanticStateOfInMemoryModel.gmodelEditorIsLive()) {
 					org.s23m.cell.semanticextensions.G.bootTemplate();
-					org.s23m.cell.kernel.artifactinstantiation.InstantiationSequences.run();
+					org.s23m.cell.kernel.artifactinstantiation.RunInstantiationSequence.run();
 					InstanceMap.getInstance();
 					G.goLiveWithGmodelEditor();
 				}

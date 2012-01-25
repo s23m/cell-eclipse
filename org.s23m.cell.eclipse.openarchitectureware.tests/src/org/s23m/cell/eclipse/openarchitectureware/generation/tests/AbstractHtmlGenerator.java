@@ -26,11 +26,14 @@
 package org.s23m.cell.eclipse.openarchitectureware.generation.tests;
 
 import org.s23m.cell.Set;
+import org.s23m.cell.eclipse.visualization.html.OawHtmlDerivedFileGenerator;
 
 public abstract class AbstractHtmlGenerator {
 
 	protected AbstractHtmlGenerator(final Set set) {
-		final GmodelWorkflow workflow = new GmodelWorkflow(set, "org::gmodel::visualizedGraph::html::template::main");
+		//final String templateName = "org::s23m::cell::eclipse::visualization::html::template::main"
+		final String templateName = OawHtmlDerivedFileGenerator.QUALIFIED_TEMPLATE_FUNCTION_NAME;
+		final GmodelWorkflow workflow = new GmodelWorkflow(set, templateName);
 		workflow.execute();
 	}
 

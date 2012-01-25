@@ -33,7 +33,7 @@ import org.eclipse.emf.mwe.core.monitor.NullProgressMonitor;
 import org.eclipse.emf.mwe.core.monitor.ProgressMonitor;
 import org.eclipse.internal.xtend.expression.parser.SyntaxConstants;
 import org.s23m.cell.Set;
-import org.s23m.cell.eclipse.xpand2.GmodelGenerator;
+import org.s23m.cell.eclipse.xpand2.CellGenerator;
 import org.s23m.cell.eclipse.xpand2.InMemoryOutput;
 
 public class OawHtmlDerivedFileGenerator {
@@ -42,23 +42,23 @@ public class OawHtmlDerivedFileGenerator {
 
 	private static final String TEMPLATE_FUNCTION = "main";
 
-	private static final String QUALIFIED_TEMPLATE_FUNCTION_NAME = OawHtmlDerivedFileGenerator.class.getPackage().getName().replace(".", SyntaxConstants.NS_DELIM)
+	public static final String QUALIFIED_TEMPLATE_FUNCTION_NAME = OawHtmlDerivedFileGenerator.class.getPackage().getName().replace(".", SyntaxConstants.NS_DELIM)
 		+ SyntaxConstants.NS_DELIM
 		+ TEMPLATE_NAME
 		+ SyntaxConstants.NS_DELIM
 		+ TEMPLATE_FUNCTION;
 
 	public String generate(final Set set, final String templateContent) {
-		final GmodelGenerator generator = new GmodelGenerator(set);
+		final CellGenerator generator = new CellGenerator(set);
 		// generator.setTemplateContent(HTMLRepresentation.html_to_artifact.identity().getPayload());
 		generator.setTemplateName(QUALIFIED_TEMPLATE_FUNCTION_NAME);
 		final InMemoryOutput output = new InMemoryOutput();
 		generator.setOutput(output);
 		try {
-		final WorkflowContext ctx = new WorkflowContextDefaultImpl();
-		final ProgressMonitor monitor = new NullProgressMonitor();
-		final Issues issues = new IssuesImpl();
-		generator.invoke(ctx, monitor, issues);
+			final WorkflowContext ctx = new WorkflowContextDefaultImpl();
+			final ProgressMonitor monitor = new NullProgressMonitor();
+			final Issues issues = new IssuesImpl();
+			generator.invoke(ctx, monitor, issues);
 		} catch (final Exception ex) {
 			System.err.println(ex);
 		}
