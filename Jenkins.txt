@@ -1,0 +1,4 @@
+Jenkins options
+
+- Wipe out workspace before build
+- Poll SCM: */10 * * * *
