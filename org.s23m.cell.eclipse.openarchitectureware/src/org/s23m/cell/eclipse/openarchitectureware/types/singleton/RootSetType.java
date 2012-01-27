@@ -107,14 +107,14 @@ public final class RootSetType extends AbstractSetType {
 			//		return target.connectedInstances();
 			//	}
 			//},
-			new ZeroParameterSetOperation("from") {
+			new ZeroParameterSetOperation("filterFrom") {
 				public @Override Set evaluate(final Set target) {
-					return target.from();
+					return target.filterFrom();
 				}
 			},
-			new ZeroParameterSetOperation("to") {
+			new ZeroParameterSetOperation("filterTo") {
 				public @Override Set evaluate(final Set target) {
-					return target.to();
+					return target.filterTo();
 				}
 			},
 			new ZeroParameterSetOperation("from") {
