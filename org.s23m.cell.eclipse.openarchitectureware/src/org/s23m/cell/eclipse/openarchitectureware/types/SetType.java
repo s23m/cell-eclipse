@@ -75,6 +75,8 @@ public final class SetType extends AbstractSetType {
 		return result;
 	}
 
+	// TODO not sure if these features should be exposed?
+	// Most/all seem to be unused (and the RootSetType ones picked up)
 	@Override
 	public Feature[] getContributedFeatures() {
 		// iterate through queries

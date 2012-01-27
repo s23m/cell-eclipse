@@ -117,6 +117,17 @@ public final class RootSetType extends AbstractSetType {
 					return target.filterTo();
 				}
 			},
+			new ZeroParameterSetOperation("fromEdgeEnd") {
+				public @Override Set evaluate(final Set target) {
+					return target.fromEdgeEnd();
+				}
+			},
+			new ZeroParameterSetOperation("toEdgeEnd") {
+				public @Override Set evaluate(final Set target) {
+					return target.toEdgeEnd();
+				}
+			},
+
 			new ZeroParameterSetOperation("from") {
 				public @Override Set evaluate(final Set target) {
 					return target.from();
@@ -176,6 +187,12 @@ public final class RootSetType extends AbstractSetType {
 			new OneParameterSetOperation("hasVisibilityOf") {
 				public @Override Set evaluate(final Set target, final Set parameter) {
 					return target.hasVisibilityOf(parameter);
+				}
+			},
+
+			new OneParameterSetOperation("value") {
+				public @Override Set evaluate(final Set target, final Set parameter) {
+					return target.value(parameter);
 				}
 			},
 			//new OneParameterSetOperation("containerCategory") {
