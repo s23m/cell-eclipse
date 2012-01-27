@@ -44,6 +44,7 @@ import org.s23m.cell.api.serializerinterface.Reconstitution;
 import org.s23m.cell.eclipse.visualization.containmenttree.viewer.ContainmentTreeManager;
 import org.s23m.cell.eclipse.visualization.containmenttree.viewer.ContainmentTreeViewerStatus;
 import org.s23m.cell.eclipse.visualization.containmenttree.viewer.Viewer;
+import org.s23m.cell.kernel.artifactinstantiation.RunInstantiationSequence;
 import org.s23m.cell.repository.client.RepositoryClient;
 import org.s23m.cell.repository.client.mediator.RepositoryClientMediator;
 import org.s23m.cell.semanticextensions.outershells.SemanticExtensions;
@@ -113,8 +114,8 @@ public final class Retrieve extends AbstractHandler {
 			}
 
 			private void bootstrappingByScripts() {
-				org.s23m.cell.G.boot();
-				org.s23m.cell.kernel.artifactinstantiation.RunInstantiationSequence.run();
+				//org.s23m.cell.G.boot();
+				RunInstantiationSequence.run();
 				SemanticExtensions.instantiateFeature();
 				G.goLiveWithGmodelEditor();
 			}
@@ -122,7 +123,7 @@ public final class Retrieve extends AbstractHandler {
 			private void retrievalInitialization() throws IllegalArgumentException, IllegalAccessException {
 				if (!SemanticStateOfInMemoryModel.gmodelEditorIsLive()) {
 					org.s23m.cell.semanticextensions.G.bootTemplate();
-					org.s23m.cell.kernel.artifactinstantiation.RunInstantiationSequence.run();
+					RunInstantiationSequence.run();
 					InstanceMap.getInstance();
 					G.goLiveWithGmodelEditor();
 				}
