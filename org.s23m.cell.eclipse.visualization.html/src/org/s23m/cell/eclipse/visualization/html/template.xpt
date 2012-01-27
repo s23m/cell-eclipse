@@ -159,7 +159,7 @@
 							«LET getKernelValues().minCardinality() AS minCardinality»
 							«LET getKernelValues().maxCardinality() AS maxCardinality»
 								<tr>
-									<td>«EXPAND displaySet FOR set.fromConnectedInstance()»</td>
+									<td>«EXPAND displaySet FOR set.filterFrom()»</td>
 									«LET set.fromEdgeEndFlavored() AS from»
 										<td>«EXPAND displaySet FOR from»&nbsp;<span class="cardinality">«from.value(minCardinality).identity().name()»,«from.value(maxCardinality).identity().name()»</span></td>
 									«ENDLET»
@@ -167,7 +167,7 @@
 									«LET set.toEdgeEndFlavored() AS to»
 										<td>«EXPAND displaySet FOR to»&nbsp;<span class="cardinality">«to.value(minCardinality).identity().name()»,«to.value(maxCardinality).identity().name()»</span></td>
 									«ENDLET»
-									<td>«EXPAND displaySet FOR set.toConnectedInstance()»</td>
+									<td>«EXPAND displaySet FOR set.filterTo()»</td>
 								</tr>
 							«ENDLET»
 							«ENDLET»
