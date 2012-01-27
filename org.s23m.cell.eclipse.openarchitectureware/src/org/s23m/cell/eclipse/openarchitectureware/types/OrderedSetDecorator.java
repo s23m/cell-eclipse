@@ -577,7 +577,7 @@ public final class OrderedSetDecorator implements Set, Collection<Set> {
 	}
 
 	public Set isALink() {
-		return delegate.isALink(  );
+		return delegate.isALink();
 
 	}
 
@@ -597,22 +597,22 @@ public final class OrderedSetDecorator implements Set, Collection<Set> {
 	}
 
 	public Set extractFirst() {
-		return delegate.extractFirst(  );
+		return delegate.extractFirst();
 
 	}
 
 	public Set extractSecond() {
-		return delegate.extractSecond(  );
+		return delegate.extractSecond();
 
 	}
 
 	public Set extractLast() {
-		return delegate.extractLast(  );
+		return delegate.extractLast();
 
 	}
 
 	public boolean isASemanticIdentity() {
-		return delegate.isASemanticIdentity(  );
+		return delegate.isASemanticIdentity();
 	}
 
 	public Set extractNext(final Set element) {
