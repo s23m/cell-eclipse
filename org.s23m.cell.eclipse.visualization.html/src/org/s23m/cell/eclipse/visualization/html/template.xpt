@@ -99,7 +99,7 @@
 			«REM»Vertex-flavored container - START«ENDREM»
 			<div class="flavorContainer">
 				<h2>«getKernelVertex().identity().name()»«EXPAND flavored»</h2>
-				«LET flavoredSet(getKernelVertex()) AS vertexFlavored»
+				«LET filterFlavor(getKernelVertex()) AS vertexFlavored»
 					«IF vertexFlavored.isEmpty»
 						«EXPAND emptySet»
 					«ELSE»
@@ -107,7 +107,7 @@
 						«FOREACH vertexFlavored AS set»
 							<tr>
 								«REM» Condition is consistent with other views «ENDREM» 
-								<td>«IF set.instanceSet().isEmpty()»«EXPAND displaySet FOR set»«ELSE»«EXPAND displayVertexFlavoredSet FOR set»«ENDIF»</td>
+								<td>«IF set.filterInstances().isEmpty()»«EXPAND displaySet FOR set»«ELSE»«EXPAND displayVertexFlavoredSet FOR set»«ENDIF»</td>
 							</tr>
 						«ENDFOREACH»
 						</table>
@@ -118,8 +118,8 @@
 			
 			«REM»SuperSetReference-flavored container - START«ENDREM»
 			<div class="flavorContainer">
-				<h2>«getKernelSuperSetReference().identity().getPluralName()»</h2>
-				«LET flavoredSet(getKernelSuperSetReference()) AS superSetReferenceFlavored»
+				<h2>«getKernelSuperSetReference().identity().pluralName()»</h2>
+				«LET filterFlavor(getKernelSuperSetReference()) AS superSetReferenceFlavored»
 					«IF superSetReferenceFlavored.isEmpty»
 						«EXPAND emptySet»
 					«ELSE»
@@ -143,7 +143,7 @@
 			«REM»Edge-flavored container - START«ENDREM»
 			<div class="flavorContainer">
 				<h2>«getKernelEdge().identity().name()»«EXPAND flavored»</h2>
-				«LET flavoredSet(getKernelEdge()) AS edgeFlavored»
+				«LET filterFlavor(getKernelEdge()) AS edgeFlavored»
 					«IF edgeFlavored.isEmpty»
 						«EXPAND emptySet»
 					«ELSE»
@@ -181,7 +181,7 @@
 			«REM»Visibility-flavored container - START«ENDREM»
 			<div class="flavorContainer">
 				<h2>«getKernelVisibility().identity().name()»«EXPAND flavored»</h2>	
-				«LET flavoredSet(getKernelVisibility()) AS visibilityFlavored»
+				«LET filterFlavor(getKernelVisibility()) AS visibilityFlavored»
 					«IF visibilityFlavored.isEmpty»
 						«EXPAND emptySet»
 					«ELSE»
