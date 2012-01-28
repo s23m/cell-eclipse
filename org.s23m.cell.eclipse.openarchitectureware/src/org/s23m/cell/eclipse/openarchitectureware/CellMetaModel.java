@@ -34,10 +34,9 @@ import org.eclipse.internal.xtend.expression.parser.SyntaxConstants;
 import org.eclipse.xtend.expression.TypeSystem;
 import org.eclipse.xtend.typesystem.MetaModel;
 import org.eclipse.xtend.typesystem.Type;
-import org.s23m.cell.G;
 import org.s23m.cell.Identity;
 import org.s23m.cell.Set;
-import org.s23m.cell.api.CoreSets;
+import org.s23m.cell.api.Query;
 import org.s23m.cell.eclipse.openarchitectureware.types.SetType;
 import org.s23m.cell.eclipse.openarchitectureware.types.singleton.IdentityType;
 import org.s23m.cell.eclipse.openarchitectureware.types.singleton.KernelValuesType;
@@ -104,13 +103,13 @@ public final class CellMetaModel implements MetaModel {
 		addTypeToCache(kernelValuesType);
 
 		// TODO add other kernel types?
-		final SetType vertexType = new SetType(getTypeSystem(), G.coreGraphs.vertex, rootSetType, identityType);
+		final SetType vertexType = new SetType(getTypeSystem(), Query.vertex, rootSetType, identityType);
 		addTypeToCache(vertexType);
 	}
 
 	private void addSetsToCache(final Set set) {
 		addSetToCache(set);
-		final Set vertexFlavored = set.filterFlavor(G.coreGraphs.vertex);
+		final Set vertexFlavored = set.filterFlavor(Query.vertex);
 		for (final Set i : vertexFlavored) {
 			addSetsToCache(i);
 		}
@@ -149,7 +148,7 @@ public final class CellMetaModel implements MetaModel {
 			}
 		} else if (obj instanceof Identity) {
 			return identityType;
-		} else if (obj instanceof CoreSets || obj instanceof KernelValuesType) {
+		} else if (obj instanceof KernelValuesType) {
 			return kernelValuesType;
 		} else {
 			// fall back to basic types in built-in meta models

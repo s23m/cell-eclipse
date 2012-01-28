@@ -30,10 +30,10 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.ListIterator;
 
-import org.s23m.cell.G;
 import org.s23m.cell.Identity;
 import org.s23m.cell.Set;
 import org.s23m.cell.api.EventListener;
+import org.s23m.cell.api.Query;
 import org.s23m.cell.api.VisitorFunction;
 
 /**
@@ -53,7 +53,7 @@ public final class OrderedSetDecorator implements Set, Collection<Set> {
 	//}
 
 	public OrderedSetDecorator(final Set set) {
-		if (!(set.flavor().isEqualTo( G.coreSets.orderedSet))) {
+		if (!set.flavor().isEqualTo(Query.orderedSet)) {
 			throw new IllegalArgumentException("Set to be decorated is not an OrderedSet");
 		}
 		this.delegate = set;
