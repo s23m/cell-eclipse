@@ -192,8 +192,8 @@
 							</tr>
 							«FOREACH visibilityFlavored AS set»
 							<tr>
-								<td>«EXPAND displaySet FOR set.fromSubGraph()»</td>
-								<td>«EXPAND displaySet FOR set.toSubGraph()»</td>
+								<td>«EXPAND displaySet FOR set.from()»</td>
+								<td>«EXPAND displaySet FOR set.to()»</td>
 							</tr>
 							«ENDFOREACH»
 						</table>
@@ -209,7 +209,7 @@
 «ENDFILE»
 «ENDDEFINE»
 
-«DEFINE displayVertexFlavoredSet FOR org::s23m::cell::SetType»<span class="metaArtifactName">«category().identity().name()»</span> : <span class="setName"><a href="«identity().getIdentifier()»">«identity().name()»</a></span>«ENDDEFINE»
+«DEFINE displayVertexFlavoredSet FOR org::s23m::cell::SetType»<span class="metaArtifactName">«category().identity().name()»</span> : <span class="setName"><a href="«identity().identifier()»">«identity().name()»</a></span>«ENDDEFINE»
 
 «DEFINE displaySet FOR org::s23m::cell::SetType»<span class="metaArtifactName">«category().identity().name()»</span> : <span class="setName">«identity().name()»</span>«ENDDEFINE»
 
