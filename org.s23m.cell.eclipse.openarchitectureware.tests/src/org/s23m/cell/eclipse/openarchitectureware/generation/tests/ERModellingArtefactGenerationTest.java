@@ -27,17 +27,11 @@ package org.s23m.cell.eclipse.openarchitectureware.generation.tests;
 
 import org.s23m.cell.Set;
 import org.s23m.cell.kernel.artifactinstantiation.InstantiationSequences;
-import org.s23m.cell.kernel.artifactinstantiation.RunInstantiationSequence;
 
-public class CrmArtefactGenerator extends AbstractHtmlGenerator {
+public class ERModellingArtefactGenerationTest extends AbstractHtmlGenerationTest {
 
-	protected CrmArtefactGenerator(final Set set) {
-		super(set);
-	}
-
-	public static void main(final String[] args) {
-		RunInstantiationSequence.run();
-		final Set set = InstantiationSequences.getInstance().crm;
-		new CrmArtefactGenerator(set);
+	@Override
+	protected Set provideSet() {
+		return InstantiationSequences.getInstance().entityrelationshipschema;
 	}
 }

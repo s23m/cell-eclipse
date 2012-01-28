@@ -25,19 +25,35 @@
 
 package org.s23m.cell.eclipse.openarchitectureware.generation.tests;
 
+import junit.framework.TestCase;
+
+import org.junit.Test;
 import org.s23m.cell.Set;
-import org.s23m.cell.kernel.artifactinstantiation.InstantiationSequences;
+import org.s23m.cell.eclipse.visualization.html.OawHtmlDerivedFileGenerator;
 import org.s23m.cell.kernel.artifactinstantiation.RunInstantiationSequence;
 
-public class ERModellingArtefactGenerator extends AbstractHtmlGenerator {
+public abstract class AbstractHtmlGenerationTest extends TestCase {
 
-	protected ERModellingArtefactGenerator(final Set set) {
-		super(set);
+	private static boolean hasRunScript;
+
+	@Override
+	protected void setUp() throws Exception {
+		if (!hasRunScript) {
+			RunInstantiationSequence.run();
+			hasRunScript = true;
+		}
 	}
 
-	public static void main(final String[] args) {
-		RunInstantiationSequence.run();
-		final Set set = InstantiationSequences.getInstance().entityrelationshipschema;
-		new ERModellingArtefactGenerator(set);
+	protected abstract Set provideSet();
+
+	// TODO use try-catch?
+	@Test
+	public void testHtmlGeneration() {
+		//final String templateName = "org::s23m::cell::eclipse::visualization::html::template::main"
+		final String templateName = OawHtmlDerivedFileGenerator.QUALIFIED_TEMPLATE_FUNCTION_NAME;
+		final Set set = provideSet();
+		final GmodelWorkflow workflow = new GmodelWorkflow(set, templateName);
+		workflow.execute();
 	}
+
 }

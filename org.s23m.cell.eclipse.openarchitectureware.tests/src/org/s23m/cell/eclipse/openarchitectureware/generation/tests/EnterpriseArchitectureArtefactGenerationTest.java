@@ -28,17 +28,11 @@ package org.s23m.cell.eclipse.openarchitectureware.generation.tests;
 
 import org.s23m.cell.Set;
 import org.s23m.cell.kernel.artifactinstantiation.InstantiationSequences;
-import org.s23m.cell.kernel.artifactinstantiation.RunInstantiationSequence;
 
-public class EnterpriseArchitectureArtefactGenerator extends AbstractHtmlGenerator {
+public class EnterpriseArchitectureArtefactGenerationTest extends AbstractHtmlGenerationTest {
 
-	protected EnterpriseArchitectureArtefactGenerator(final Set set) {
-		super(set);
-	}
-
-	public static void main(final String[] args) {
-		RunInstantiationSequence.run();
-		final Set set = InstantiationSequences.getInstance().acmeEA;
-		new EnterpriseArchitectureArtefactGenerator(set);
+	@Override
+	protected Set provideSet() {
+		return InstantiationSequences.getInstance().acmeEA;
 	}
 }
