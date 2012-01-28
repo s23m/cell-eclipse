@@ -54,29 +54,51 @@ public final class IdentityType extends AbstractType {
 
 	@Override
 	public Feature[] getContributedFeatures() {
-		final Type stringType = getTypeSystem().getStringType();
 		return new Feature[] {
-			new OperationImpl(this, GmodelSemanticDomains.name.identity().name(), stringType) {
-				protected @Override String evaluateInternal(final Object target, final Object[] params) {
-					return ((Identity) target).name();
+			new IdentityToStringOperation(GmodelSemanticDomains.name) {
+				@Override String evaluate(final Identity target) {
+					return target.name();
 				}
 			},
-			new OperationImpl(this, GmodelSemanticDomains.pluralName.identity().name(), stringType) {
-				protected @Override String evaluateInternal(final Object target, final Object[] params) {
-					return ((Identity) target).pluralName();
+			new IdentityToStringOperation(GmodelSemanticDomains.pluralName) {
+				@Override String evaluate(final Identity target) {
+					return target.pluralName();
 				}
 			},
-			new OperationImpl(this, GmodelSemanticDomains.technicalName.identity().name(), stringType) {
-				protected @Override String evaluateInternal(final Object target, final Object[] params) {
-					return ((Identity) target).technicalName();
+			new IdentityToStringOperation(GmodelSemanticDomains.technicalName) {
+				@Override String evaluate(final Identity target) {
+					return target.technicalName();
 				}
 			},
-			new OperationImpl(this, GmodelSemanticDomains.identifier.identity().name(), stringType) {
-				protected @Override String evaluateInternal(final Object target, final Object[] params) {
-					return ((Identity) target).identifier().toString();
+			new IdentityToStringOperation(GmodelSemanticDomains.identifier) {
+				@Override String evaluate(final Identity target) {
+					return target.identifier().toString();
 				}
 			}
 		};
+	}
+
+	/**
+	 * An operation which transforms an {@link Identity} into a {@link String}
+	 */
+	private abstract class IdentityToStringOperation extends OperationImpl {
+
+		public IdentityToStringOperation(final org.s23m.cell.Set set) {
+			this(set.identity().name());
+		}
+
+		public IdentityToStringOperation(final String name) {
+			super(IdentityType.this, name, getTypeSystem().getStringType(), new Type[0]);
+		}
+
+		@Override
+		protected String evaluateInternal(final Object target, final Object[] params) {
+			final Identity identity = (Identity) target;
+			return evaluate(identity);
+		}
+
+		abstract String evaluate(final Identity target);
+
 	}
 
 }
