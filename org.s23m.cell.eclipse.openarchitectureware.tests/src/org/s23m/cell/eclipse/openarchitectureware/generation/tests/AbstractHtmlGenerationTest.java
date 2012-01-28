@@ -34,26 +34,28 @@ import org.s23m.cell.kernel.artifactinstantiation.RunInstantiationSequence;
 
 public abstract class AbstractHtmlGenerationTest extends TestCase {
 
-	private static boolean hasRunScript;
+	private static boolean instantiationSequenceExecuted;
 
 	@Override
 	protected void setUp() throws Exception {
-		if (!hasRunScript) {
+		if (!instantiationSequenceExecuted) {
 			RunInstantiationSequence.run();
-			hasRunScript = true;
+			instantiationSequenceExecuted = true;
 		}
 	}
 
 	protected abstract Set provideSet();
 
-	// TODO use try-catch?
 	@Test
 	public void testHtmlGeneration() {
-		//final String templateName = "org::s23m::cell::eclipse::visualization::html::template::main"
 		final String templateName = OawHtmlDerivedFileGenerator.QUALIFIED_TEMPLATE_FUNCTION_NAME;
 		final Set set = provideSet();
 		final GmodelWorkflow workflow = new GmodelWorkflow(set, templateName);
-		workflow.execute();
+		try {
+			workflow.execute();
+		} catch (final Exception e) {
+			fail("HTML generation failed: " + e);
+		}
 	}
 
 }
