@@ -13,7 +13,7 @@ class HtmlTemplate {
 		</html>
 	'''
 	
-	def head() '''
+	def private head() '''
 		<head>
 			<style type="text/css">
 				span, td, th, h2 {
@@ -91,7 +91,7 @@ class HtmlTemplate {
 		</head>
 	'''
 	
-	def body(Set set) '''
+	def private body(Set set) '''
 		<body>
 			<!-- Artifact container - START -->
 			<div class="artifactContainer">
@@ -111,7 +111,7 @@ class HtmlTemplate {
 		</body>
 	'''
 	
-	def vertexFlavoredContainer(Set set) '''
+	def private vertexFlavoredContainer(Set set) '''
 		«val vertexFlavored = set.filterFlavor(getKernelVertex())»
 		<!--Vertex-flavored container - START -->
 		<div class="flavorContainer">
@@ -132,7 +132,7 @@ class HtmlTemplate {
 		<!--Vertex-flavored container - END -->
 	'''
 	
-	def supersetReferenceFlavoredContainer(Set set) '''
+	def private supersetReferenceFlavoredContainer(Set set) '''
 		«val superSetReferenceFlavored = set.filterFlavor(getKernelSuperSetReference())»
 		<!-- SuperSetReference-flavored container - START -->
 		<div class="flavorContainer">
@@ -157,7 +157,7 @@ class HtmlTemplate {
 		<!-- SuperSetReference-flavored container - END -->	
 	'''
 	
-	def edgeEndFlavored(Set set) '''
+	def private edgeEndFlavored(Set set) '''
 		«val edgeFlavored = set.filterFlavor(getKernelEdge())»
 		<!-- Edge-flavored container - START -->
 		<div class="flavorContainer">
@@ -176,11 +176,11 @@ class HtmlTemplate {
 					«FOR s : edgeFlavored»
 						<tr>
 							<td>«displaySet( s.filterFrom() )»</td>
-							«val from = s.fromEdgeEnd()»
-							<td>«displaySet( from )»&nbsp;<span class="cardinality">«from.value(minCardinality).identity().name()»,«from.value(maxCardinality).identity().name()»</span></td>
+							«val source = s.fromEdgeEnd()»
+							<td>«displaySet( source )»&nbsp;<span class="cardinality">«source.value(minCardinality).identity().name()»,«source.value(maxCardinality).identity().name()»</span></td>
 							<td>«displaySet( s )»</td>
-							«val to = set.toEdgeEnd()»
-							<td>«displaySet( to )»&nbsp;<span class="cardinality">«to.value(minCardinality).identity().name()»,«to.value(maxCardinality).identity().name()»</span></td>
+							«val target = s.toEdgeEnd()»
+							<td>«displaySet( target )»&nbsp;<span class="cardinality">«target.value(minCardinality).identity().name()»,«target.value(maxCardinality).identity().name()»</span></td>
 							<td>«displaySet( s.filterTo() )»</td>
 						</tr>
 					«ENDFOR»
@@ -190,7 +190,7 @@ class HtmlTemplate {
 		<!-- Edge-flavored container - END -->	
 	'''
 	
-	def visibilityFlavoredContainer(Set set) '''
+	def private visibilityFlavoredContainer(Set set) '''
 		«val visibilityFlavored = set.filterFlavor(getKernelVisibility())»
 		<!-- Visibility-flavored container - START -->
 		<div class="flavorContainer">
@@ -215,45 +215,45 @@ class HtmlTemplate {
 		<!-- Visibility-flavored container - END -->
 	'''
 					
-	def displaySet(Set set) '''
+	def private displaySet(Set set) '''
 		<span class="metaArtifactName">«set.category().identity().name()»</span> : <span class="setName">«set.identity().name()»</span>
 	'''
 	
-	def displayVertexFlavoredSet(Set set) '''
+	def private displayVertexFlavoredSet(Set set) '''
 		<span class="metaArtifactName">«set.category().identity().name()»</span> : <span class="setName"><a href="«set.identity().identifier()»">«set.identity().name()»</a></span>
 	'''
 	
-	def flavored() {
+	def private flavored() {
 		"<sub class=\"flavored\">flavored</sub>"
 	}
 	
-	def emptySet() {
+	def private emptySet() {
 		"<span><i>None</i></span>"
 	}
 	
 	/* Kernel extensions */
 	
-	def minCardinality() {
+	def private minCardinality() {
 		GmodelSemanticDomains::minCardinality
 	}
 	
-	def maxCardinality() {
+	def private maxCardinality() {
 		GmodelSemanticDomains::maxCardinality
 	}
 	
-	def getKernelVertex() {
+	def private getKernelVertex() {
 		Query::vertex
 	}
 	
-	def getKernelSuperSetReference() {
+	def private getKernelSuperSetReference() {
 		Query::superSetReference
 	}
 
-	def getKernelVisibility() {
+	def private getKernelVisibility() {
 		Query::visibility
 	}
 	
-	def getKernelEdge() {
+	def private getKernelEdge() {
 		Query::edge
 	}
 }

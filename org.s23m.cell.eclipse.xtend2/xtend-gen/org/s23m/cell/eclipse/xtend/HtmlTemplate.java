@@ -26,7 +26,7 @@ public class HtmlTemplate {
     return _builder;
   }
   
-  public CharSequence head() {
+  private CharSequence head() {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("<head>");
     _builder.newLine();
@@ -239,7 +239,7 @@ public class HtmlTemplate {
     return _builder;
   }
   
-  public CharSequence body(final Set set) {
+  private CharSequence body(final Set set) {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("<body>");
     _builder.newLine();
@@ -294,7 +294,7 @@ public class HtmlTemplate {
     return _builder;
   }
   
-  public CharSequence vertexFlavoredContainer(final Set set) {
+  private CharSequence vertexFlavoredContainer(final Set set) {
     StringConcatenation _builder = new StringConcatenation();
     Set _kernelVertex = this.getKernelVertex();
     Set _filterFlavor = set.filterFlavor(_kernelVertex);
@@ -367,7 +367,7 @@ public class HtmlTemplate {
     return _builder;
   }
   
-  public CharSequence supersetReferenceFlavoredContainer(final Set set) {
+  private CharSequence supersetReferenceFlavoredContainer(final Set set) {
     StringConcatenation _builder = new StringConcatenation();
     Set _kernelSuperSetReference = this.getKernelSuperSetReference();
     Set _filterFlavor = set.filterFlavor(_kernelSuperSetReference);
@@ -454,7 +454,7 @@ public class HtmlTemplate {
     return _builder;
   }
   
-  public CharSequence edgeEndFlavored(final Set set) {
+  private CharSequence edgeEndFlavored(final Set set) {
     StringConcatenation _builder = new StringConcatenation();
     Set _kernelEdge = this.getKernelEdge();
     Set _filterFlavor = set.filterFlavor(_kernelEdge);
@@ -539,23 +539,23 @@ public class HtmlTemplate {
             _builder.append("\t");
             _builder.append("\t");
             Set _fromEdgeEnd = s.fromEdgeEnd();
-            final Set from = _fromEdgeEnd;
+            final Set source = _fromEdgeEnd;
             _builder.newLineIfNotEmpty();
             _builder.append("\t");
             _builder.append("\t");
             _builder.append("\t");
             _builder.append("<td>");
-            CharSequence _displaySet_1 = this.displaySet(from);
+            CharSequence _displaySet_1 = this.displaySet(source);
             _builder.append(_displaySet_1, "			");
             _builder.append("&nbsp;<span class=\"cardinality\">");
             Set _minCardinality = this.minCardinality();
-            Set _value = from.value(_minCardinality);
+            Set _value = source.value(_minCardinality);
             Identity _identity_2 = _value.identity();
             String _name_2 = _identity_2.name();
             _builder.append(_name_2, "			");
             _builder.append(",");
             Set _maxCardinality = this.maxCardinality();
-            Set _value_1 = from.value(_maxCardinality);
+            Set _value_1 = source.value(_maxCardinality);
             Identity _identity_3 = _value_1.identity();
             String _name_3 = _identity_3.name();
             _builder.append(_name_3, "			");
@@ -572,24 +572,24 @@ public class HtmlTemplate {
             _builder.append("\t");
             _builder.append("\t");
             _builder.append("\t");
-            Set _edgeEnd = set.toEdgeEnd();
-            final Set to = _edgeEnd;
+            Set _edgeEnd = s.toEdgeEnd();
+            final Set target = _edgeEnd;
             _builder.newLineIfNotEmpty();
             _builder.append("\t");
             _builder.append("\t");
             _builder.append("\t");
             _builder.append("<td>");
-            CharSequence _displaySet_3 = this.displaySet(to);
+            CharSequence _displaySet_3 = this.displaySet(target);
             _builder.append(_displaySet_3, "			");
             _builder.append("&nbsp;<span class=\"cardinality\">");
             Set _minCardinality_1 = this.minCardinality();
-            Set _value_2 = to.value(_minCardinality_1);
+            Set _value_2 = target.value(_minCardinality_1);
             Identity _identity_4 = _value_2.identity();
             String _name_4 = _identity_4.name();
             _builder.append(_name_4, "			");
             _builder.append(",");
             Set _maxCardinality_1 = this.maxCardinality();
-            Set _value_3 = to.value(_maxCardinality_1);
+            Set _value_3 = target.value(_maxCardinality_1);
             Identity _identity_5 = _value_3.identity();
             String _name_5 = _identity_5.name();
             _builder.append(_name_5, "			");
@@ -622,7 +622,7 @@ public class HtmlTemplate {
     return _builder;
   }
   
-  public CharSequence visibilityFlavoredContainer(final Set set) {
+  private CharSequence visibilityFlavoredContainer(final Set set) {
     StringConcatenation _builder = new StringConcatenation();
     Set _kernelVisibility = this.getKernelVisibility();
     Set _filterFlavor = set.filterFlavor(_kernelVisibility);
@@ -711,7 +711,7 @@ public class HtmlTemplate {
     return _builder;
   }
   
-  public CharSequence displaySet(final Set set) {
+  private CharSequence displaySet(final Set set) {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("<span class=\"metaArtifactName\">");
     Set _category = set.category();
@@ -727,7 +727,7 @@ public class HtmlTemplate {
     return _builder;
   }
   
-  public CharSequence displayVertexFlavoredSet(final Set set) {
+  private CharSequence displayVertexFlavoredSet(final Set set) {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("<span class=\"metaArtifactName\">");
     Set _category = set.category();
@@ -747,38 +747,38 @@ public class HtmlTemplate {
     return _builder;
   }
   
-  public String flavored() {
+  private String flavored() {
     return "<sub class=\"flavored\">flavored</sub>";
   }
   
-  public String emptySet() {
+  private String emptySet() {
     return "<span><i>None</i></span>";
   }
   
   /**
    * Kernel extensions
    */
-  public Set minCardinality() {
+  private Set minCardinality() {
     return GmodelSemanticDomains.minCardinality;
   }
   
-  public Set maxCardinality() {
+  private Set maxCardinality() {
     return GmodelSemanticDomains.maxCardinality;
   }
   
-  public Set getKernelVertex() {
+  private Set getKernelVertex() {
     return Query.vertex;
   }
   
-  public Set getKernelSuperSetReference() {
+  private Set getKernelSuperSetReference() {
     return Query.superSetReference;
   }
   
-  public Set getKernelVisibility() {
+  private Set getKernelVisibility() {
     return Query.visibility;
   }
   
-  public Set getKernelEdge() {
+  private Set getKernelEdge() {
     return Query.edge;
   }
 }
