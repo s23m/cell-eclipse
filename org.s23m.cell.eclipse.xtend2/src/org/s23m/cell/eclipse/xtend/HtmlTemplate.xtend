@@ -114,7 +114,7 @@ class HtmlTemplate {
 	def private flavorContainer(Set set, Set flavor, (Set)=>CharSequence tableBody) '''
 		<div class="flavorContainer">
 			«val flavoredSet = set.filterFlavor(flavor)»
-			<h2>«flavor.identity.name»«flavored»</h2>
+			<h2>«flavor.identityName»«flavored»</h2>
 			«IF flavoredSet.isEmpty»
 				«emptySet()»
 			«ELSE»
@@ -141,8 +141,8 @@ class HtmlTemplate {
 		</tr>
 		«FOR s : flavoredSet»
 		<tr>
-			<td>«displaySet( s.from() ) /* s.fromSubSet() */»</td>
-			<td>«displaySet( s.to() ) /* s.toSuperSet() */»</td>
+			<td>«displaySet( s.from ) /* s.fromSubSet() */»</td>
+			<td>«displaySet( s.to ) /* s.toSuperSet() */»</td>
 		</tr>
 		«ENDFOR»		
 	'''
@@ -151,7 +151,7 @@ class HtmlTemplate {
 		<tr>
 			<th><span class="arrow">&larr;</span></th>
 			<th>1<sup>st</sup>&nbsp;[min,&nbsp;max]</th>
-			<th>«kernelEdge.identity.name»«flavored»</th>
+			<th>«kernelEdge.identityName»«flavored»</th>
 			<th>2<sup>nd</sup>&nbsp;[min,&nbsp;max]</th>
 			<th><span class="arrow">&rarr;</span></th>
 		</tr>
@@ -159,10 +159,10 @@ class HtmlTemplate {
 		<tr>
 			<td>«displaySet( s.filterFrom )»</td>
 			«val source = s.fromEdgeEnd»
-			<td>«displaySet( source )»&nbsp;<span class="cardinality">«source.value(minCardinality).identity.name»,«source.value(maxCardinality).identity.name»</span></td>
+			<td>«displaySet( source )»&nbsp;<span class="cardinality">«source.value(minCardinality).identityName»,«source.value(maxCardinality).identityName»</span></td>
 			<td>«displaySet( s )»</td>
 			«val target = s.toEdgeEnd»
-			<td>«displaySet( target )»&nbsp;<span class="cardinality">«target.value(minCardinality).identity.name»,«target.value(maxCardinality).identity.name»</span></td>
+			<td>«displaySet( target )»&nbsp;<span class="cardinality">«target.value(minCardinality).identityName»,«target.value(maxCardinality).identityName»</span></td>
 			<td>«displaySet( s.filterTo )»</td>
 		</tr>
 		«ENDFOR»
@@ -182,12 +182,20 @@ class HtmlTemplate {
 	'''
 		
 	def private displaySet(Set set) '''
-		<span class="metaArtifactName">«set.category.identity.name»</span> : <span class="setName">«set.identity.name»</span>
+		«set.decorateSet(s | s.identity.name)»
 	'''
 	
 	def private displayVertexFlavoredSet(Set set) '''
-		<span class="metaArtifactName">«set.category.identity.name»</span> : <span class="setName"><a href="«set.identity.identifier»">«set.identity.name»</a></span>
+		«set.decorateSet(s | "<a href=\"" + set.identity.identifier + "\">" + set.identityName + "</a>")»
 	'''
+	
+	def private decorateSet(Set set, (Set)=>CharSequence setNameContents) '''
+		<span class="metaArtifactName">«set.category.identityName»</span> : <span class="setName">«setNameContents.apply(set)»</span>
+	'''
+	
+	def private identityName(Set set) {
+		set.identity.name
+	}
 	
 	def private flavored() {
 		"<sub class=\"flavored\">flavored</sub>"

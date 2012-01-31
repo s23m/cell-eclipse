@@ -3,6 +3,7 @@ package org.s23m.cell.eclipse.xtend;
 import java.util.UUID;
 import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
+import org.eclipse.xtext.xbase.lib.StringExtensions;
 import org.s23m.cell.Identity;
 import org.s23m.cell.Set;
 import org.s23m.cell.api.Query;
@@ -329,9 +330,8 @@ public class HtmlTemplate {
     _builder.newLineIfNotEmpty();
     _builder.append("\t");
     _builder.append("<h2>");
-    Identity _identity = flavor.identity();
-    String _name = _identity.name();
-    _builder.append(_name, "	");
+    String _identityName = this.identityName(flavor);
+    _builder.append(_identityName, "	");
     String _flavored = this.flavored();
     _builder.append(_flavored, "	");
     _builder.append("</h2>");
@@ -442,9 +442,8 @@ public class HtmlTemplate {
     _builder.append("\t");
     _builder.append("<th>");
     Set _kernelEdge = this.kernelEdge();
-    Identity _identity = _kernelEdge.identity();
-    String _name = _identity.name();
-    _builder.append(_name, "	");
+    String _identityName = this.identityName(_kernelEdge);
+    _builder.append(_identityName, "	");
     String _flavored = this.flavored();
     _builder.append(_flavored, "	");
     _builder.append("</th>");
@@ -479,15 +478,13 @@ public class HtmlTemplate {
         _builder.append("&nbsp;<span class=\"cardinality\">");
         Set _minCardinality = this.minCardinality();
         Set _value = source.value(_minCardinality);
-        Identity _identity_1 = _value.identity();
-        String _name_1 = _identity_1.name();
-        _builder.append(_name_1, "	");
+        String _identityName_1 = this.identityName(_value);
+        _builder.append(_identityName_1, "	");
         _builder.append(",");
         Set _maxCardinality = this.maxCardinality();
         Set _value_1 = source.value(_maxCardinality);
-        Identity _identity_2 = _value_1.identity();
-        String _name_2 = _identity_2.name();
-        _builder.append(_name_2, "	");
+        String _identityName_2 = this.identityName(_value_1);
+        _builder.append(_identityName_2, "	");
         _builder.append("</span></td>");
         _builder.newLineIfNotEmpty();
         _builder.append("\t");
@@ -507,15 +504,13 @@ public class HtmlTemplate {
         _builder.append("&nbsp;<span class=\"cardinality\">");
         Set _minCardinality_1 = this.minCardinality();
         Set _value_2 = target.value(_minCardinality_1);
-        Identity _identity_3 = _value_2.identity();
-        String _name_3 = _identity_3.name();
-        _builder.append(_name_3, "	");
+        String _identityName_3 = this.identityName(_value_2);
+        _builder.append(_identityName_3, "	");
         _builder.append(",");
         Set _maxCardinality_1 = this.maxCardinality();
         Set _value_3 = target.value(_maxCardinality_1);
-        Identity _identity_4 = _value_3.identity();
-        String _name_4 = _identity_4.name();
-        _builder.append(_name_4, "	");
+        String _identityName_4 = this.identityName(_value_3);
+        _builder.append(_identityName_4, "	");
         _builder.append("</span></td>");
         _builder.newLineIfNotEmpty();
         _builder.append("\t");
@@ -571,38 +566,57 @@ public class HtmlTemplate {
   
   private CharSequence displaySet(final Set set) {
     StringConcatenation _builder = new StringConcatenation();
-    _builder.append("<span class=\"metaArtifactName\">");
-    Set _category = set.category();
-    Identity _identity = _category.identity();
-    String _name = _identity.name();
-    _builder.append(_name, "");
-    _builder.append("</span> : <span class=\"setName\">");
-    Identity _identity_1 = set.identity();
-    String _name_1 = _identity_1.name();
-    _builder.append(_name_1, "");
-    _builder.append("</span>");
+    final Function1<Set,String> _function = new Function1<Set,String>() {
+        public String apply(final Set s) {
+          Identity _identity = s.identity();
+          String _name = _identity.name();
+          return _name;
+        }
+      };
+    CharSequence _decorateSet = this.decorateSet(set, _function);
+    _builder.append(_decorateSet, "");
     _builder.newLineIfNotEmpty();
     return _builder;
   }
   
   private CharSequence displayVertexFlavoredSet(final Set set) {
     StringConcatenation _builder = new StringConcatenation();
-    _builder.append("<span class=\"metaArtifactName\">");
-    Set _category = set.category();
-    Identity _identity = _category.identity();
-    String _name = _identity.name();
-    _builder.append(_name, "");
-    _builder.append("</span> : <span class=\"setName\"><a href=\"");
-    Identity _identity_1 = set.identity();
-    UUID _identifier = _identity_1.identifier();
-    _builder.append(_identifier, "");
-    _builder.append("\">");
-    Identity _identity_2 = set.identity();
-    String _name_1 = _identity_2.name();
-    _builder.append(_name_1, "");
-    _builder.append("</a></span>");
+    final Function1<Set,String> _function = new Function1<Set,String>() {
+        public String apply(final Set s) {
+          Identity _identity = set.identity();
+          UUID _identifier = _identity.identifier();
+          String _operator_plus = StringExtensions.operator_plus("<a href=\"", _identifier);
+          String _operator_plus_1 = StringExtensions.operator_plus(_operator_plus, "\">");
+          String _identityName = HtmlTemplate.this.identityName(set);
+          String _operator_plus_2 = StringExtensions.operator_plus(_operator_plus_1, _identityName);
+          String _operator_plus_3 = StringExtensions.operator_plus(_operator_plus_2, "</a>");
+          return _operator_plus_3;
+        }
+      };
+    CharSequence _decorateSet = this.decorateSet(set, _function);
+    _builder.append(_decorateSet, "");
     _builder.newLineIfNotEmpty();
     return _builder;
+  }
+  
+  private CharSequence decorateSet(final Set set, final Function1<? super Set,? extends CharSequence> setNameContents) {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("<span class=\"metaArtifactName\">");
+    Set _category = set.category();
+    String _identityName = this.identityName(_category);
+    _builder.append(_identityName, "");
+    _builder.append("</span> : <span class=\"setName\">");
+    CharSequence _apply = setNameContents.apply(set);
+    _builder.append(_apply, "");
+    _builder.append("</span>");
+    _builder.newLineIfNotEmpty();
+    return _builder;
+  }
+  
+  private String identityName(final Set set) {
+    Identity _identity = set.identity();
+    String _name = _identity.name();
+    return _name;
   }
   
   private String flavored() {
