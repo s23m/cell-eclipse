@@ -99,13 +99,13 @@ class HtmlTemplate {
 				
 				«/* Display <category name> : <name> in a simple one column table */»
 				
-				«set.flavorContainer(Query::vertex, [s | vertexFlavorTable(s)])»
+				«set.flavorContainer(Query::vertex, [vertexFlavorTable])»
 				
-				«set.flavorContainer(Query::superSetReference, [s | supersetReferenceFlavorTable(s)])»
+				«set.flavorContainer(Query::superSetReference, [supersetReferenceFlavorTable])»
 				
-				«set.flavorContainer(Query::edge, [s | edgeEndFlavorTable(s)])»
+				«set.flavorContainer(Query::edge, [edgeEndFlavorTable])»
 				
-				«set.flavorContainer(Query::visibility, [s | visibilityFlavorTable(s)])»
+				«set.flavorContainer(Query::visibility, [visibilityFlavorTable])»
 			</div>
 			<!-- Artifact container - END -->
 		</body>

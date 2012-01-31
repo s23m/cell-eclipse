@@ -265,8 +265,8 @@ public class HtmlTemplate {
     _builder.newLine();
     _builder.append("\t\t");
     final Function1<Set,CharSequence> _function = new Function1<Set,CharSequence>() {
-        public CharSequence apply(final Set s) {
-          CharSequence _vertexFlavorTable = HtmlTemplate.this.vertexFlavorTable(s);
+        public CharSequence apply(final Set it) {
+          CharSequence _vertexFlavorTable = HtmlTemplate.this.vertexFlavorTable(it);
           return _vertexFlavorTable;
         }
       };
@@ -277,8 +277,8 @@ public class HtmlTemplate {
     _builder.newLine();
     _builder.append("\t\t");
     final Function1<Set,CharSequence> _function_1 = new Function1<Set,CharSequence>() {
-        public CharSequence apply(final Set s) {
-          CharSequence _supersetReferenceFlavorTable = HtmlTemplate.this.supersetReferenceFlavorTable(s);
+        public CharSequence apply(final Set it) {
+          CharSequence _supersetReferenceFlavorTable = HtmlTemplate.this.supersetReferenceFlavorTable(it);
           return _supersetReferenceFlavorTable;
         }
       };
@@ -289,8 +289,8 @@ public class HtmlTemplate {
     _builder.newLine();
     _builder.append("\t\t");
     final Function1<Set,CharSequence> _function_2 = new Function1<Set,CharSequence>() {
-        public CharSequence apply(final Set s) {
-          CharSequence _edgeEndFlavorTable = HtmlTemplate.this.edgeEndFlavorTable(s);
+        public CharSequence apply(final Set it) {
+          CharSequence _edgeEndFlavorTable = HtmlTemplate.this.edgeEndFlavorTable(it);
           return _edgeEndFlavorTable;
         }
       };
@@ -301,8 +301,8 @@ public class HtmlTemplate {
     _builder.newLine();
     _builder.append("\t\t");
     final Function1<Set,CharSequence> _function_3 = new Function1<Set,CharSequence>() {
-        public CharSequence apply(final Set s) {
-          CharSequence _visibilityFlavorTable = HtmlTemplate.this.visibilityFlavorTable(s);
+        public CharSequence apply(final Set it) {
+          CharSequence _visibilityFlavorTable = HtmlTemplate.this.visibilityFlavorTable(it);
           return _visibilityFlavorTable;
         }
       };
