@@ -43,7 +43,7 @@ public class HtmlTemplate {
     _builder.append("\t\t");
     _builder.append("}");
     _builder.newLine();
-    _builder.append("\t");
+    _builder.append("\t\t");
     _builder.newLine();
     _builder.append("\t\t");
     _builder.append("th, h2 {");
@@ -277,36 +277,36 @@ public class HtmlTemplate {
     _builder.append("\t\t");
     final Function1<Set,CharSequence> _function_1 = new Function1<Set,CharSequence>() {
         public CharSequence apply(final Set s) {
-          CharSequence _supersetReferenceFlavoredContainer = HtmlTemplate.this.supersetReferenceFlavoredContainer(s);
-          return _supersetReferenceFlavoredContainer;
+          CharSequence _supersetReferenceFlavorTable = HtmlTemplate.this.supersetReferenceFlavorTable(s);
+          return _supersetReferenceFlavorTable;
         }
       };
-    CharSequence _container = this.container(set, _function_1);
-    _builder.append(_container, "		");
+    CharSequence _flavorContainer_1 = this.flavorContainer(set, Query.superSetReference, _function_1);
+    _builder.append(_flavorContainer_1, "		");
     _builder.newLineIfNotEmpty();
     _builder.append("\t\t");
     _builder.newLine();
     _builder.append("\t\t");
     final Function1<Set,CharSequence> _function_2 = new Function1<Set,CharSequence>() {
         public CharSequence apply(final Set s) {
-          CharSequence _edgeEndFlavored = HtmlTemplate.this.edgeEndFlavored(s);
-          return _edgeEndFlavored;
+          CharSequence _edgeEndFlavorTable = HtmlTemplate.this.edgeEndFlavorTable(s);
+          return _edgeEndFlavorTable;
         }
       };
-    CharSequence _container_1 = this.container(set, _function_2);
-    _builder.append(_container_1, "		");
+    CharSequence _flavorContainer_2 = this.flavorContainer(set, Query.edge, _function_2);
+    _builder.append(_flavorContainer_2, "		");
     _builder.newLineIfNotEmpty();
     _builder.append("\t\t");
     _builder.newLine();
     _builder.append("\t\t");
     final Function1<Set,CharSequence> _function_3 = new Function1<Set,CharSequence>() {
         public CharSequence apply(final Set s) {
-          CharSequence _visibilityFlavoredContainer = HtmlTemplate.this.visibilityFlavoredContainer(s);
-          return _visibilityFlavoredContainer;
+          CharSequence _visibilityFlavorTable = HtmlTemplate.this.visibilityFlavorTable(s);
+          return _visibilityFlavorTable;
         }
       };
-    CharSequence _container_2 = this.container(set, _function_3);
-    _builder.append(_container_2, "		");
+    CharSequence _flavorContainer_3 = this.flavorContainer(set, Query.visibility, _function_3);
+    _builder.append(_flavorContainer_3, "		");
     _builder.newLineIfNotEmpty();
     _builder.append("\t");
     _builder.append("</div>");
@@ -315,19 +315,6 @@ public class HtmlTemplate {
     _builder.append("<!-- Artifact container - END -->");
     _builder.newLine();
     _builder.append("</body>");
-    _builder.newLine();
-    return _builder;
-  }
-  
-  private CharSequence container(final Set set, final Function1<? super Set,? extends CharSequence> containerBody) {
-    StringConcatenation _builder = new StringConcatenation();
-    _builder.append("<div class=\"flavorContainer\">");
-    _builder.newLine();
-    _builder.append("\t");
-    CharSequence _apply = containerBody.apply(set);
-    _builder.append(_apply, "	");
-    _builder.newLineIfNotEmpty();
-    _builder.append("</div>");
     _builder.newLine();
     return _builder;
   }
@@ -370,7 +357,7 @@ public class HtmlTemplate {
         _builder.newLine();
       }
     }
-    _builder.append("</div>\t\t");
+    _builder.append("</div>");
     _builder.newLine();
     return _builder;
   }
@@ -405,276 +392,177 @@ public class HtmlTemplate {
     return _builder;
   }
   
-  private CharSequence supersetReferenceFlavoredContainer(final Set set) {
+  private CharSequence supersetReferenceFlavorTable(final Set flavoredSet) {
     StringConcatenation _builder = new StringConcatenation();
-    Set _kernelSuperSetReference = this.getKernelSuperSetReference();
-    Set _filterFlavor = set.filterFlavor(_kernelSuperSetReference);
-    final Set superSetReferenceFlavored = _filterFlavor;
-    _builder.newLineIfNotEmpty();
-    _builder.append("<h2>");
-    Set _kernelSuperSetReference_1 = this.getKernelSuperSetReference();
-    Identity _identity = _kernelSuperSetReference_1.identity();
-    String _pluralName = _identity.pluralName();
-    _builder.append(_pluralName, "");
-    _builder.append("</h2>");
-    _builder.newLineIfNotEmpty();
+    _builder.append("<tr>");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("<th>sub set</th>");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("<th>super set</th>");
+    _builder.newLine();
+    _builder.append("</tr>");
+    _builder.newLine();
     {
-      boolean _isEmpty = superSetReferenceFlavored.isEmpty();
-      if (_isEmpty) {
-        String _emptySet = this.emptySet();
-        _builder.append(_emptySet, "");
-        _builder.newLineIfNotEmpty();
-      } else {
-        _builder.append("<table>");
-        _builder.newLine();
-        _builder.append("\t");
+      for(final Set s : flavoredSet) {
         _builder.append("<tr>");
         _builder.newLine();
-        _builder.append("\t\t");
-        _builder.append("<th>sub set</th>");
-        _builder.newLine();
-        _builder.append("\t\t");
-        _builder.append("<th>super set</th>");
-        _builder.newLine();
         _builder.append("\t");
+        _builder.append("<td>");
+        Set _from = s.from();
+        CharSequence _displaySet = this.displaySet(_from);
+        _builder.append(_displaySet, "	");
+        _builder.append("</td>");
+        _builder.newLineIfNotEmpty();
+        _builder.append("\t");
+        _builder.append("<td>");
+        Set _to = s.to();
+        CharSequence _displaySet_1 = this.displaySet(_to);
+        _builder.append(_displaySet_1, "	");
+        _builder.append("</td>");
+        _builder.newLineIfNotEmpty();
         _builder.append("</tr>");
-        _builder.newLine();
-        {
-          for(final Set s : superSetReferenceFlavored) {
-            _builder.append("\t");
-            _builder.append("<tr>");
-            _builder.newLine();
-            _builder.append("\t");
-            _builder.append("\t");
-            _builder.append("<td>");
-            Set _from = s.from();
-            CharSequence _displaySet = this.displaySet(_from);
-            _builder.append(_displaySet, "		");
-            _builder.append("</td>");
-            _builder.newLineIfNotEmpty();
-            _builder.append("\t");
-            _builder.append("\t");
-            _builder.append("<td>");
-            Set _to = s.to();
-            CharSequence _displaySet_1 = this.displaySet(_to);
-            _builder.append(_displaySet_1, "		");
-            _builder.append("</td>");
-            _builder.newLineIfNotEmpty();
-            _builder.append("\t");
-            _builder.append("</tr>");
-            _builder.newLine();
-          }
-        }
-        _builder.append("</table>");
         _builder.newLine();
       }
     }
     return _builder;
   }
   
-  private CharSequence edgeEndFlavored(final Set set) {
+  private CharSequence edgeEndFlavorTable(final Set flavoredSet) {
     StringConcatenation _builder = new StringConcatenation();
-    Set _kernelEdge = this.getKernelEdge();
-    Set _filterFlavor = set.filterFlavor(_kernelEdge);
-    final Set edgeFlavored = _filterFlavor;
-    _builder.newLineIfNotEmpty();
-    _builder.append("<h2>");
-    Set _kernelEdge_1 = this.getKernelEdge();
-    Identity _identity = _kernelEdge_1.identity();
+    _builder.append("<tr>");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("<th><span class=\"arrow\">&larr;</span></th>");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("<th>1<sup>st</sup>&nbsp;[min,&nbsp;max]</th>");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("<th>");
+    Set _kernelEdge = this.kernelEdge();
+    Identity _identity = _kernelEdge.identity();
     String _name = _identity.name();
-    _builder.append(_name, "");
+    _builder.append(_name, "	");
     String _flavored = this.flavored();
-    _builder.append(_flavored, "");
-    _builder.append("</h2>");
+    _builder.append(_flavored, "	");
+    _builder.append("</th>");
     _builder.newLineIfNotEmpty();
+    _builder.append("\t");
+    _builder.append("<th>2<sup>nd</sup>&nbsp;[min,&nbsp;max]</th>");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("<th><span class=\"arrow\">&rarr;</span></th>");
+    _builder.newLine();
+    _builder.append("</tr>");
+    _builder.newLine();
     {
-      boolean _isEmpty = edgeFlavored.isEmpty();
-      if (_isEmpty) {
-        String _emptySet = this.emptySet();
-        _builder.append(_emptySet, "");
-        _builder.newLineIfNotEmpty();
-      } else {
-        _builder.append("<table>");
-        _builder.newLine();
-        _builder.append("\t");
+      for(final Set s : flavoredSet) {
         _builder.append("<tr>");
         _builder.newLine();
-        _builder.append("\t\t");
-        _builder.append("<th><span class=\"arrow\">&larr;</span></th>");
-        _builder.newLine();
-        _builder.append("\t\t");
-        _builder.append("<th>1<sup>st</sup>&nbsp;[min,&nbsp;max]</th>");
-        _builder.newLine();
-        _builder.append("\t\t");
-        _builder.append("<th>");
-        Set _kernelEdge_2 = this.getKernelEdge();
-        Identity _identity_1 = _kernelEdge_2.identity();
+        _builder.append("\t");
+        _builder.append("<td>");
+        Set _filterFrom = s.filterFrom();
+        CharSequence _displaySet = this.displaySet(_filterFrom);
+        _builder.append(_displaySet, "	");
+        _builder.append("</td>");
+        _builder.newLineIfNotEmpty();
+        _builder.append("\t");
+        Set _fromEdgeEnd = s.fromEdgeEnd();
+        final Set source = _fromEdgeEnd;
+        _builder.newLineIfNotEmpty();
+        _builder.append("\t");
+        _builder.append("<td>");
+        CharSequence _displaySet_1 = this.displaySet(source);
+        _builder.append(_displaySet_1, "	");
+        _builder.append("&nbsp;<span class=\"cardinality\">");
+        Set _minCardinality = this.minCardinality();
+        Set _value = source.value(_minCardinality);
+        Identity _identity_1 = _value.identity();
         String _name_1 = _identity_1.name();
-        _builder.append(_name_1, "		");
-        String _flavored_1 = this.flavored();
-        _builder.append(_flavored_1, "		");
-        _builder.append("</th>");
+        _builder.append(_name_1, "	");
+        _builder.append(",");
+        Set _maxCardinality = this.maxCardinality();
+        Set _value_1 = source.value(_maxCardinality);
+        Identity _identity_2 = _value_1.identity();
+        String _name_2 = _identity_2.name();
+        _builder.append(_name_2, "	");
+        _builder.append("</span></td>");
         _builder.newLineIfNotEmpty();
-        _builder.append("\t\t");
-        _builder.append("<th>2<sup>nd</sup>&nbsp;[min,&nbsp;max]</th>");
-        _builder.newLine();
-        _builder.append("\t\t");
-        _builder.append("<th><span class=\"arrow\">&rarr;</span></th>");
-        _builder.newLine();
         _builder.append("\t");
+        _builder.append("<td>");
+        CharSequence _displaySet_2 = this.displaySet(s);
+        _builder.append(_displaySet_2, "	");
+        _builder.append("</td>");
+        _builder.newLineIfNotEmpty();
+        _builder.append("\t");
+        Set _edgeEnd = s.toEdgeEnd();
+        final Set target = _edgeEnd;
+        _builder.newLineIfNotEmpty();
+        _builder.append("\t");
+        _builder.append("<td>");
+        CharSequence _displaySet_3 = this.displaySet(target);
+        _builder.append(_displaySet_3, "	");
+        _builder.append("&nbsp;<span class=\"cardinality\">");
+        Set _minCardinality_1 = this.minCardinality();
+        Set _value_2 = target.value(_minCardinality_1);
+        Identity _identity_3 = _value_2.identity();
+        String _name_3 = _identity_3.name();
+        _builder.append(_name_3, "	");
+        _builder.append(",");
+        Set _maxCardinality_1 = this.maxCardinality();
+        Set _value_3 = target.value(_maxCardinality_1);
+        Identity _identity_4 = _value_3.identity();
+        String _name_4 = _identity_4.name();
+        _builder.append(_name_4, "	");
+        _builder.append("</span></td>");
+        _builder.newLineIfNotEmpty();
+        _builder.append("\t");
+        _builder.append("<td>");
+        Set _filterTo = s.filterTo();
+        CharSequence _displaySet_4 = this.displaySet(_filterTo);
+        _builder.append(_displaySet_4, "	");
+        _builder.append("</td>");
+        _builder.newLineIfNotEmpty();
         _builder.append("</tr>");
-        _builder.newLine();
-        {
-          for(final Set s : edgeFlavored) {
-            _builder.append("\t");
-            _builder.append("<tr>");
-            _builder.newLine();
-            _builder.append("\t");
-            _builder.append("\t");
-            _builder.append("<td>");
-            Set _filterFrom = s.filterFrom();
-            CharSequence _displaySet = this.displaySet(_filterFrom);
-            _builder.append(_displaySet, "		");
-            _builder.append("</td>");
-            _builder.newLineIfNotEmpty();
-            _builder.append("\t");
-            _builder.append("\t");
-            Set _fromEdgeEnd = s.fromEdgeEnd();
-            final Set source = _fromEdgeEnd;
-            _builder.newLineIfNotEmpty();
-            _builder.append("\t");
-            _builder.append("\t");
-            _builder.append("<td>");
-            CharSequence _displaySet_1 = this.displaySet(source);
-            _builder.append(_displaySet_1, "		");
-            _builder.append("&nbsp;<span class=\"cardinality\">");
-            Set _minCardinality = this.minCardinality();
-            Set _value = source.value(_minCardinality);
-            Identity _identity_2 = _value.identity();
-            String _name_2 = _identity_2.name();
-            _builder.append(_name_2, "		");
-            _builder.append(",");
-            Set _maxCardinality = this.maxCardinality();
-            Set _value_1 = source.value(_maxCardinality);
-            Identity _identity_3 = _value_1.identity();
-            String _name_3 = _identity_3.name();
-            _builder.append(_name_3, "		");
-            _builder.append("</span></td>");
-            _builder.newLineIfNotEmpty();
-            _builder.append("\t");
-            _builder.append("\t");
-            _builder.append("<td>");
-            CharSequence _displaySet_2 = this.displaySet(s);
-            _builder.append(_displaySet_2, "		");
-            _builder.append("</td>");
-            _builder.newLineIfNotEmpty();
-            _builder.append("\t");
-            _builder.append("\t");
-            Set _edgeEnd = s.toEdgeEnd();
-            final Set target = _edgeEnd;
-            _builder.newLineIfNotEmpty();
-            _builder.append("\t");
-            _builder.append("\t");
-            _builder.append("<td>");
-            CharSequence _displaySet_3 = this.displaySet(target);
-            _builder.append(_displaySet_3, "		");
-            _builder.append("&nbsp;<span class=\"cardinality\">");
-            Set _minCardinality_1 = this.minCardinality();
-            Set _value_2 = target.value(_minCardinality_1);
-            Identity _identity_4 = _value_2.identity();
-            String _name_4 = _identity_4.name();
-            _builder.append(_name_4, "		");
-            _builder.append(",");
-            Set _maxCardinality_1 = this.maxCardinality();
-            Set _value_3 = target.value(_maxCardinality_1);
-            Identity _identity_5 = _value_3.identity();
-            String _name_5 = _identity_5.name();
-            _builder.append(_name_5, "		");
-            _builder.append("</span></td>");
-            _builder.newLineIfNotEmpty();
-            _builder.append("\t");
-            _builder.append("\t");
-            _builder.append("<td>");
-            Set _filterTo = s.filterTo();
-            CharSequence _displaySet_4 = this.displaySet(_filterTo);
-            _builder.append(_displaySet_4, "		");
-            _builder.append("</td>");
-            _builder.newLineIfNotEmpty();
-            _builder.append("\t");
-            _builder.append("</tr>");
-            _builder.newLine();
-          }
-        }
-        _builder.append("</table>");
         _builder.newLine();
       }
     }
     return _builder;
   }
   
-  private CharSequence visibilityFlavoredContainer(final Set set) {
+  private CharSequence visibilityFlavorTable(final Set flavoredSet) {
     StringConcatenation _builder = new StringConcatenation();
-    Set _kernelVisibility = this.getKernelVisibility();
-    Set _filterFlavor = set.filterFlavor(_kernelVisibility);
-    final Set visibilityFlavored = _filterFlavor;
-    _builder.newLineIfNotEmpty();
-    _builder.append("<h2>");
-    Set _kernelVisibility_1 = this.getKernelVisibility();
-    Identity _identity = _kernelVisibility_1.identity();
-    String _name = _identity.name();
-    _builder.append(_name, "");
-    String _flavored = this.flavored();
-    _builder.append(_flavored, "");
-    _builder.append("</h2>\t");
-    _builder.newLineIfNotEmpty();
+    _builder.append("<tr>");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("<th>from</th>");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("<th>to</th>");
+    _builder.newLine();
+    _builder.append("</tr>");
+    _builder.newLine();
     {
-      boolean _isEmpty = visibilityFlavored.isEmpty();
-      if (_isEmpty) {
-        String _emptySet = this.emptySet();
-        _builder.append(_emptySet, "");
-        _builder.newLineIfNotEmpty();
-      } else {
-        _builder.append("<table>");
-        _builder.newLine();
-        _builder.append("\t");
+      for(final Set s : flavoredSet) {
         _builder.append("<tr>");
         _builder.newLine();
-        _builder.append("\t\t");
-        _builder.append("<th>from</th>");
-        _builder.newLine();
-        _builder.append("\t\t");
-        _builder.append("<th>to</th>");
-        _builder.newLine();
         _builder.append("\t");
+        _builder.append("<td>");
+        Set _from = s.from();
+        CharSequence _displaySet = this.displaySet(_from);
+        _builder.append(_displaySet, "	");
+        _builder.append("</td>");
+        _builder.newLineIfNotEmpty();
+        _builder.append("\t");
+        _builder.append("<td>");
+        Set _to = s.to();
+        CharSequence _displaySet_1 = this.displaySet(_to);
+        _builder.append(_displaySet_1, "	");
+        _builder.append("</td>");
+        _builder.newLineIfNotEmpty();
         _builder.append("</tr>");
-        _builder.newLine();
-        {
-          for(final Set s : visibilityFlavored) {
-            _builder.append("\t");
-            _builder.append("<tr>");
-            _builder.newLine();
-            _builder.append("\t");
-            _builder.append("\t");
-            _builder.append("<td>");
-            Set _from = s.from();
-            CharSequence _displaySet = this.displaySet(_from);
-            _builder.append(_displaySet, "		");
-            _builder.append("</td>");
-            _builder.newLineIfNotEmpty();
-            _builder.append("\t");
-            _builder.append("\t");
-            _builder.append("<td>");
-            Set _to = s.to();
-            CharSequence _displaySet_1 = this.displaySet(_to);
-            _builder.append(_displaySet_1, "		");
-            _builder.append("</td>");
-            _builder.newLineIfNotEmpty();
-            _builder.append("\t");
-            _builder.append("</tr>");
-            _builder.newLine();
-          }
-        }
-        _builder.append("</table>");
         _builder.newLine();
       }
     }
@@ -733,19 +621,7 @@ public class HtmlTemplate {
     return GmodelSemanticDomains.maxCardinality;
   }
   
-  private Set getKernelVertex() {
-    return Query.vertex;
-  }
-  
-  private Set getKernelSuperSetReference() {
-    return Query.superSetReference;
-  }
-  
-  private Set getKernelVisibility() {
-    return Query.visibility;
-  }
-  
-  private Set getKernelEdge() {
+  private Set kernelEdge() {
     return Query.edge;
   }
 }
