@@ -332,7 +332,7 @@ public class HtmlTemplate {
     _builder.append("<h2>");
     String _identityName = this.identityName(flavor);
     _builder.append(_identityName, "	");
-    String _flavored = this.flavored();
+    CharSequence _flavored = this.flavored();
     _builder.append(_flavored, "	");
     _builder.append("</h2>");
     _builder.newLineIfNotEmpty();
@@ -340,7 +340,7 @@ public class HtmlTemplate {
       boolean _isEmpty = flavoredSet.isEmpty();
       if (_isEmpty) {
         _builder.append("\t");
-        String _emptySet = this.emptySet();
+        CharSequence _emptySet = this.emptySet();
         _builder.append(_emptySet, "	");
         _builder.newLineIfNotEmpty();
       } else {
@@ -444,7 +444,7 @@ public class HtmlTemplate {
     Set _kernelEdge = this.kernelEdge();
     String _identityName = this.identityName(_kernelEdge);
     _builder.append(_identityName, "	");
-    String _flavored = this.flavored();
+    CharSequence _flavored = this.flavored();
     _builder.append(_flavored, "	");
     _builder.append("</th>");
     _builder.newLineIfNotEmpty();
@@ -461,37 +461,8 @@ public class HtmlTemplate {
         _builder.append("<tr>");
         _builder.newLine();
         _builder.append("\t");
-        _builder.append("<td>");
-        Set _filterFrom = s.filterFrom();
-        CharSequence _displaySet = this.displaySet(_filterFrom);
-        _builder.append(_displaySet, "	");
-        _builder.append("</td>");
-        _builder.newLineIfNotEmpty();
-        _builder.append("\t");
         Set _fromEdgeEnd = s.fromEdgeEnd();
         final Set source = _fromEdgeEnd;
-        _builder.newLineIfNotEmpty();
-        _builder.append("\t");
-        _builder.append("<td>");
-        CharSequence _displaySet_1 = this.displaySet(source);
-        _builder.append(_displaySet_1, "	");
-        _builder.append("&nbsp;<span class=\"cardinality\">");
-        Set _minCardinality = this.minCardinality();
-        Set _value = source.value(_minCardinality);
-        String _identityName_1 = this.identityName(_value);
-        _builder.append(_identityName_1, "	");
-        _builder.append(",");
-        Set _maxCardinality = this.maxCardinality();
-        Set _value_1 = source.value(_maxCardinality);
-        String _identityName_2 = this.identityName(_value_1);
-        _builder.append(_identityName_2, "	");
-        _builder.append("</span></td>");
-        _builder.newLineIfNotEmpty();
-        _builder.append("\t");
-        _builder.append("<td>");
-        CharSequence _displaySet_2 = this.displaySet(s);
-        _builder.append(_displaySet_2, "	");
-        _builder.append("</td>");
         _builder.newLineIfNotEmpty();
         _builder.append("\t");
         Set _edgeEnd = s.toEdgeEnd();
@@ -499,31 +470,64 @@ public class HtmlTemplate {
         _builder.newLineIfNotEmpty();
         _builder.append("\t");
         _builder.append("<td>");
-        CharSequence _displaySet_3 = this.displaySet(target);
-        _builder.append(_displaySet_3, "	");
-        _builder.append("&nbsp;<span class=\"cardinality\">");
-        Set _minCardinality_1 = this.minCardinality();
-        Set _value_2 = target.value(_minCardinality_1);
-        String _identityName_3 = this.identityName(_value_2);
-        _builder.append(_identityName_3, "	");
-        _builder.append(",");
-        Set _maxCardinality_1 = this.maxCardinality();
-        Set _value_3 = target.value(_maxCardinality_1);
-        String _identityName_4 = this.identityName(_value_3);
-        _builder.append(_identityName_4, "	");
-        _builder.append("</span></td>");
+        Set _filterFrom = s.filterFrom();
+        CharSequence _displaySet = this.displaySet(_filterFrom);
+        _builder.append(_displaySet, "	");
+        _builder.append("</td>");
+        _builder.newLineIfNotEmpty();
+        _builder.append("\t");
+        _builder.append("<td>");
+        CharSequence _cardinalityOf = this.cardinalityOf(source);
+        _builder.append(_cardinalityOf, "	");
+        _builder.append("</td>");
+        _builder.newLineIfNotEmpty();
+        _builder.append("\t");
+        _builder.append("<td>");
+        CharSequence _displaySet_1 = this.displaySet(s);
+        _builder.append(_displaySet_1, "	");
+        _builder.append("</td>");
+        _builder.newLineIfNotEmpty();
+        _builder.append("\t");
+        _builder.append("<td>");
+        CharSequence _cardinalityOf_1 = this.cardinalityOf(target);
+        _builder.append(_cardinalityOf_1, "	");
+        _builder.append("</td>");
         _builder.newLineIfNotEmpty();
         _builder.append("\t");
         _builder.append("<td>");
         Set _filterTo = s.filterTo();
-        CharSequence _displaySet_4 = this.displaySet(_filterTo);
-        _builder.append(_displaySet_4, "	");
+        CharSequence _displaySet_2 = this.displaySet(_filterTo);
+        _builder.append(_displaySet_2, "	");
         _builder.append("</td>");
         _builder.newLineIfNotEmpty();
         _builder.append("</tr>");
         _builder.newLine();
       }
     }
+    return _builder;
+  }
+  
+  private CharSequence cardinalityOf(final Set set) {
+    StringConcatenation _builder = new StringConcatenation();
+    Set _minCardinality = this.minCardinality();
+    Set _value = set.value(_minCardinality);
+    String _identityName = this.identityName(_value);
+    final String min = _identityName;
+    _builder.newLineIfNotEmpty();
+    Set _maxCardinality = this.maxCardinality();
+    Set _value_1 = set.value(_maxCardinality);
+    String _identityName_1 = this.identityName(_value_1);
+    final String max = _identityName_1;
+    _builder.newLineIfNotEmpty();
+    _builder.append("<td>");
+    CharSequence _displaySet = this.displaySet(set);
+    _builder.append(_displaySet, "");
+    _builder.append("&nbsp;<span class=\"cardinality\">");
+    _builder.append(min, "");
+    _builder.append(",");
+    _builder.append(max, "");
+    _builder.append("</span></td>");
+    _builder.newLineIfNotEmpty();
     return _builder;
   }
   
@@ -619,12 +623,18 @@ public class HtmlTemplate {
     return _name;
   }
   
-  private String flavored() {
-    return "<sub class=\"flavored\">flavored</sub>";
+  private CharSequence flavored() {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("<sub class=\"flavored\">flavored</sub>");
+    _builder.newLine();
+    return _builder;
   }
   
-  private String emptySet() {
-    return "<span><i>None</i></span>";
+  private CharSequence emptySet() {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("<span><i>None</i></span>");
+    _builder.newLine();
+    return _builder;
   }
   
   private Set minCardinality() {

@@ -157,15 +157,21 @@ class HtmlTemplate {
 		</tr>
 		«FOR s : flavoredSet»
 		<tr>
-			<td>«displaySet( s.filterFrom )»</td>
 			«val source = s.fromEdgeEnd»
-			<td>«displaySet( source )»&nbsp;<span class="cardinality">«source.value(minCardinality).identityName»,«source.value(maxCardinality).identityName»</span></td>
-			<td>«displaySet( s )»</td>
 			«val target = s.toEdgeEnd»
-			<td>«displaySet( target )»&nbsp;<span class="cardinality">«target.value(minCardinality).identityName»,«target.value(maxCardinality).identityName»</span></td>
+			<td>«displaySet( s.filterFrom )»</td>
+			<td>«cardinalityOf( source )»</td>
+			<td>«displaySet( s )»</td>
+			<td>«cardinalityOf( target )»</td>
 			<td>«displaySet( s.filterTo )»</td>
 		</tr>
 		«ENDFOR»
+	'''
+	
+	def private cardinalityOf(Set set) '''
+		«val min = set.value(minCardinality).identityName»
+		«val max = set.value(maxCardinality).identityName»
+		<td>«displaySet( set )»&nbsp;<span class="cardinality">«min»,«max»</span></td>
 	'''
 	
 	def private visibilityFlavorTable(Set flavoredSet) '''
@@ -197,13 +203,13 @@ class HtmlTemplate {
 		set.identity.name
 	}
 	
-	def private flavored() {
-		"<sub class=\"flavored\">flavored</sub>"
-	}
+	def private flavored() '''
+		<sub class="flavored">flavored</sub>
+	'''
 	
-	def private emptySet() {
-		"<span><i>None</i></span>"
-	}
+	def private emptySet() '''
+		<span><i>None</i></span>
+	'''
 	
 	def private minCardinality() {
 		GmodelSemanticDomains::minCardinality
