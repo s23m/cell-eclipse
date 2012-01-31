@@ -98,7 +98,8 @@ class HtmlTemplate {
 				<h2>«displaySet(set)»</h2>
 				
 				«/* Display <category name> : <name> in a simple one column table */»
-				«set.container(s | vertexFlavoredContainer(s))»
+				
+				«set.flavorContainer(Query::vertex, [s | vertexFlavorTable(s)])»
 				
 				«set.container(s | supersetReferenceFlavoredContainer(s))»
 				
@@ -116,21 +117,27 @@ class HtmlTemplate {
 		</div>
 	'''
 	
-	def private vertexFlavoredContainer(Set set) '''
-		«val vertexFlavored = set.filterFlavor(getKernelVertex())»
-		<h2>«getKernelVertex().identity().name()»«flavored()»</h2>
-		«IF vertexFlavored.isEmpty»
-			«emptySet()»
-		«ELSE»
-			<table>
-			«FOR s : vertexFlavored»
-				<tr>
-					<!-- Condition is consistent with other views  -->
-					<td>«IF s.filterInstances().isEmpty()»«displaySet(s)»«ELSE»«displayVertexFlavoredSet(s)»«ENDIF»</td>
-				</tr>
-			«ENDFOR»
-			</table>
-		«ENDIF»		
+	def private flavorContainer(Set set, Set flavor, (Set)=>CharSequence tableBody) '''
+		<div class="flavorContainer">
+			«val flavoredSet = set.filterFlavor(flavor)»
+			<h2>«flavor.identity().name()»«flavored()»</h2>
+			«IF flavoredSet.isEmpty»
+				«emptySet()»
+			«ELSE»
+				<table>
+					«tableBody.apply(flavoredSet)»
+				</table>
+			«ENDIF»
+		</div>		
+	'''
+	
+	def private vertexFlavorTable(Set flavoredSet) '''
+		«FOR s : flavoredSet»
+			<tr>
+				«/* Condition is consistent with other views */»
+				<td>«IF s.filterInstances().isEmpty()»«displaySet(s)»«ELSE»«displayVertexFlavoredSet(s)»«ENDIF»</td>
+			</tr>
+		«ENDFOR»
 	'''
 	
 	def private supersetReferenceFlavoredContainer(Set set) '''

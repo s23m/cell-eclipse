@@ -261,14 +261,16 @@ public class HtmlTemplate {
     _builder.append("\t\t");
     _builder.newLine();
     _builder.append("\t\t");
+    _builder.newLine();
+    _builder.append("\t\t");
     final Function1<Set,CharSequence> _function = new Function1<Set,CharSequence>() {
         public CharSequence apply(final Set s) {
-          CharSequence _vertexFlavoredContainer = HtmlTemplate.this.vertexFlavoredContainer(s);
-          return _vertexFlavoredContainer;
+          CharSequence _vertexFlavorTable = HtmlTemplate.this.vertexFlavorTable(s);
+          return _vertexFlavorTable;
         }
       };
-    CharSequence _container = this.container(set, _function);
-    _builder.append(_container, "		");
+    CharSequence _flavorContainer = this.flavorContainer(set, Query.vertex, _function);
+    _builder.append(_flavorContainer, "		");
     _builder.newLineIfNotEmpty();
     _builder.append("\t\t");
     _builder.newLine();
@@ -279,8 +281,8 @@ public class HtmlTemplate {
           return _supersetReferenceFlavoredContainer;
         }
       };
-    CharSequence _container_1 = this.container(set, _function_1);
-    _builder.append(_container_1, "		");
+    CharSequence _container = this.container(set, _function_1);
+    _builder.append(_container, "		");
     _builder.newLineIfNotEmpty();
     _builder.append("\t\t");
     _builder.newLine();
@@ -291,8 +293,8 @@ public class HtmlTemplate {
           return _edgeEndFlavored;
         }
       };
-    CharSequence _container_2 = this.container(set, _function_2);
-    _builder.append(_container_2, "		");
+    CharSequence _container_1 = this.container(set, _function_2);
+    _builder.append(_container_1, "		");
     _builder.newLineIfNotEmpty();
     _builder.append("\t\t");
     _builder.newLine();
@@ -303,8 +305,8 @@ public class HtmlTemplate {
           return _visibilityFlavoredContainer;
         }
       };
-    CharSequence _container_3 = this.container(set, _function_3);
-    _builder.append(_container_3, "		");
+    CharSequence _container_2 = this.container(set, _function_3);
+    _builder.append(_container_2, "		");
     _builder.newLineIfNotEmpty();
     _builder.append("\t");
     _builder.append("</div>");
@@ -330,57 +332,73 @@ public class HtmlTemplate {
     return _builder;
   }
   
-  private CharSequence vertexFlavoredContainer(final Set set) {
+  private CharSequence flavorContainer(final Set set, final Set flavor, final Function1<? super Set,? extends CharSequence> tableBody) {
     StringConcatenation _builder = new StringConcatenation();
-    Set _kernelVertex = this.getKernelVertex();
-    Set _filterFlavor = set.filterFlavor(_kernelVertex);
-    final Set vertexFlavored = _filterFlavor;
+    _builder.append("<div class=\"flavorContainer\">");
+    _builder.newLine();
+    _builder.append("\t");
+    Set _filterFlavor = set.filterFlavor(flavor);
+    final Set flavoredSet = _filterFlavor;
     _builder.newLineIfNotEmpty();
+    _builder.append("\t");
     _builder.append("<h2>");
-    Set _kernelVertex_1 = this.getKernelVertex();
-    Identity _identity = _kernelVertex_1.identity();
+    Identity _identity = flavor.identity();
     String _name = _identity.name();
-    _builder.append(_name, "");
+    _builder.append(_name, "	");
     String _flavored = this.flavored();
-    _builder.append(_flavored, "");
+    _builder.append(_flavored, "	");
     _builder.append("</h2>");
     _builder.newLineIfNotEmpty();
     {
-      boolean _isEmpty = vertexFlavored.isEmpty();
+      boolean _isEmpty = flavoredSet.isEmpty();
       if (_isEmpty) {
+        _builder.append("\t");
         String _emptySet = this.emptySet();
-        _builder.append(_emptySet, "");
+        _builder.append(_emptySet, "	");
         _builder.newLineIfNotEmpty();
       } else {
+        _builder.append("\t");
         _builder.append("<table>");
         _builder.newLine();
+        _builder.append("\t");
+        _builder.append("\t");
+        CharSequence _apply = tableBody.apply(flavoredSet);
+        _builder.append(_apply, "		");
+        _builder.newLineIfNotEmpty();
+        _builder.append("\t");
+        _builder.append("</table>");
+        _builder.newLine();
+      }
+    }
+    _builder.append("</div>\t\t");
+    _builder.newLine();
+    return _builder;
+  }
+  
+  private CharSequence vertexFlavorTable(final Set flavoredSet) {
+    StringConcatenation _builder = new StringConcatenation();
+    {
+      for(final Set s : flavoredSet) {
+        _builder.append("<tr>");
+        _builder.newLine();
+        _builder.append("\t");
+        _builder.newLine();
+        _builder.append("\t");
+        _builder.append("<td>");
         {
-          for(final Set s : vertexFlavored) {
-            _builder.append("<tr>");
-            _builder.newLine();
-            _builder.append("\t");
-            _builder.append("<!-- Condition is consistent with other views  -->");
-            _builder.newLine();
-            _builder.append("\t");
-            _builder.append("<td>");
-            {
-              Set _filterInstances = s.filterInstances();
-              boolean _isEmpty_1 = _filterInstances.isEmpty();
-              if (_isEmpty_1) {
-                CharSequence _displaySet = this.displaySet(s);
-                _builder.append(_displaySet, "	");
-              } else {
-                CharSequence _displayVertexFlavoredSet = this.displayVertexFlavoredSet(s);
-                _builder.append(_displayVertexFlavoredSet, "	");
-              }
-            }
-            _builder.append("</td>");
-            _builder.newLineIfNotEmpty();
-            _builder.append("</tr>");
-            _builder.newLine();
+          Set _filterInstances = s.filterInstances();
+          boolean _isEmpty = _filterInstances.isEmpty();
+          if (_isEmpty) {
+            CharSequence _displaySet = this.displaySet(s);
+            _builder.append(_displaySet, "	");
+          } else {
+            CharSequence _displayVertexFlavoredSet = this.displayVertexFlavoredSet(s);
+            _builder.append(_displayVertexFlavoredSet, "	");
           }
         }
-        _builder.append("</table>");
+        _builder.append("</td>");
+        _builder.newLineIfNotEmpty();
+        _builder.append("</tr>");
         _builder.newLine();
       }
     }
