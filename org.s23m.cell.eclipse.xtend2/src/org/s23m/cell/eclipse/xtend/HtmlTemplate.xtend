@@ -97,124 +97,113 @@ class HtmlTemplate {
 			<div class="artifactContainer">
 				<h2>«displaySet(set)»</h2>
 				
-				<!--Display  <category name> :  <name> in a simple one column table -->
-				«vertexFlavoredContainer(set)»
+				«/* Display <category name> : <name> in a simple one column table */»
+				«set.container(s | vertexFlavoredContainer(s))»
 				
-				«supersetReferenceFlavoredContainer(set)»
+				«set.container(s | supersetReferenceFlavoredContainer(s))»
 				
-				«edgeEndFlavored(set)»
+				«set.container(s | edgeEndFlavored(s))»
 				
-				«visibilityFlavoredContainer(set)»
-		
+				«set.container(s | visibilityFlavoredContainer(s))»
 			</div>
 			<!-- Artifact container - END -->
 		</body>
 	'''
 	
+	def private container(Set set, (Set)=>CharSequence containerBody) '''
+		<div class="flavorContainer">
+			«containerBody.apply(set)»
+		</div>
+	'''
+	
 	def private vertexFlavoredContainer(Set set) '''
 		«val vertexFlavored = set.filterFlavor(getKernelVertex())»
-		<!--Vertex-flavored container - START -->
-		<div class="flavorContainer">
-			<h2>«getKernelVertex().identity().name()»«flavored()»</h2>
-			«IF vertexFlavored.isEmpty»
-				«emptySet()»
-			«ELSE»
-				<table>
-				«FOR s : vertexFlavored»
-					<tr>
-						<!-- Condition is consistent with other views  -->
-						<td>«IF s.filterInstances().isEmpty()»«displaySet(s)»«ELSE»«displayVertexFlavoredSet(s)»«ENDIF»</td>
-					</tr>
-				«ENDFOR»
-				</table>
-			«ENDIF»
-		</div>
-		<!--Vertex-flavored container - END -->
+		<h2>«getKernelVertex().identity().name()»«flavored()»</h2>
+		«IF vertexFlavored.isEmpty»
+			«emptySet()»
+		«ELSE»
+			<table>
+			«FOR s : vertexFlavored»
+				<tr>
+					<!-- Condition is consistent with other views  -->
+					<td>«IF s.filterInstances().isEmpty()»«displaySet(s)»«ELSE»«displayVertexFlavoredSet(s)»«ENDIF»</td>
+				</tr>
+			«ENDFOR»
+			</table>
+		«ENDIF»		
 	'''
 	
 	def private supersetReferenceFlavoredContainer(Set set) '''
 		«val superSetReferenceFlavored = set.filterFlavor(getKernelSuperSetReference())»
-		<!-- SuperSetReference-flavored container - START -->
-		<div class="flavorContainer">
-			<h2>«getKernelSuperSetReference().identity().pluralName()»</h2>
-			«IF superSetReferenceFlavored.isEmpty»
-				«emptySet()»
-			«ELSE»
-				<table>
-					<tr>
-						<th>sub set</th>
-						<th>super set</th>
-					</tr>
-					«FOR s : superSetReferenceFlavored»
-					<tr>
-						<td>«displaySet( s.from() ) /* s.fromSubSet() */»</td>
-						<td>«displaySet( s.to() ) /* s.toSuperSet() */»</td>
-					</tr>
-					«ENDFOR»
-				</table>
-			«ENDIF»
-		</div>
-		<!-- SuperSetReference-flavored container - END -->	
+		<h2>«getKernelSuperSetReference().identity().pluralName()»</h2>
+		«IF superSetReferenceFlavored.isEmpty»
+			«emptySet()»
+		«ELSE»
+			<table>
+				<tr>
+					<th>sub set</th>
+					<th>super set</th>
+				</tr>
+				«FOR s : superSetReferenceFlavored»
+				<tr>
+					<td>«displaySet( s.from() ) /* s.fromSubSet() */»</td>
+					<td>«displaySet( s.to() ) /* s.toSuperSet() */»</td>
+				</tr>
+				«ENDFOR»
+			</table>
+		«ENDIF»
 	'''
 	
 	def private edgeEndFlavored(Set set) '''
 		«val edgeFlavored = set.filterFlavor(getKernelEdge())»
-		<!-- Edge-flavored container - START -->
-		<div class="flavorContainer">
-			<h2>«getKernelEdge().identity().name()»«flavored()»</h2>
-			«IF edgeFlavored.isEmpty»
-				«emptySet()»
-			«ELSE»
-				<table>
+		<h2>«getKernelEdge().identity().name()»«flavored()»</h2>
+		«IF edgeFlavored.isEmpty»
+			«emptySet()»
+		«ELSE»
+			<table>
+				<tr>
+					<th><span class="arrow">&larr;</span></th>
+					<th>1<sup>st</sup>&nbsp;[min,&nbsp;max]</th>
+					<th>«getKernelEdge().identity().name()»«flavored()»</th>
+					<th>2<sup>nd</sup>&nbsp;[min,&nbsp;max]</th>
+					<th><span class="arrow">&rarr;</span></th>
+				</tr>
+				«FOR s : edgeFlavored»
 					<tr>
-						<th><span class="arrow">&larr;</span></th>
-						<th>1<sup>st</sup>&nbsp;[min,&nbsp;max]</th>
-						<th>«getKernelEdge().identity().name()»«flavored()»</th>
-						<th>2<sup>nd</sup>&nbsp;[min,&nbsp;max]</th>
-						<th><span class="arrow">&rarr;</span></th>
+						<td>«displaySet( s.filterFrom() )»</td>
+						«val source = s.fromEdgeEnd()»
+						<td>«displaySet( source )»&nbsp;<span class="cardinality">«source.value(minCardinality).identity().name()»,«source.value(maxCardinality).identity().name()»</span></td>
+						<td>«displaySet( s )»</td>
+						«val target = s.toEdgeEnd()»
+						<td>«displaySet( target )»&nbsp;<span class="cardinality">«target.value(minCardinality).identity().name()»,«target.value(maxCardinality).identity().name()»</span></td>
+						<td>«displaySet( s.filterTo() )»</td>
 					</tr>
-					«FOR s : edgeFlavored»
-						<tr>
-							<td>«displaySet( s.filterFrom() )»</td>
-							«val source = s.fromEdgeEnd()»
-							<td>«displaySet( source )»&nbsp;<span class="cardinality">«source.value(minCardinality).identity().name()»,«source.value(maxCardinality).identity().name()»</span></td>
-							<td>«displaySet( s )»</td>
-							«val target = s.toEdgeEnd()»
-							<td>«displaySet( target )»&nbsp;<span class="cardinality">«target.value(minCardinality).identity().name()»,«target.value(maxCardinality).identity().name()»</span></td>
-							<td>«displaySet( s.filterTo() )»</td>
-						</tr>
-					«ENDFOR»
-				</table>
-			«ENDIF»
-		</div>
-		<!-- Edge-flavored container - END -->	
+				«ENDFOR»
+			</table>
+		«ENDIF»
 	'''
 	
 	def private visibilityFlavoredContainer(Set set) '''
 		«val visibilityFlavored = set.filterFlavor(getKernelVisibility())»
-		<!-- Visibility-flavored container - START -->
-		<div class="flavorContainer">
-			<h2>«getKernelVisibility().identity().name()»«flavored()»</h2>	
-			«IF visibilityFlavored.isEmpty»
-				«emptySet()»
-			«ELSE»
-				<table>
-					<tr>
-						<th>from</th>
-						<th>to</th>
-					</tr>
-					«FOR s : visibilityFlavored»
-					<tr>
-						<td>«displaySet( s.from() )»</td>
-						<td>«displaySet( s.to() )»</td>
-					</tr>
-					«ENDFOR»
-				</table>
-			«ENDIF»
-		</div>
-		<!-- Visibility-flavored container - END -->
+		<h2>«getKernelVisibility().identity().name()»«flavored()»</h2>	
+		«IF visibilityFlavored.isEmpty»
+			«emptySet()»
+		«ELSE»
+			<table>
+				<tr>
+					<th>from</th>
+					<th>to</th>
+				</tr>
+				«FOR s : visibilityFlavored»
+				<tr>
+					<td>«displaySet( s.from() )»</td>
+					<td>«displaySet( s.to() )»</td>
+				</tr>
+				«ENDFOR»
+			</table>
+		«ENDIF»
 	'''
-					
+		
 	def private displaySet(Set set) '''
 		<span class="metaArtifactName">«set.category().identity().name()»</span> : <span class="setName">«set.identity().name()»</span>
 	'''
@@ -230,8 +219,6 @@ class HtmlTemplate {
 	def private emptySet() {
 		"<span><i>None</i></span>"
 	}
-	
-	/* Kernel extensions */
 	
 	def private minCardinality() {
 		GmodelSemanticDomains::minCardinality
