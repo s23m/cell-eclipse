@@ -25,11 +25,13 @@
 
 package org.s23m.cell.eclipse.openarchitectureware.generation.tests;
 
+import java.util.Arrays;
+
 import junit.framework.TestCase;
 
 import org.junit.Test;
 import org.s23m.cell.Set;
-import org.s23m.cell.eclipse.visualization.html.OawHtmlDerivedFileGenerator;
+import org.s23m.cell.eclipse.xtend2.HtmlTemplateTransformation;
 import org.s23m.cell.kernel.artifactinstantiation.RunInstantiationSequence;
 
 public abstract class AbstractHtmlGenerationTest extends TestCase {
@@ -48,11 +50,11 @@ public abstract class AbstractHtmlGenerationTest extends TestCase {
 
 	@Test
 	public void testHtmlGeneration() {
-		final String templateName = OawHtmlDerivedFileGenerator.QUALIFIED_TEMPLATE_FUNCTION_NAME;
 		final Set set = provideSet();
-		final GmodelWorkflow workflow = new GmodelWorkflow(set, templateName);
+		final HtmlTemplateTransformation htmlTransformation = new HtmlTemplateTransformation();
+
 		try {
-			workflow.execute();
+			htmlTransformation.apply(Arrays.asList(set));
 		} catch (final Exception e) {
 			fail("HTML generation failed: " + e);
 		}

@@ -27,6 +27,8 @@
 
 package org.s23m.cell.eclipse.visualization.graph.rendering;
 
+import java.util.Arrays;
+
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.SWTError;
 import org.eclipse.swt.browser.Browser;
@@ -38,7 +40,7 @@ import org.s23m.cell.Set;
 import org.s23m.cell.api.Instantiation;
 import org.s23m.cell.api.models.HTMLRepresentation;
 import org.s23m.cell.api.models2.RepositoryStructure;
-import org.s23m.cell.eclipse.visualization.html.OawHtmlDerivedFileGenerator;
+import org.s23m.cell.eclipse.xtend2.HtmlTemplateTransformation;
 
 public final class HtmlRenderer extends AbstractRenderer {
 
@@ -91,7 +93,7 @@ public final class HtmlRenderer extends AbstractRenderer {
 
 	@Override
 	public void doRender() {
-		final OawHtmlDerivedFileGenerator generator = new OawHtmlDerivedFileGenerator();
+		//final OawHtmlDerivedFileGenerator generator = new OawHtmlDerivedFileGenerator();
 		/*
 		 * TODO retrieve template content eventually from
 		 *
@@ -100,7 +102,9 @@ public final class HtmlRenderer extends AbstractRenderer {
 		 * (needs to be set to fixed HTML template as part of boot sequence)
 		 */
 		final Set setToRender = getSetToRender();
-		final String generatedOutput = generator.generate(setToRender, null);
+		final HtmlTemplateTransformation htmlTransformation = new HtmlTemplateTransformation();
+		final String generatedOutput = htmlTransformation.apply(Arrays.asList(setToRender)).toString();
+
 		final String identityName = HTMLRepresentation.htmlRepresentation.identity().name() + " of " + setToRender.identity().name();
 		final Set semanticIdentity = Instantiation.addDisjunctSemanticIdentitySet(identityName, identityName, RepositoryStructure.htmlRepresentations);
 		semanticIdentity.identity().setPayload(generatedOutput);
