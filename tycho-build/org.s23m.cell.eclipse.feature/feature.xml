@@ -30,5 +30,4 @@
 	<plugin id="org.s23m.cell.eclipse.visualization.graph" version="1.0.0" unpack="false" download-size="0" install-size="0"></plugin>
 
 	<plugin id="org.s23m.cell.xtend2.templates" version="1.0.0" unpack="false" download-size="0" install-size="0"></plugin>
-	<plugin id="org.s23m.cell.generator" version="1.0.0" unpack="false" download-size="0" install-size="0"></plugin>
 </feature>
