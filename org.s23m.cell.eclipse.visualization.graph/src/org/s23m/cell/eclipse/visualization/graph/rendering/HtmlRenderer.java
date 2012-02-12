@@ -35,9 +35,9 @@ import org.eclipse.swt.browser.Browser;
 import org.eclipse.swt.browser.LocationAdapter;
 import org.eclipse.swt.browser.LocationEvent;
 import org.eclipse.swt.widgets.Composite;
-import org.s23m.cell.G;
 import org.s23m.cell.Set;
 import org.s23m.cell.api.Instantiation;
+import org.s23m.cell.api.Query;
 import org.s23m.cell.api.models.HTMLRepresentation;
 import org.s23m.cell.api.models2.RepositoryStructure;
 import org.s23m.cell.xtend2.HtmlTemplateTransformation;
@@ -93,7 +93,7 @@ public final class HtmlRenderer extends AbstractRenderer {
 
 	private Set findByIdentifier(final String identifier) {
 		final Set setToRender = getSetToRender();
-		for (final Set set : setToRender.filterFlavor(G.coreGraphs.vertex)) {
+		for (final Set set : setToRender.filterFlavor(Query.vertex)) {
 			if (identifier.equals(set.identity().identifier().toString())) {
 				return set;
 			}
