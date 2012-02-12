@@ -23,7 +23,7 @@
  * Andrew Shewring
  * ***** END LICENSE BLOCK ***** */
 
-package org.s23m.cell.eclipse.openarchitectureware.generation.tests;
+package org.s23m.cell.xtend2.templates.tests;
 
 import java.util.Arrays;
 

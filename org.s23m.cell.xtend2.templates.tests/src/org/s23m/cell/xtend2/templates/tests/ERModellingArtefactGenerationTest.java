@@ -23,15 +23,15 @@
  * Andrew Shewring
  * ***** END LICENSE BLOCK ***** */
 
-package org.s23m.cell.eclipse.openarchitectureware.generation.tests;
+package org.s23m.cell.xtend2.templates.tests;
 
 import org.s23m.cell.Set;
 import org.s23m.cell.kernel.artifactinstantiation.InstantiationSequences;
 
-public class CrmArtefactGenerationTest extends AbstractHtmlGenerationTest {
+public class ERModellingArtefactGenerationTest extends AbstractHtmlGenerationTest {
 
 	@Override
 	protected Set provideSet() {
-		return InstantiationSequences.getInstance().crm;
+		return InstantiationSequences.getInstance().entityrelationshipschema;
 	}
 }

@@ -22,7 +22,7 @@
 		<module>org.s23m.cell.xtend2.templates</module>
 
 		<!-- Tests -->
-		<module>org.s23m.cell.eclipse.openarchitectureware.tests</module>
+		<module>org.s23m.cell.xtend2.templates.tests</module>
 		
 		<!-- Features -->
 		<module>tycho-build/org.s23m.cell.eclipse.feature</module>

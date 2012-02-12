@@ -5,6 +5,6 @@
 		<artifactId>org.s23m.cell.eclipse</artifactId>
 		<version>1.0.0</version>
 	</parent>
-	<artifactId>org.s23m.cell.eclipse.openarchitectureware.tests</artifactId>
+	<artifactId>org.s23m.cell.xtend2.templates.tests</artifactId>
 	<packaging>eclipse-test-plugin</packaging>
 </project>
