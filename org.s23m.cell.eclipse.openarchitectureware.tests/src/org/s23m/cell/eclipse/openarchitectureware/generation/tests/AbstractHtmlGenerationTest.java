@@ -31,8 +31,8 @@ import junit.framework.TestCase;
 
 import org.junit.Test;
 import org.s23m.cell.Set;
-import org.s23m.cell.eclipse.xtend2.HtmlTemplateTransformation;
 import org.s23m.cell.kernel.artifactinstantiation.RunInstantiationSequence;
+import org.s23m.cell.xtend2.HtmlTemplateTransformation;
 
 public abstract class AbstractHtmlGenerationTest extends TestCase {
 

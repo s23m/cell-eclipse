@@ -40,7 +40,7 @@ import org.s23m.cell.Set;
 import org.s23m.cell.api.Instantiation;
 import org.s23m.cell.api.models.HTMLRepresentation;
 import org.s23m.cell.api.models2.RepositoryStructure;
-import org.s23m.cell.eclipse.xtend2.HtmlTemplateTransformation;
+import org.s23m.cell.xtend2.HtmlTemplateTransformation;
 
 public final class HtmlRenderer extends AbstractRenderer {
 

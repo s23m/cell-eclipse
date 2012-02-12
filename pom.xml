@@ -16,11 +16,10 @@
 		<module>org.s23m.cell.eclipse.search.widget</module>
 		<module>org.s23m.cell.eclipse.visualization.containmenttree</module>
 		<module>org.s23m.cell.eclipse.visualization.graph</module>
-		<module>org.s23m.cell.eclipse.xtend2</module>
 
 		<!-- TODO move to cell -->
 		<module>org.s23m.cell.generator</module>
-		
+		<module>org.s23m.cell.xtend2.templates</module>
 
 		<!-- Tests -->
 		<module>org.s23m.cell.eclipse.openarchitectureware.tests</module>

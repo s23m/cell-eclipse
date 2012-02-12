@@ -1,4 +1,4 @@
-package org.s23m.cell.eclipse.xtend2;
+package org.s23m.cell.xtend2;
 
 import java.util.List;
 
