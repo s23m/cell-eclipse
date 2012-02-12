@@ -3,7 +3,6 @@ Bundle-ManifestVersion: 2
 Bundle-Name: org.s23m.cell.eclipse.openarchitectureware.tests
 Bundle-SymbolicName: org.s23m.cell.eclipse.openarchitectureware.tests
 Bundle-Version: 1.0.0
-Fragment-Host: org.s23m.cell.eclipse.openarchitectureware
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
 Require-Bundle: org.junit4,
  org.s23m.cell.kernel.tests,
@@ -12,5 +11,4 @@ Bundle-ActivationPolicy: lazy
 Import-Package: org.antlr.runtime,
  org.eclipse.xpand2,
  org.eclipse.xpand2.output,
- org.s23m.cell;bundle-version="1.0.0",
- org.s23m.cell.eclipse.openarchitectureware;bundle-version="1.0.0"
+ org.s23m.cell;bundle-version="1.0.0"
