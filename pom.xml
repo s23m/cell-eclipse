@@ -11,13 +11,11 @@
 		<module>org.s23m.cell.eclipse.connector.database.mysql</module>
 		<module>org.s23m.cell.eclipse.connector.database.postgresql</module>
 		<module>org.s23m.cell.eclipse.connector.database.ui</module>
-		<module>org.s23m.cell.eclipse.openarchitectureware</module>
 		<module>org.s23m.cell.eclipse.preferences</module>
 		<module>org.s23m.cell.eclipse.preferences.ui</module>
 		<module>org.s23m.cell.eclipse.search.widget</module>
 		<module>org.s23m.cell.eclipse.visualization.containmenttree</module>
 		<module>org.s23m.cell.eclipse.visualization.graph</module>
-
 		<module>org.s23m.cell.eclipse.xtend2</module>
 
 		<!-- TODO move to cell -->
