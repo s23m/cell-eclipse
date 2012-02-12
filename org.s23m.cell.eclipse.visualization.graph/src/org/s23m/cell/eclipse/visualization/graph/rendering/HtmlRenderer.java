@@ -103,7 +103,6 @@ public final class HtmlRenderer extends AbstractRenderer {
 
 	@Override
 	public void doRender() {
-		//final OawHtmlDerivedFileGenerator generator = new OawHtmlDerivedFileGenerator();
 		/*
 		 * TODO retrieve template content eventually from
 		 *
