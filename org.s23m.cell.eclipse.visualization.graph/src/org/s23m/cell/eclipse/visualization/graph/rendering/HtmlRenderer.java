@@ -44,7 +44,10 @@ import org.s23m.cell.xtend2.HtmlTemplateTransformation;
 
 public final class HtmlRenderer extends AbstractRenderer {
 
-	private static final String LOCATION_PREFIX = "about:";
+
+	private static final String FILE_PREFIX = "file:///";
+
+	private static final String ABOUT_PREFIX = "about:";
 
 	private static final String NO_LOCATION = "about:blank";
 
@@ -66,7 +69,14 @@ public final class HtmlRenderer extends AbstractRenderer {
 		    	// assume all hyperlinks are symbolic and refer to other Sets
 				final String location = event.location;
 				if (!NO_LOCATION.equals(location)) {
-					final String identifier = location.substring(LOCATION_PREFIX.length());
+					final String identifier;
+					if (location.startsWith(ABOUT_PREFIX)) {
+						identifier = location.substring(ABOUT_PREFIX.length());
+					} else if (location.startsWith(FILE_PREFIX)) {
+						identifier = location.substring(FILE_PREFIX.length());
+					} else {
+						throw new IllegalStateException("Could not retrieve identifier from location '" + location + "'");
+					}
 
 					// find referenced Set
 					final Set referencedSet = findByIdentifier(identifier);
