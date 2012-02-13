@@ -8,7 +8,6 @@ Require-Bundle: org.eclipse.ui;bundle-version="3.5.0",
  org.eclipse.swt,
  org.eclipse.core.runtime;bundle-version="3.5.0",
  org.s23m.cell.kernel;bundle-version="1.0.0",
- org.s23m.cell.eclipse.openarchitectureware;bundle-version="1.0.0",
  org.eclipse.core.expressions;bundle-version="3.4.0",
  org.eclipse.ui.ide,
  org.eclipse.core.resources,
@@ -24,7 +23,6 @@ Require-Bundle: org.eclipse.ui;bundle-version="3.5.0",
  org.eclipse.ui.ide.application
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
 Bundle-ActivationPolicy: lazy
-Import-Package: org.s23m.cell.eclipse.xpand2
 Export-Package: org.s23m.cell.eclipse.visualization.containmenttree.viewer,
  org.s23m.cell.eclipse.visualization.containmenttree.viewer.commands,
  org.s23m.cell.eclipse.visualization.containmenttree.viewer.model
