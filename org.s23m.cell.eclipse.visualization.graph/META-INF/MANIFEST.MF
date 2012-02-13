@@ -4,8 +4,7 @@ Bundle-Name: org.s23m.cell.eclipse.visualization.graph
 Bundle-SymbolicName: org.s23m.cell.eclipse.visualization.graph; singleton:=true
 Bundle-Version: 1.0.0
 Bundle-Activator: org.s23m.cell.eclipse.visualization.graph.Activator
-Import-Package: org.eclipse.ui.forms,
- org.s23m.cell.eclipse.xpand2
+Import-Package: org.eclipse.ui.forms
 Require-Bundle: org.eclipse.ui,
  org.eclipse.swt,
  org.eclipse.core.runtime,
