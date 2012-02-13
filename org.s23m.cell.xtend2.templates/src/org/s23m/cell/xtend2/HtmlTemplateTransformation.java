@@ -3,8 +3,8 @@ package org.s23m.cell.xtend2;
 import java.util.List;
 
 import org.s23m.cell.Set;
-import org.s23m.cell.eclipse.xtend2.templates.HtmlTemplate;
 import org.s23m.cell.generator.ModelToTextTransformation;
+import org.s23m.cell.xtend2.templates.HtmlTemplate;
 
 public class HtmlTemplateTransformation implements ModelToTextTransformation {
 	

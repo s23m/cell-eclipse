@@ -1,4 +1,4 @@
-package org.s23m.cell.eclipse.xtend2.templates;
+package org.s23m.cell.xtend2.templates;
 
 import java.util.UUID;
 import org.eclipse.xtend2.lib.StringConcatenation;
