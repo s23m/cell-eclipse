@@ -1,4 +1,4 @@
-package org.s23m.cell.eclipse.xtend2.templates
+package org.s23m.cell.xtend2.templates
 
 import org.s23m.cell.Set
 import org.s23m.cell.api.Query
