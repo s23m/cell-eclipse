@@ -11,10 +11,10 @@
  * for the specific language governing rights and limitations under the
  * License.
  *
- * The Original Code is Gmodel.
+ * The Original Code is S23M.
  *
  * The Initial Developer of the Original Code is
- * Sofismo AG (Sofismo).
+ * The S23M Foundation.
  * Portions created by the Initial Developer are
  * Copyright (C) 2009-2010 Sofismo AG.
  * All Rights Reserved.
@@ -47,12 +47,12 @@ import org.eclipse.zest.core.widgets.GraphConnection;
 import org.eclipse.zest.core.widgets.GraphNode;
 import org.eclipse.zest.core.widgets.ZestStyles;
 import org.eclipse.zest.core.widgets.internal.PolylineArcConnection;
-import org.s23m.cell.G;
+import org.s23m.cell.S23MKernel;
 import org.s23m.cell.Set;
 import org.s23m.cell.api.models.Root;
 import org.s23m.cell.eclipse.visualization.graph.figures.FigureBuilder;
-import org.s23m.cell.eclipse.visualization.graph.figures.GmodelNodeFigure;
-import org.s23m.cell.eclipse.visualization.graph.figures.GmodelRouter;
+import org.s23m.cell.eclipse.visualization.graph.figures.S23MNodeFigure;
+import org.s23m.cell.eclipse.visualization.graph.figures.S23MRouter;
 import org.s23m.cell.eclipse.visualization.graph.figures.SetGraphNode;
 import org.s23m.cell.eclipse.visualization.graph.figures.WorkspaceGraphNode;
 
@@ -144,7 +144,7 @@ public final class StructuralGraphRenderer extends AbstractGraphRenderer {
 	@Override
 	public void doRender() {
 		final Map<UUID, GraphNode> nodeMap = new HashMap<UUID, GraphNode>();
-		final GmodelNodeFigure rootFigure = FigureBuilder.buildGmodelNodeFigure();
+		final S23MNodeFigure rootFigure = FigureBuilder.buildS23MNodeFigure();
 		rootFigure.setColor(Display.getCurrent().getSystemColor(ROOT_COLOR));
 		final Set setToRender = getSetToRender();
 		FigureBuilder.createMetaNamePair(rootFigure, setToRender);
@@ -162,8 +162,8 @@ public final class StructuralGraphRenderer extends AbstractGraphRenderer {
 		final FanRouter edgeRouter = new FanRouter();
 		edgeRouter.setNextRouter(new BendpointConnectionRouter());
 		final Map<String, GraphConnection> connectionMap = new HashMap<String, GraphConnection>();
-		for (final Set set : setToRender.filterLinks()) {
-			if (set.flavor().isEqualTo(G.coreGraphs.edge)) {
+		for (final Set set : setToRender.filterArrows()) {
+			if (set.properClass().isEqualTo(S23MKernel.coreGraphs.edge)) {
 				final Set edge = set;
 				final Set ee1 = edge.edgeEnds().extractFirst();
 				final Set ee2 = edge.edgeEnds().extractSecond();
@@ -196,7 +196,7 @@ public final class StructuralGraphRenderer extends AbstractGraphRenderer {
 						conn.getConnectionFigure().setConnectionRouter(edgeRouter);
 						if (isSelfLoop) {
 							final PolylineArcConnection pLine = (PolylineArcConnection) conn.getConnectionFigure();
-							pLine.setConnectionRouter(new GmodelRouter(nodeFig));
+							pLine.setConnectionRouter(new S23MRouter(nodeFig));
 						}
 							enableAntiAliasing(conn);
 							addContainsLabel(edge, ee1, conn, false);
@@ -212,7 +212,7 @@ public final class StructuralGraphRenderer extends AbstractGraphRenderer {
 	private void addWorkspaceNodes() {
 		workspaceNodes = new ArrayList<WorkspaceGraphNode>();
 		for (int i = 0; i < NUMBER_OF_WORKSPACES; i++) {
-			final GmodelNodeFigure workspaceFigure = FigureBuilder.buildGmodelNodeFigure();
+			final S23MNodeFigure workspaceFigure = FigureBuilder.buildS23MNodeFigure();
 			workspaceFigure.setSize(-1, -1);
 			FigureBuilder.createWorkspaceIndex(workspaceFigure, i);
 			final WorkspaceGraphNode workspaceNode = new WorkspaceGraphNode(graph, workspaceFigure, i);
@@ -225,8 +225,8 @@ public final class StructuralGraphRenderer extends AbstractGraphRenderer {
 	}
 
 	protected void buildSetGraphNode(final Set set, final Map<UUID, GraphNode> nodeMap, final boolean isExternal) {
-		if (set.flavor().isEqualTo(G.coreGraphs.vertex)) {
-			final GmodelNodeFigure nodeFigure = FigureBuilder.buildGmodelNodeFigure(isExternal);
+		if (set.properClass().isEqualTo(S23MKernel.coreGraphs.vertex)) {
+			final S23MNodeFigure nodeFigure = FigureBuilder.buildS23MNodeFigure(isExternal);
 			FigureBuilder.addIcon(nodeFigure, set);
 			FigureBuilder.createMetaNamePair(nodeFigure, set);
 			nodeFigure.setSize(-1, -1);

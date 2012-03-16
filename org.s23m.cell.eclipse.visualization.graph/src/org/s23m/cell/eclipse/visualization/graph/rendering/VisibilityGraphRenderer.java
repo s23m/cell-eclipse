@@ -11,10 +11,10 @@
  * for the specific language governing rights and limitations under the
  * License.
  *
- * The Original Code is Gmodel.
+ * The Original Code is S23M.
  *
  * The Initial Developer of the Original Code is
- * Sofismo AG (Sofismo).
+ * The S23M Foundation.
  * Portions created by the Initial Developer are
  * Copyright (C) 2009-2010 Sofismo AG.
  * All Rights Reserved.
@@ -35,10 +35,10 @@ import org.eclipse.swt.custom.CTabItem;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.zest.core.widgets.Graph;
 import org.eclipse.zest.core.widgets.GraphNode;
-import org.s23m.cell.G;
+import org.s23m.cell.S23MKernel;
 import org.s23m.cell.Set;
 import org.s23m.cell.eclipse.visualization.graph.figures.FigureBuilder;
-import org.s23m.cell.eclipse.visualization.graph.figures.GmodelNodeFigure;
+import org.s23m.cell.eclipse.visualization.graph.figures.S23MNodeFigure;
 
 public final class VisibilityGraphRenderer extends AbstractGraphRenderer {
 
@@ -54,15 +54,15 @@ public final class VisibilityGraphRenderer extends AbstractGraphRenderer {
 	@Override
 	protected void doRender() {
 		final Map<UUID, GraphNode> nodeMap = new HashMap<UUID, GraphNode>();
-		final GmodelNodeFigure rootFigure = FigureBuilder.buildGmodelNodeFigure();
+		final S23MNodeFigure rootFigure = FigureBuilder.buildS23MNodeFigure();
 		rootFigure.setColor(Display.getCurrent().getSystemColor(ROOT_COLOR));
 
 		final Set setToRender = getSetToRender();
 		FigureBuilder.createMetaNamePair(rootFigure, setToRender);
 		rootFigure.setSize(-1, -1);
 
-		for (final Set set : setToRender.filterLinks()) {
-			if (set.flavor().isEqualTo(G.coreGraphs.visibility)) {
+		for (final Set set : setToRender.filterArrows()) {
+			if (set.properClass().isEqualTo(S23MKernel.coreGraphs.visibility)) {
 				final Set visibility = set;
 
 				final Set fromSet = visibility.from();

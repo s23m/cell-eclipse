@@ -26,7 +26,7 @@ package org.s23m.cell.xtend2.templates
 
 import org.s23m.cell.Set
 import org.s23m.cell.api.Query
-import org.s23m.cell.api.models.GmodelSemanticDomains
+import org.s23m.cell.api.models.S23MSemanticDomains
 
 class HtmlTemplate {
 	
@@ -137,7 +137,7 @@ class HtmlTemplate {
 	
 	def private flavorContainer(Set set, Set flavor, (Set)=>CharSequence tableBody) '''
 		<div class="flavorContainer">
-			«val flavoredSet = set.filterFlavor(flavor)»
+			«val flavoredSet = set.filterProperClass(flavor)»
 			<h2>«flavor.identityName»«flavored»</h2>
 			«IF flavoredSet.isEmpty»
 				«emptySet()»
@@ -236,11 +236,11 @@ class HtmlTemplate {
 	'''
 	
 	def private minCardinality() {
-		GmodelSemanticDomains::minCardinality
+		org::s23m::cell::api::models::S23MSemanticDomains::minCardinality
 	}
 	
 	def private maxCardinality() {
-		GmodelSemanticDomains::maxCardinality
+		org::s23m::cell::api::models::S23MSemanticDomains::maxCardinality
 	}
 		
 	def private kernelEdge() {

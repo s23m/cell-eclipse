@@ -11,10 +11,10 @@
  * for the specific language governing rights and limitations under the
  * License.
  *
- * The Original Code is Gmodel.
+ * The Original Code is S23M.
  *
  * The Initial Developer of the Original Code is
- * Sofismo AG (Sofismo).
+ * The S23M Foundation.
  * Portions created by the Initial Developer are
  * Copyright (C) 2009-2010 Sofismo AG.
  * All Rights Reserved.
@@ -46,7 +46,7 @@ public class ContainmentTreeViewerPlugin extends AbstractUIPlugin {
 	public void start(final BundleContext context) throws Exception {
 		super.start(context);
 		plugin = this;
-		SerializerHolder.getGmodelInstanceSerializer(SerializationType.XML); //to initialize the serializer
+		SerializerHolder.getS23MInstanceSerializer(SerializationType.XML); //to initialize the serializer
 		updateUIConfiguration();
 		addPreferencesChangeListener();
 	}

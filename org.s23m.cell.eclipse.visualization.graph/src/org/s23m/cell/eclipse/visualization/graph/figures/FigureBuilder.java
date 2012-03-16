@@ -11,10 +11,10 @@
  * for the specific language governing rights and limitations under the
  * License.
  *
- * The Original Code is Gmodel.
+ * The Original Code is S23M.
  *
  * The Initial Developer of the Original Code is
- * Sofismo AG (Sofismo).
+ * The S23M Foundation.
  * Portions created by the Initial Developer are
  * Copyright (C) 2009-2010 Sofismo AG.
  * All Rights Reserved.
@@ -40,7 +40,7 @@ import org.eclipse.zest.core.widgets.GraphConnection;
 import org.eclipse.zest.core.widgets.GraphNode;
 import org.eclipse.zest.core.widgets.ZestStyles;
 import org.s23m.cell.Set;
-import org.s23m.cell.api.models.GmodelSemanticDomains;
+import org.s23m.cell.api.models.S23MSemanticDomains;
 
 public class FigureBuilder {
 
@@ -49,12 +49,12 @@ public class FigureBuilder {
 	private static final int FONT_SIZE = 10;
 	private static final String META_SYMBOL = ":";
 
-	public static GmodelNodeFigure buildGmodelNodeFigure() {
-		return new GmodelNodeFigure(false);
+	public static S23MNodeFigure buildS23MNodeFigure() {
+		return new S23MNodeFigure(false);
 	}
 
-	public static GmodelNodeFigure buildGmodelNodeFigure(final boolean isExternal) {
-		return new GmodelNodeFigure(isExternal);
+	public static S23MNodeFigure buildS23MNodeFigure(final boolean isExternal) {
+		return new S23MNodeFigure(isExternal);
 	}
 
 	private static Label createMetaLabel(final String metaElementName, final boolean isAbstract) {
@@ -75,13 +75,13 @@ public class FigureBuilder {
 		return label;
 	}
 
-	public static void addIcon(final GmodelNodeFigure nodeFigure, final Set set) {
+	public static void addIcon(final S23MNodeFigure nodeFigure, final Set set) {
 		final ImageFigure imgFig = new ImageFigure(LabelIcon.ICON.getImage());
 		nodeFigure.addToAttributesFigure(imgFig);
 	}
 
-	public static void createMetaNamePair(final GmodelNodeFigure nodeFigure, final Set set) {
-		final boolean isAbstract = set.category().value(GmodelSemanticDomains.isAbstract).isEqualTo(GmodelSemanticDomains.isAbstract_TRUE);
+	public static void createMetaNamePair(final S23MNodeFigure nodeFigure, final Set set) {
+		final boolean isAbstract = set.category().value(S23MSemanticDomains.isAbstract).isEqualTo(S23MSemanticDomains.isAbstract_TRUE);
 		nodeFigure.addToAttributesFigure(createMetaLabel(set.category().identity().name(), isAbstract));
 		nodeFigure.addToAttributesFigure(createLabel(set.identity().name()));
 	}
@@ -172,7 +172,7 @@ public class FigureBuilder {
 		}
 	}
 
-	public static void createWorkspaceIndex(final GmodelNodeFigure workspaceFigure, final int n) {
+	public static void createWorkspaceIndex(final S23MNodeFigure workspaceFigure, final int n) {
 		final Label indexLabel = new Label(""+(n+1));
 		indexLabel.setFont(new Font(null, FONT_NAME, FONT_SIZE, SWT.ITALIC));
 		indexLabel.setBackgroundColor(Display.getCurrent().getSystemColor(WorkspaceGraphNode.DEFAULT_COLOR));

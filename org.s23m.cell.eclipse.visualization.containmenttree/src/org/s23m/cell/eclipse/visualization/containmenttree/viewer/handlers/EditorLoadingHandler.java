@@ -11,10 +11,10 @@
  * for the specific language governing rights and limitations under the
  * License.
  *
- * The Original Code is Gmodel.
+ * The Original Code is S23M.
  *
  * The Initial Developer of the Original Code is
- * Sofismo AG (Sofismo).
+ * The S23M Foundation.
  * Portions created by the Initial Developer are
  * Copyright (C) 2009-2010 Sofismo AG.
  * All Rights Reserved.
@@ -40,7 +40,7 @@ import org.s23m.cell.eclipse.visualization.containmenttree.viewer.model.Containm
 public class EditorLoadingHandler {
 
 	private static final String SEARCH_WIDGET_ID = "org.s23m.cell.eclipse.search.widget.editors.ResultsView";
-	private static final String VISUALIZATION_WIDGET_ID = "org.s23m.cell.eclipse.visualization.graph.editors.GmodelGraphViewer";
+	private static final String VISUALIZATION_WIDGET_ID = "org.s23m.cell.eclipse.visualization.graph.editors.S23MGraphViewer";
 
 	public static void openVisualizationWidget(final ContainmentTreeNode node, final TreeViewer controlViewer) {
 		try {

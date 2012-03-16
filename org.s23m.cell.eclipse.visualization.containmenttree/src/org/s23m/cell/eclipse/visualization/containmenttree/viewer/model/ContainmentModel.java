@@ -11,10 +11,10 @@
  * for the specific language governing rights and limitations under the
  * License.
  *
- * The Original Code is Gmodel.
+ * The Original Code is S23M.
  *
  * The Initial Developer of the Original Code is
- * Sofismo AG (Sofismo).
+ * The S23M Foundation.
  * Portions created by the Initial Developer are
  * Copyright (C) 2009-2010 Sofismo AG.
  * All Rights Reserved.
@@ -31,7 +31,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.s23m.cell.G;
+import org.s23m.cell.S23MKernel;
 import org.s23m.cell.Set;
 import org.s23m.cell.api.models.Root;
 import org.s23m.cell.serialization.serializer.InstanceBuilder;
@@ -55,7 +55,7 @@ public class ContainmentModel {
 	private void setUpContentTree(final ContainmentTreeNode rootNode) {
 		final Set rootSet = rootNode.getSet();
 		for (final Set set : rootSet.filterInstances()) {
-			if (InstanceBuilder.isSerializableInstance(set) && set.flavor().isEqualTo(G.coreGraphs.vertex)) {
+			if (InstanceBuilder.isSerializableInstance(set) && set.properClass().isEqualTo(S23MKernel.coreGraphs.vertex)) {
 				final ContainmentTreeNode node = new ContainmentTreeNode(
 						rootNode, set);
 				setUpVertices(node);
@@ -67,7 +67,7 @@ public class ContainmentModel {
 	private void setUpVertices(final ContainmentTreeNode node) {
 		final Set set = node.getSet();
 		for (final Set s : set.filterInstances()) {
-			if (s.flavor().isEqualTo(G.coreGraphs.vertex)) {
+			if (s.properClass().isEqualTo(S23MKernel.coreGraphs.vertex)) {
 				final ContainmentTreeNode vertexNode = new ContainmentTreeNode(node, s);
 				node.addToChildNodes(vertexNode);
 				setUpVertices(vertexNode);
@@ -79,7 +79,7 @@ public class ContainmentModel {
 		for (final Set s : set.filterInstances()) {
 			if (!s.identity().isPartOfKernel()
 					&& !s.category().identity().isPartOfKernel()
-					&& s.flavor().isEqualTo(G.coreGraphs.vertex)) {
+					&& s.properClass().isEqualTo(S23MKernel.coreGraphs.vertex)) {
 				final String key = s.category().identity()
 						.uniqueRepresentationReference().toString();
 				if (!setRegistry.containsKey(key)) {
@@ -94,14 +94,14 @@ public class ContainmentModel {
 		for (final Set s : Root.root.filterInstances()) {
 			if (!s.identity().isPartOfKernel()
 					&& s.category().identity().isPartOfKernel()
-					&& s.flavor().isEqualTo(G.coreGraphs.vertex)) {
+					&& s.properClass().isEqualTo(S23MKernel.coreGraphs.vertex)) {
 				final ContainmentTreeNode node = new ContainmentTreeNode(root,
 						s);
 				root.addToChildNodes(node);
 				final String key = s.identity()
 						.uniqueRepresentationReference().toString();
 				for (final Set set : node.getSet().filterInstances()) {
-					if (set.flavor().isEqualTo(G.coreGraphs.vertex)) {
+					if (set.properClass().isEqualTo(S23MKernel.coreGraphs.vertex)) {
 						final ContainmentTreeNode vertexNode = new ContainmentTreeNode(
 								node, set);
 						node.addToChildNodes(vertexNode);
@@ -124,7 +124,7 @@ public class ContainmentModel {
 		final String key = parentNode.getSet().identity()
 				.uniqueRepresentationReference().toString();
 		for (final Set set : parentNode.getSet().filterInstances()) {
-			if (set.flavor().isEqualTo(G.coreGraphs.vertex)) {
+			if (set.properClass().isEqualTo(S23MKernel.coreGraphs.vertex)) {
 				final ContainmentTreeNode node = new ContainmentTreeNode(
 						parentNode, set);
 				parentNode.addToChildNodes(node);

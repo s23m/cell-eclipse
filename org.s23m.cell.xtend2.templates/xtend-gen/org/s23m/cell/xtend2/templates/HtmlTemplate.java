@@ -7,7 +7,7 @@ import org.eclipse.xtext.xbase.lib.StringExtensions;
 import org.s23m.cell.Identity;
 import org.s23m.cell.Set;
 import org.s23m.cell.api.Query;
-import org.s23m.cell.api.models.GmodelSemanticDomains;
+import org.s23m.cell.api.models.S23MSemanticDomains;
 
 @SuppressWarnings("all")
 public class HtmlTemplate {
@@ -325,8 +325,8 @@ public class HtmlTemplate {
     _builder.append("<div class=\"flavorContainer\">");
     _builder.newLine();
     _builder.append("\t");
-    Set _filterFlavor = set.filterFlavor(flavor);
-    final Set flavoredSet = _filterFlavor;
+    Set _filterProperClass = set.filterProperClass(flavor);
+    final Set flavoredSet = _filterProperClass;
     _builder.newLineIfNotEmpty();
     _builder.append("\t");
     _builder.append("<h2>");
@@ -638,11 +638,11 @@ public class HtmlTemplate {
   }
   
   private Set minCardinality() {
-    return GmodelSemanticDomains.minCardinality;
+    return S23MSemanticDomains.minCardinality;
   }
   
   private Set maxCardinality() {
-    return GmodelSemanticDomains.maxCardinality;
+    return S23MSemanticDomains.maxCardinality;
   }
   
   private Set kernelEdge() {

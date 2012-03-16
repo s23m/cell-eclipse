@@ -11,10 +11,10 @@
  * for the specific language governing rights and limitations under the
  * License.
  *
- * The Original Code is Gmodel.
+ * The Original Code is S23M.
  *
  * The Initial Developer of the Original Code is
- * Sofismo AG (Sofismo).
+ * The S23M Foundation.
  * Portions created by the Initial Developer are
  * Copyright (C) 2009-2010 Sofismo AG.
  * All Rights Reserved.
@@ -93,7 +93,7 @@ public final class HtmlRenderer extends AbstractRenderer {
 
 	private Set findByIdentifier(final String identifier) {
 		final Set setToRender = getSetToRender();
-		for (final Set set : setToRender.filterFlavor(Query.vertex)) {
+		for (final Set set : setToRender.filterProperClass(Query.vertex)) {
 			if (identifier.equals(set.identity().identifier().toString())) {
 				return set;
 			}

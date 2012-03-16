@@ -11,10 +11,10 @@
  * for the specific language governing rights and limitations under the
  * License.
  *
- * The Original Code is Gmodel.
+ * The Original Code is S23M.
  *
  * The Initial Developer of the Original Code is
- * Sofismo AG (Sofismo).
+ * The S23M Foundation.
  * Portions created by the Initial Developer are
  * Copyright (C) 2009-2010 Sofismo AG.
  * All Rights Reserved.
@@ -53,11 +53,11 @@ import org.eclipse.zest.layouts.LayoutStyles;
 import org.eclipse.zest.layouts.algorithms.SpringLayoutAlgorithm;
 import org.eclipse.zest.layouts.progress.ProgressEvent;
 import org.eclipse.zest.layouts.progress.ProgressListener;
-import org.s23m.cell.G;
+import org.s23m.cell.S23MKernel;
 import org.s23m.cell.Set;
-import org.s23m.cell.api.models.GmodelSemanticDomains;
+import org.s23m.cell.api.models.S23MSemanticDomains;
 import org.s23m.cell.eclipse.visualization.graph.figures.FigureBuilder;
-import org.s23m.cell.eclipse.visualization.graph.figures.GmodelNodeFigure;
+import org.s23m.cell.eclipse.visualization.graph.figures.S23MNodeFigure;
 import org.s23m.cell.eclipse.visualization.graph.figures.SetGraphNode;
 import org.s23m.cell.eclipse.visualization.graph.figures.WorkspaceGraphNode;
 
@@ -101,7 +101,7 @@ public abstract class AbstractGraphRenderer extends AbstractRenderer {
 
 	private void addCardinalityLabel(final String min, final String max, final GraphConnection conn, final boolean isEnd,
 									final boolean hasMultipleConnections, final boolean edgeTextExits) {
-		final String NA = GmodelSemanticDomains.is_NOTAPPLICABLE.identity().name();
+		final String NA = S23MSemanticDomains.is_NOTAPPLICABLE.identity().name();
 		if (!min.equals(NA) && !max.equals(NA)) {
 			final Label cardianlityLabel = new Label(min + CARDINALITY_CONCATENATION + max);
 			cardianlityLabel.setForegroundColor(Display.getCurrent().getSystemColor(SWT.COLOR_RED));
@@ -121,7 +121,7 @@ public abstract class AbstractGraphRenderer extends AbstractRenderer {
 	protected void addContainsLabel(final Set edge, final Set ee, final GraphConnection conn, final boolean isEnd) {
 		final Set metaSet = edge.category();
 		boolean hasMetaContainment = false;
-		if (metaSet.flavor().isEqualTo(G.coreGraphs.edge) && !metaSet.identity().isPartOfKernel()) {
+		if (metaSet.properClass().isEqualTo(S23MKernel.coreGraphs.edge) && !metaSet.identity().isPartOfKernel()) {
 			final Set metaEdge = metaSet;
 			final int eeIndex = (isEnd) ? 1 : 0;
 			final Set mEE;
@@ -131,20 +131,20 @@ public abstract class AbstractGraphRenderer extends AbstractRenderer {
 				mEE = metaEdge.edgeEnds().extractSecond();
 			}
 
-			if (mEE.value(GmodelSemanticDomains.isContainer).isEqualTo(
-					GmodelSemanticDomains.isContainer_TRUE)) {
+			if (mEE.value(S23MSemanticDomains.isContainer).isEqualTo(
+					S23MSemanticDomains.isContainer_TRUE)) {
 				hasMetaContainment = true;
 			}
 		}
-		if (ee.value(GmodelSemanticDomains.isContainer).isEqualTo(
-				GmodelSemanticDomains.isContainer_TRUE)) {
+		if (ee.value(S23MSemanticDomains.isContainer).isEqualTo(
+				S23MSemanticDomains.isContainer_TRUE)) {
 			FigureBuilder.addContainmentArrow(conn, hasMetaContainment);
 		}
 	}
 
 	protected void addEdgeEndLabels(final Set ee, final GraphConnection conn, final boolean isEnd, final boolean hasMultipleConnections) {
 		String eeText = ""; //$NON-NLS-1$
-		if (!ee.identity().name().equals((GmodelSemanticDomains.anonymous.identity().name()))) {
+		if (!ee.identity().name().equals((S23MSemanticDomains.anonymous.identity().name()))) {
 			eeText = ee.identity().name();
 			final Label containLabel = new Label(eeText);
 			containLabel.setFont(FigureBuilder.containsLabelFont());
@@ -158,8 +158,8 @@ public abstract class AbstractGraphRenderer extends AbstractRenderer {
 				endPt.setVDistance(LABEL_DISTANCE);
 			}
 		}
-		final String iMin = getValueOf(ee, GmodelSemanticDomains.minCardinality);
-		final String iMax = getValueOf(ee, GmodelSemanticDomains.maxCardinality);
+		final String iMin = getValueOf(ee, S23MSemanticDomains.minCardinality);
+		final String iMax = getValueOf(ee, S23MSemanticDomains.maxCardinality);
 		addCardinalityLabel(iMin, iMax, conn, isEnd, hasMultipleConnections, !eeText.trim().equals("")); //$NON-NLS-1$
 	}
 
@@ -195,7 +195,7 @@ public abstract class AbstractGraphRenderer extends AbstractRenderer {
 
 	protected void createGraphNode(final Map<UUID, GraphNode> nodeMap, final Set set, final boolean isPartOfContainmentSet) {
 		if (!nodeMap.containsKey(set.identity().identifier())) {
-			final GmodelNodeFigure nodeFigure = FigureBuilder.buildGmodelNodeFigure(!isPartOfContainmentSet);
+			final S23MNodeFigure nodeFigure = FigureBuilder.buildS23MNodeFigure(!isPartOfContainmentSet);
 			FigureBuilder.createMetaNamePair(nodeFigure, set);
 			nodeFigure.setSize(-1, -1);
 			final GraphNode node = new SetGraphNode(graph, nodeFigure, set, isPartOfContainmentSet);

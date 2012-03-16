@@ -6,7 +6,7 @@ import java.util.Map;
 import org.s23m.cell.SemanticStateOfInMemoryModel;
 import org.s23m.cell.api.models.Root;
 import org.s23m.cell.api.models2.RepositoryStructure;
-import org.s23m.cell.serialization.Gmodel;
+import org.s23m.cell.serialization.S23M;
 import org.s23m.cell.serialization.serializer.InstanceMap;
 import org.s23m.cell.serialization.serializer.SerializationType;
 import org.s23m.cell.serialization.serializer.Serializer;
@@ -26,20 +26,20 @@ public class InstanceHandler {
 	}
 
 	private InstanceHandler() {
-		serializer = SerializerHolder.getGmodelInstanceSerializer(SerializationType.XML);
+		serializer = SerializerHolder.getS23MInstanceSerializer(SerializationType.XML);
 		instanceMap = InstanceMap.getInstance();
 	}
 
-	private Map<String, Gmodel> fetchRequiredSerializedArtifacts(final String uuid) {
-		final Map<String,Gmodel> artifacts = new HashMap<String, Gmodel>();
+	private Map<String, S23M> fetchRequiredSerializedArtifacts(final String uuid) {
+		final Map<String,S23M> artifacts = new HashMap<String, S23M>();
 		fetchArtifact(uuid, artifacts, true);
 		return artifacts;
 	}
 
 	public void doInitialFullDeserialization() throws IllegalArgumentException, IllegalAccessException {
-		if ( SemanticStateOfInMemoryModel.gmodelEditorIsLive()) {
+		if ( SemanticStateOfInMemoryModel.cellEditorIsLive()) {
 			//instanceMap.reset();
-			final Map<String,Gmodel> artifacts = fetchRequiredSerializedArtifacts(Root.root.identity().uniqueRepresentationReference().toString());
+			final Map<String,S23M> artifacts = fetchRequiredSerializedArtifacts(Root.root.identity().uniqueRepresentationReference().toString());
 			//InstanceBuilder.decommssionOutdatedOuterShellInstances();
 			serializer.doInitialFullDeserialization(artifacts);
 		} else {
@@ -49,8 +49,8 @@ public class InstanceHandler {
 	}
 
 	public void doCoordinateInstanceDeserialization() throws IllegalArgumentException, IllegalAccessException {
-		if ( SemanticStateOfInMemoryModel.gmodelEditorIsLive()) {
-			final Map<String,Gmodel> artifacts = fetchRequiredSerializedArtifacts(RepositoryStructure.graphVisualizations.identity().uniqueRepresentationReference().toString());
+		if ( SemanticStateOfInMemoryModel.cellEditorIsLive()) {
+			final Map<String,S23M> artifacts = fetchRequiredSerializedArtifacts(RepositoryStructure.graphVisualizations.identity().uniqueRepresentationReference().toString());
 			serializer.deserializeInstances(artifacts);
 		} else {
 			instanceMap.reset();
@@ -60,8 +60,8 @@ public class InstanceHandler {
 
 	//Fetch an instance with the UUID and deserialize it
 	public void deserializeInstance(final String uuid) throws IllegalAccessException {
-		if ( SemanticStateOfInMemoryModel.gmodelEditorIsLive()) {
-			final Map<String, Gmodel> artifacts = new HashMap<String, Gmodel>();
+		if ( SemanticStateOfInMemoryModel.cellEditorIsLive()) {
+			final Map<String, S23M> artifacts = new HashMap<String, S23M>();
 			fetchArtifact(uuid,artifacts, false);
 			instanceMap.removeFromBuiltInstances(uuid);
 			serializer.deserializeInstances(artifacts);
@@ -70,14 +70,14 @@ public class InstanceHandler {
 		}
 	}
 
-	public void fetchArtifact(final String uuid, final Map<String,Gmodel> artifacts, final boolean isRecursive) {
+	public void fetchArtifact(final String uuid, final Map<String,S23M> artifacts, final boolean isRecursive) {
 //		System.err.println("Fetching "+uuid);
 //		try {
 //		final String serializedInstance = ((Connector)Mediator.getComponent(ProtocolType.REPOSITORY)).getArtefact(uuid);
-//		final Gmodel rootModel = serializer.unmarshallModel(serializedInstance);
+//		final S23M rootModel = serializer.unmarshallModel(serializedInstance);
 //		artifacts.put(uuid, rootModel);
 //		if (isRecursive) {
-//			final Gmodel.Instance rootSet = rootModel.getInstance().get(0);
+//			final S23M.Instance rootSet = rootModel.getInstance().get(0);
 //			for (final InstanceType connectedInstance : rootSet.getInstance()) {
 //				final String id = connectedInstance.getSemanticIdentity().getUniqueRepresentationReference();
 //				if (!artifacts.containsKey(id)) {

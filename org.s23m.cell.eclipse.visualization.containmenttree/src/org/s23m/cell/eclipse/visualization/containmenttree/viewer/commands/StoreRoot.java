@@ -11,10 +11,10 @@
  * for the specific language governing rights and limitations under the
  * License.
  *
- * The Original Code is Gmodel.
+ * The Original Code is S23M.
  *
  * The Initial Developer of the Original Code is
- * Sofismo AG (Sofismo).
+ * The S23M Foundation.
  * Portions created by the Initial Developer are
  * Copyright (C) 2009-2010 Sofismo AG.
  * All Rights Reserved.
@@ -37,15 +37,15 @@ import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.swt.custom.BusyIndicator;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Tree;
-import org.s23m.cell.G;
+import org.s23m.cell.S23MKernel;
 import org.s23m.cell.api.models.Root;
 import org.s23m.cell.eclipse.visualization.containmenttree.viewer.ContainmentTreeManager;
 import org.s23m.cell.eclipse.visualization.containmenttree.viewer.ContainmentTreeViewerStatus;
 import org.s23m.cell.eclipse.visualization.containmenttree.viewer.Viewer;
+import org.s23m.cell.platform.models.CellPlatform;
 import org.s23m.cell.repository.client.RepositoryClient;
 import org.s23m.cell.repository.client.RepositoryClientImpl;
-import org.s23m.cell.semanticextensions.outershells.SemanticExtensions;
-import org.s23m.cell.semanticextensions.testscripts.Test;
+import org.s23m.cell.cellplatform.testscripts.Test;
 import org.s23m.cell.serialization.container.ArtefactContainer;
 import org.s23m.cell.serialization.container.ObjectFactoryHolder;
 import org.s23m.cell.serialization.serializer.SerializationContent;
@@ -95,10 +95,10 @@ public class StoreRoot extends AbstractHandler {
 			}
 
 			private void bootstrappingByScripts() {
-				org.s23m.cell.G.completeOpenSourceKernelInitialization();
-				SemanticExtensions.instantiateFeature();
+				org.s23m.cell.S23MKernel.completeCellKernelInitialization();
+				CellPlatform.instantiateFeature();
 				org.s23m.cell.kernel.artifactinstantiation.RunInstantiationSequence.run();
-				G.goLiveWithGmodelEditor();
+				S23MKernel.goLiveWithCellEditor();
 			}
 
 			private void fullInstantiation() {
@@ -106,7 +106,7 @@ public class StoreRoot extends AbstractHandler {
 			}
 
 			private List<String> getAllArtifacts() throws Exception {
-				final Serializer sz = SerializerHolder.getGmodelInstanceSerializer(SerializationType.XML);
+				final Serializer sz = SerializerHolder.getS23MInstanceSerializer(SerializationType.XML);
 				final List<SerializationContent> sessionContent = sz.serializeRoot();
 				final List<String> artifacts = new ArrayList<String>();
 

@@ -11,10 +11,10 @@
  * for the specific language governing rights and limitations under the
  * License.
  *
- * The Original Code is Gmodel.
+ * The Original Code is S23M.
  *
  * The Initial Developer of the Original Code is
- * Sofismo AG (Sofismo).
+ * The S23M Foundation.
  * Portions created by the Initial Developer are
  * Copyright (C) 2009-2010 Sofismo AG.
  * All Rights Reserved.
@@ -33,7 +33,7 @@ import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jface.viewers.TreeViewer;
 import org.s23m.cell.Set;
 import org.s23m.cell.eclipse.visualization.containmenttree.viewer.model.ContainmentTreeNode;
-import org.s23m.cell.eclipse.visualization.graph.editors.GmodelGraphViewer;
+import org.s23m.cell.eclipse.visualization.graph.editors.S23MGraphViewer;
 
 /**
  * Coordinates the rendering of the currently selected {@link Set} across multiple tabs.
@@ -48,13 +48,13 @@ public final class RenderingCoordinator implements Renderer {
 
 	private final List<Renderer> renderers;
 
-	private final GmodelGraphViewer graphViewer;
+	private final S23MGraphViewer graphViewer;
 
 	private final TreeViewer viewer;
 
 	private final RenderingHistory renderingHistory;
 
-	public RenderingCoordinator(final GmodelGraphViewer graphViewer, final TreeViewer viewer) {
+	public RenderingCoordinator(final S23MGraphViewer graphViewer, final TreeViewer viewer) {
 		this.graphViewer = graphViewer;
 		this.viewer = viewer;
 		this.renderers = new ArrayList<Renderer>();

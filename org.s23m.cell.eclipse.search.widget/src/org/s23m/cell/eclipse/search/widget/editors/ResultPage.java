@@ -11,15 +11,17 @@
  * for the specific language governing rights and limitations under the
  * License.
  *
- * The Original Code is Gmodel.
+ * The Original Code is S23M.
  *
  * The Initial Developer of the Original Code is
- * Sofismo AG (Sofismo).
+ * The S23M Foundation.
  * Portions created by the Initial Developer are
- * Copyright (C) 2009-2010 Sofismo AG.
+ * Copyright (C) 2012 The S23M Foundation.
  * All Rights Reserved.
  *
  * Contributor(s):
+ * Chul Kim
+ * Andrew Shewring
  * Jorn Bettin
  * ***** END LICENSE BLOCK ***** */
 

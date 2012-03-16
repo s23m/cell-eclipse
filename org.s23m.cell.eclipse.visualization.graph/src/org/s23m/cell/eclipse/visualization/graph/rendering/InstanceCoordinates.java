@@ -11,10 +11,10 @@
  * for the specific language governing rights and limitations under the
  * License.
  *
- * The Original Code is Gmodel.
+ * The Original Code is S23M.
  *
  * The Initial Developer of the Original Code is
- * Sofismo AG (Sofismo).
+ * The S23M Foundation.
  * Portions created by the Initial Developer are
  * Copyright (C) 2009-2010 Sofismo AG.
  * All Rights Reserved.
@@ -28,11 +28,11 @@ package org.s23m.cell.eclipse.visualization.graph.rendering;
 
 
 import org.eclipse.draw2d.geometry.Point;
-import org.s23m.cell.G;
+import org.s23m.cell.S23MKernel;
 import org.s23m.cell.Identity;
 import org.s23m.cell.Set;
 import org.s23m.cell.api.Instantiation;
-import org.s23m.cell.api.models.GmodelSemanticDomains;
+import org.s23m.cell.api.models.S23MSemanticDomains;
 import org.s23m.cell.api.models.Root;
 import org.s23m.cell.api.models2.RepositoryStructure;
 import org.s23m.cell.api.models2.Visualization;
@@ -47,7 +47,7 @@ public class InstanceCoordinates {
 	protected static final String VISIBILITIES = org.s23m.cell.api.models2.Visualization.visibilities.identity().name();
 
 	private final String INIT_COORD_VALUE = "0";
-	private static final Set coordDomain = Instantiation.addSemanticDomain("coordinates domain", "coordinates domains", GmodelSemanticDomains.finiteSets);
+	private static final Set coordDomain = Instantiation.addSemanticDomain("coordinates domain", "coordinates domains", S23MSemanticDomains.finiteSets);
 	private static final String ARTIFACT_VISUALIZATION_INSTANCE = org.s23m.cell.api.models2.Visualization.graphVisualization.identity().name();
 	private static final String VISUALIZATION = org.s23m.cell.api.models2.Visualization.visualizedGraph.identity().name();
 	private static final String SYMBOL = org.s23m.cell.api.models2.Visualization.symbol.identity().name();
@@ -56,7 +56,7 @@ public class InstanceCoordinates {
 	private static final String X = org.s23m.cell.api.models2.Visualization.x.identity().name();
 	private static final String Y = org.s23m.cell.api.models2.Visualization.y.identity().name();
 	private static final String Z = org.s23m.cell.api.models2.Visualization.z.identity().name();
-	private static final String ANON_NAME = GmodelSemanticDomains.anonymous.identity().name();
+	private static final String ANON_NAME = S23MSemanticDomains.anonymous.identity().name();
 
 	/* TODO create semantic identities for these two strings! */
 	public static final String VISUALIZED_ARTIFACT = "visualized graph";
@@ -147,7 +147,7 @@ public class InstanceCoordinates {
 
 	public Set getVisualizationVertexByName(final String name) {
 		for (final Set s : getArtifactVisualizationInstance().filterInstances()) {
-			if (s.flavor().isEqualTo(G.coreGraphs.vertex)) {
+			if (s.properClass().isEqualTo(S23MKernel.coreGraphs.vertex)) {
 				if (s.identity().name().equals(name)) {
 					return s;
 				}
@@ -157,8 +157,8 @@ public class InstanceCoordinates {
 	}
 
 	public Set getVisualizationEdgeById(final Identity id) {
-		for (final Set s : getArtifactVisualizationInstance().filterLinks()) {
-				if (s.flavor().isEqualTo(G.coreGraphs.edge)) {
+		for (final Set s : getArtifactVisualizationInstance().filterArrows()) {
+				if (s.properClass().isEqualTo(S23MKernel.coreGraphs.edge)) {
 					if (s.identity().name().equals(id.name())) {
 						return s;
 					}
@@ -169,13 +169,13 @@ public class InstanceCoordinates {
 
 	private Set createContainmentVisualizationLink(final Set metaLink, final Set firstSet, final Set secondSet) {
 		final Set link =
-			 Instantiation.link(metaLink,
+			 Instantiation.arrow(metaLink,
 					 Instantiation.addAnonymousDisjunctSemanticIdentitySet(coordDomain), Instantiation.addAnonymousDisjunctSemanticIdentitySet(coordDomain),
 					firstSet,
-					GmodelSemanticDomains.minCardinality_NOTAPPLICABLE, GmodelSemanticDomains.maxCardinality_NOTAPPLICABLE, GmodelSemanticDomains.isNavigable_NOTAPPLICABLE, GmodelSemanticDomains.isContainer_TRUE,
+					S23MSemanticDomains.minCardinality_NOTAPPLICABLE, S23MSemanticDomains.maxCardinality_NOTAPPLICABLE, S23MSemanticDomains.isNavigable_NOTAPPLICABLE, S23MSemanticDomains.isContainer_TRUE,
 					Instantiation.addAnonymousDisjunctSemanticIdentitySet(coordDomain),
 					secondSet,
-					GmodelSemanticDomains.minCardinality_NOTAPPLICABLE, GmodelSemanticDomains.maxCardinality_NOTAPPLICABLE, GmodelSemanticDomains.isNavigable_NOTAPPLICABLE, GmodelSemanticDomains.isContainer_FALSE
+					S23MSemanticDomains.minCardinality_NOTAPPLICABLE, S23MSemanticDomains.maxCardinality_NOTAPPLICABLE, S23MSemanticDomains.isNavigable_NOTAPPLICABLE, S23MSemanticDomains.isContainer_FALSE
 			);
 		if (link.identity().name().equals(ANON_NAME)) {
 			return link;
@@ -192,13 +192,13 @@ public class InstanceCoordinates {
 	}
 
 	private Set createNonContainmentReference(final Set metaInstance, final Set viz, final Set instanceToVisualize) {
-		final Set link = Instantiation.link(metaInstance,
+		final Set link = Instantiation.arrow(metaInstance,
 				Instantiation.addAnonymousDisjunctSemanticIdentitySet(coordDomain), Instantiation.addAnonymousDisjunctSemanticIdentitySet(coordDomain),
 				viz,
-				GmodelSemanticDomains.minCardinality_NOTAPPLICABLE, GmodelSemanticDomains.maxCardinality_NOTAPPLICABLE, GmodelSemanticDomains.isNavigable_NOTAPPLICABLE, GmodelSemanticDomains.isContainer_FALSE,
+				S23MSemanticDomains.minCardinality_NOTAPPLICABLE, S23MSemanticDomains.maxCardinality_NOTAPPLICABLE, S23MSemanticDomains.isNavigable_NOTAPPLICABLE, S23MSemanticDomains.isContainer_FALSE,
 				Instantiation.addAnonymousDisjunctSemanticIdentitySet(coordDomain),
 				instanceToVisualize,
-				GmodelSemanticDomains.minCardinality_NOTAPPLICABLE, GmodelSemanticDomains.maxCardinality_NOTAPPLICABLE, GmodelSemanticDomains.isNavigable_NOTAPPLICABLE, GmodelSemanticDomains.isContainer_FALSE
+				S23MSemanticDomains.minCardinality_NOTAPPLICABLE, S23MSemanticDomains.maxCardinality_NOTAPPLICABLE, S23MSemanticDomains.isNavigable_NOTAPPLICABLE, S23MSemanticDomains.isContainer_FALSE
 				);
 		if (link.identity().name().equals(ANON_NAME)) {
 			return link;
@@ -242,8 +242,8 @@ public class InstanceCoordinates {
 		final Set representationSet = findRepresentationInstance(instance, visualizedArtifact, visualizationAspect);
 		Set coordInstance = null;
 		if (representationSet != null) {
-			for (final Set l : visualizedArtifact.filterLinks()) {
-				if (l.flavor().isEqualTo(G.coreGraphs.edge)) {
+			for (final Set l : visualizedArtifact.filterArrows()) {
+				if (l.properClass().isEqualTo(S23MKernel.coreGraphs.edge)) {
 					final Set e = l;
 					if (e.from().identity().isEqualToRepresentation(representationSet.identity())) {
 						final Set toMetaInstance = e.to().category();
@@ -320,7 +320,7 @@ public class InstanceCoordinates {
 	}
 
 	public Set getArtifactVisualizationInstance() {
-		for (final Set s : Root.universalartifactengineering.filterInstances()) {
+		for (final Set s : Root.cellengineering.filterInstances()) {
 			if (s.identity().name().equals(ARTIFACT_VISUALIZATION_INSTANCE)) {
 				return s;
 			}

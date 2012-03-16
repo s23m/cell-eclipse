@@ -11,10 +11,10 @@
  * for the specific language governing rights and limitations under the
  * License.
  *
- * The Original Code is Gmodel.
+ * The Original Code is S23M.
  *
  * The Initial Developer of the Original Code is
- * Sofismo AG (Sofismo).
+ * The S23M Foundation.
  * Portions created by the Initial Developer are
  * Copyright (C) 2009-2010 Sofismo AG.
  * All Rights Reserved.
@@ -56,13 +56,13 @@ public class WorkspaceGraphNode extends GraphNode {
 	}
 
 	public void setAsCurrentWorkspaceNode() {
-		final GmodelNodeFigure nodeFigure = (GmodelNodeFigure) this.nodeFigure;
+		final S23MNodeFigure nodeFigure = (S23MNodeFigure) this.nodeFigure;
 		nodeFigure.setBackgroundColor(new Color(Display.getCurrent(), 153, 204, 255));
 		isSelected = true;
 	}
 
 	public void deSelectAsCurrentWorkspaceNode() {
-		final GmodelNodeFigure nodeFigure = (GmodelNodeFigure) this.nodeFigure;
+		final S23MNodeFigure nodeFigure = (S23MNodeFigure) this.nodeFigure;
 		final Display display = Display.getCurrent();
 		nodeFigure.setBackgroundColor(display.getSystemColor(DEFAULT_COLOR));
 		isSelected = false;

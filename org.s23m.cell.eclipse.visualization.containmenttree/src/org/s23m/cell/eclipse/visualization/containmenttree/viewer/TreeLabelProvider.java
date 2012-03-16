@@ -13,10 +13,10 @@ nse
  * for the specific language governing rights and limitations under the
  * License.
  *
- * The Original Code is Gmodel.
+ * The Original Code is S23M.
  *
  * The Initial Developer of the Original Code is
- * Sofismo AG (Sofismo).
+ * The S23M Foundation.
  * Portions created by the Initial Developer are
  * Copyright (C) 2009-2010 Sofismo AG.
  * All Rights Reserved.
@@ -32,7 +32,7 @@ import org.eclipse.jface.viewers.ILabelProvider;
 import org.eclipse.jface.viewers.ILabelProviderListener;
 import org.eclipse.swt.graphics.Image;
 import org.s23m.cell.Set;
-import org.s23m.cell.api.models.GmodelSemanticDomains;
+import org.s23m.cell.api.models.S23MSemanticDomains;
 import org.s23m.cell.api.models.Root;
 import org.s23m.cell.eclipse.visualization.containmenttree.viewer.image.TreeIcon;
 import org.s23m.cell.eclipse.visualization.containmenttree.viewer.model.ContainmentTreeNode;
@@ -44,7 +44,7 @@ public class TreeLabelProvider implements ILabelProvider  {
 		if (set.isEqualTo(Root.root)) {
 			return TreeIcon.ROOT.getImage();
 		} else if (set.container().isEqualTo(Root.root)) {
-			if (set.value(GmodelSemanticDomains.isAbstract).isEqualTo(GmodelSemanticDomains.isAbstract_FALSE)) {
+			if (set.value(S23MSemanticDomains.isAbstract).isEqualTo(S23MSemanticDomains.isAbstract_FALSE)) {
 				return TreeIcon.CONCRETE_INSTANCE.getImage();
 			} else {
 				return TreeIcon.ABSTRACT_INSTANCE.getImage();

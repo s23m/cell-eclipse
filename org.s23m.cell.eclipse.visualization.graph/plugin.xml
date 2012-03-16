@@ -5,12 +5,12 @@
    <extension
          point="org.eclipse.ui.editors">
       <editor
-            name="Gmodel Graph Visualization"
-            extensions="gmodel"
+            name="S23M Graph Visualization"
+            extensions="S23M"
             icon="icons/tree.png"
-            contributorClass="org.s23m.cell.eclipse.visualization.graph.editors.GmodelGraphViewerContributor"
-            class="org.s23m.cell.eclipse.visualization.graph.editors.GmodelGraphViewer"
-            id="org.s23m.cell.eclipse.visualization.graph.editors.GmodelGraphViewer">
+            contributorClass="org.s23m.cell.eclipse.visualization.graph.editors.S23MGraphViewerContributor"
+            class="org.s23m.cell.eclipse.visualization.graph.editors.S23MGraphViewer"
+            id="org.s23m.cell.eclipse.visualization.graph.editors.S23MGraphViewer">
       </editor>
    </extension>
 

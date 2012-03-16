@@ -5,7 +5,7 @@
          point="org.eclipse.ui.views">
       <category
             id="org.s23m.cell.eclipse.visualization.containmenttree.viewer"
-            name="Gmodel">
+            name="S23M">
       </category>
       <view
             category="org.s23m.cell.eclipse.visualization.containmenttree.viewer"

@@ -11,10 +11,10 @@
  * for the specific language governing rights and limitations under the
  * License.
  *
- * The Original Code is Gmodel.
+ * The Original Code is S23M.
  *
  * The Initial Developer of the Original Code is
- * Sofismo AG (Sofismo).
+ * The S23M Foundation.
  * Portions created by the Initial Developer are
  * Copyright (C) 2009-2010 Sofismo AG.
  * All Rights Reserved.
@@ -37,7 +37,8 @@ import org.eclipse.swt.custom.BusyIndicator;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Tree;
-import org.s23m.cell.G;
+import org.s23m.cell.S23MKernel;
+import org.s23m.cell.platform.models.CellPlatform;
 import org.s23m.cell.SemanticStateOfInMemoryModel;
 import org.s23m.cell.api.models.Root;
 import org.s23m.cell.api.serializerinterface.Reconstitution;
@@ -47,7 +48,6 @@ import org.s23m.cell.eclipse.visualization.containmenttree.viewer.Viewer;
 import org.s23m.cell.kernel.artifactinstantiation.RunInstantiationSequence;
 import org.s23m.cell.repository.client.RepositoryClient;
 import org.s23m.cell.repository.client.mediator.RepositoryClientMediator;
-import org.s23m.cell.semanticextensions.outershells.SemanticExtensions;
 import org.s23m.cell.serialization.container.ArtefactContainer;
 import org.s23m.cell.serialization.container.ArtefactContainer.Content;
 import org.s23m.cell.serialization.container.ContentType;
@@ -95,7 +95,7 @@ public final class Retrieve extends AbstractHandler {
 			}
 
 			private void bootstrappingWithRepository() {
-				org.s23m.cell.G.completeOpenSourceKernelInitialization();
+				S23MKernel.completeCellKernelInitialization();
 				final RepositoryClient client = RepositoryClientMediator.getInstance().getComponent(ProtocolType.REPOSITORY_CLIENT);
 				final ArtefactContainer retrievalArtifact = ObjectFactoryHolder.getInstance().createArtefactContainer();
 				retrievalArtifact.setContentType(SerializationType.CONTAINMENT_TREE.toString());
@@ -109,23 +109,23 @@ public final class Retrieve extends AbstractHandler {
 				if (!returnedArtifacts.getContent().isEmpty()) {
 					new ArtifactContainerContentMapper().recreateInstancesFromArtifactContainer(returnedArtifacts);
 				}
-				G.goLiveWithGmodelEditor();
+				S23MKernel.goLiveWithCellEditor();
 				ContainmentTreeViewerStatus.getInstance().setKernelInitialized(true);
 			}
 
 			private void bootstrappingByScripts() {
 				//org.s23m.cell.G.boot();
 				RunInstantiationSequence.run();
-				SemanticExtensions.instantiateFeature();
-				G.goLiveWithGmodelEditor();
+				CellPlatform.instantiateFeature();
+				S23MKernel.goLiveWithCellEditor();
 			}
 
 			private void retrievalInitialization() throws IllegalArgumentException, IllegalAccessException {
-				if (!SemanticStateOfInMemoryModel.gmodelEditorIsLive()) {
-					org.s23m.cell.semanticextensions.G.bootTemplate();
+				if (!SemanticStateOfInMemoryModel.cellEditorIsLive()) {
+					org.s23m.cell.platform.S23MPlatform.bootTemplate();
 					RunInstantiationSequence.run();
 					InstanceMap.getInstance();
-					G.goLiveWithGmodelEditor();
+					S23MKernel.goLiveWithCellEditor();
 				}
 			}
 
@@ -135,8 +135,8 @@ public final class Retrieve extends AbstractHandler {
 			}
 
 			private void fullInstanceDeserialization() throws IllegalAccessException {
-				if (!SemanticStateOfInMemoryModel.gmodelSemanticDomainIsInitialized()) {
-					Reconstitution.completeGmodelSemanticDomainInitialization();
+				if (!SemanticStateOfInMemoryModel.cellKernelSemanticDomainIsInitialized()) {
+					Reconstitution.completeS23MSemanticDomainInitialization();
 				}
 				final InstanceHandler deSz = InstanceHandler.getInstance();
 				deSz.doInitialFullDeserialization();
