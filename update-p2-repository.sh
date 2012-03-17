@@ -47,5 +47,5 @@ then
 		echo "Eclipse executable not found ("$ECLIPSE_EXEC")"
   fi
 else 
-	echo "Eclipse home must be set as ECLIPSE_HOME"
+	echo "Eclipse home must be set as ECLIPSE_HOME environment variable"
 fi
