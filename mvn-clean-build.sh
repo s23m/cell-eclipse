@@ -14,7 +14,7 @@ else
 fi
 
 echo "Resolved mvn location: $MVN_EXECUTABLE"
-if [ -n "${MVN_EXECUTABLE+x}" ]
+if [ -n "${MVN_EXECUTABLE+x}" ] && [ -f $MVN_EXECUTABLE ]
 then
 	# Remove Tycho p2 caches
 	rm -rf ~/.m2/repository/.cache
@@ -23,7 +23,9 @@ then
 	# Remove cached S23M binaries
 	rm -rf ~/.m2/repository/org/s23m
 
-	# Execute build
+	# Execute clean build
 	set MAVEN_OPTS="-Xmx512m -XX:MaxPermSize=256m"
 	bash $MVN_EXECUTABLE clean install
+else
+	echo "The resolved mvn executable location does not exist or is not a regular file"
 fi
