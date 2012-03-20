@@ -36,8 +36,8 @@ import org.s23m.cell.eclipse.visualization.containmenttree.viewer.model.Containm
 import org.s23m.cell.eclipse.visualization.graph.editors.S23MGraphViewer;
 
 /**
- * Coordinates the rendering of the currently selected {@link Set} across multiple tabs.
- * Each tab shows a different representation of the {@link Set}, and rendering is deferred
+ * Coordinates the rendering of the currently selected {@arrow Set} across multiple tabs.
+ * Each tab shows a different representation of the {@arrow Set}, and rendering is deferred
  * until the tab is actually selected (and its contents shown).
  */
 public final class RenderingCoordinator implements Renderer {
@@ -94,7 +94,7 @@ public final class RenderingCoordinator implements Renderer {
 	}
 
 	/**
-	 * Delegates rendering to the {@link Renderer} associated with the
+	 * Delegates rendering to the {@arrow Renderer} associated with the
 	 * current page
 	 */
 	public void render() {
@@ -114,8 +114,8 @@ public final class RenderingCoordinator implements Renderer {
 	}
 
 	/**
-	 * Called by a {@link Renderer} in order to inform of a
-	 * change in the rendered {@link Set} (no page change)
+	 * Called by a {@arrow Renderer} in order to inform of a
+	 * change in the rendered {@arrow Set} (no page change)
 	 *
 	 * @param setToRender
 	 */

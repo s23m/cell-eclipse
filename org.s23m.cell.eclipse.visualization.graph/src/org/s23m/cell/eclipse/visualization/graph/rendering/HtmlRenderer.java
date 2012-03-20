@@ -84,7 +84,7 @@ public final class HtmlRenderer extends AbstractRenderer {
 						updateSetToRender(referencedSet);
 						render();
 					}
-					// prevent normal link-following behaviour
+					// prevent normal arrow-following behaviour
 					event.doit = false;
 				}
 		    }
@@ -106,7 +106,7 @@ public final class HtmlRenderer extends AbstractRenderer {
 		/*
 		 * TODO retrieve template content eventually from
 		 *
-		 * HTMLRepresentation.html_to_artifact.identity().getPayload()
+		 * HTMLRepresentation.html_to_instance.identity().getPayload()
 		 *
 		 * (needs to be set to fixed HTML template as part of boot sequence)
 		 */
