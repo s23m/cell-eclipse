@@ -36,11 +36,11 @@ public abstract class AbstractRenderer implements Renderer {
 	private boolean renderingNeeded;
 
 	/**
-	 * A local reference to the {@arrow Set} last rendered is retained because the
-	 * {@arrow RenderingCoordinator}'s reference may have changed while the focus was
+	 * A local reference to the {@link Set} last rendered is retained because the
+	 * {@link RenderingCoordinator}'s reference may have changed while the focus was
 	 * on a different tab (different renderer), and thus the normal "dirty check"
-	 * (involving checking whether the argument to {@arrow #updateSetToRender(Set)} is
-	 * the same as that of the {@arrow RenderingCoordinator}) gives the wrong result.
+	 * (involving checking whether the argument to {@link #updateSetToRender(Set)} is
+	 * the same as that of the {@link RenderingCoordinator}) gives the wrong result.
 	 * In that case, rendering should be done again for the new situation.
 	 */
 	private Set setToRender;

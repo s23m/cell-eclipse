@@ -30,14 +30,14 @@ import org.s23m.cell.Set;
 public interface Renderer {
 
 	/**
-	 * Updates the {@arrow Set} to be rendered when {@arrow #render()} is next called
+	 * Updates the {@link Set} to be rendered when {@link #render()} is next called
 	 *
 	 * @param setToRender
 	 */
 	void updateSetToRender(Set setToRender);
 
 	/**
-	 * Renders the {@arrow Set} last passed to {@arrow #updateSetToRender(Set)}
+	 * Renders the {@link Set} last passed to {@link #updateSetToRender(Set)}
 	 */
 	void render();
 

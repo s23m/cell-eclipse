@@ -42,7 +42,7 @@ public class RenderingHistory {
 	}
 
 	/**
-	 * Invoked after navigating a "hyperlink" to a different {@arrow Set}
+	 * Invoked after navigating a "hyperlink" to a different {@link Set}
 	 * @param setToRender
 	 */
 	public void updateSetToRender(final Set setToRender) {
@@ -63,10 +63,10 @@ public class RenderingHistory {
 	}
 
 	/**
-	 * Navigate to a different {@arrow Set} by way of an offset
+	 * Navigate to a different {@link Set} by way of an offset
 	 *
 	 * @param offset
-	 * @return the resulting {@arrow Set}
+	 * @return the resulting {@link Set}
 	 */
 	public Set navigate(final int offset) {
 		if (offset == 0) {
