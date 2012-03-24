@@ -47,7 +47,7 @@ public class InstanceCoordinates {
 	protected static final String VISIBILITIES = org.s23m.cell.api.models2.Visualization.visibilities.identity().name();
 
 	private final String INIT_COORD_VALUE = "0";
-	private static final Set coordDomain = Instantiation.addSemanticDomain("coordinates domain", "coordinates domains", S23MSemanticDomains.finiteSets);
+	private static final Set coordDomain = Instantiation.addSemanticDomain("coordinates domain", "coordinates domains", S23MSemanticDomains.agentSemanticDomains);
 	private static final String ARTIFACT_VISUALIZATION_INSTANCE = org.s23m.cell.api.models2.Visualization.graphVisualization.identity().name();
 	private static final String VISUALIZATION = org.s23m.cell.api.models2.Visualization.visualizedGraph.identity().name();
 	private static final String SYMBOL = org.s23m.cell.api.models2.Visualization.symbol.identity().name();
