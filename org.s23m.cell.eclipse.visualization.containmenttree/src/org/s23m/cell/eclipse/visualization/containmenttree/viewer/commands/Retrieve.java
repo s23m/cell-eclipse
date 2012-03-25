@@ -38,7 +38,6 @@ import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Tree;
 import org.s23m.cell.S23MKernel;
-import org.s23m.cell.platform.models.CellPlatform;
 import org.s23m.cell.SemanticStateOfInMemoryModel;
 import org.s23m.cell.api.models.Root;
 import org.s23m.cell.api.serializerinterface.Reconstitution;
@@ -46,6 +45,7 @@ import org.s23m.cell.eclipse.visualization.containmenttree.viewer.ContainmentTre
 import org.s23m.cell.eclipse.visualization.containmenttree.viewer.ContainmentTreeViewerStatus;
 import org.s23m.cell.eclipse.visualization.containmenttree.viewer.Viewer;
 import org.s23m.cell.kernel.artifactinstantiation.RunInstantiationSequence;
+import org.s23m.cell.platform.models.CellPlatform;
 import org.s23m.cell.repository.client.RepositoryClient;
 import org.s23m.cell.repository.client.mediator.RepositoryClientMediator;
 import org.s23m.cell.serialization.container.ArtefactContainer;
