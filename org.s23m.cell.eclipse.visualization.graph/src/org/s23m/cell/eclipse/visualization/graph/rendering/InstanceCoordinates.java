@@ -28,12 +28,12 @@ package org.s23m.cell.eclipse.visualization.graph.rendering;
 
 
 import org.eclipse.draw2d.geometry.Point;
-import org.s23m.cell.S23MKernel;
 import org.s23m.cell.Identity;
+import org.s23m.cell.S23MKernel;
 import org.s23m.cell.Set;
 import org.s23m.cell.api.Instantiation;
-import org.s23m.cell.api.models.S23MSemanticDomains;
 import org.s23m.cell.api.models.Root;
+import org.s23m.cell.api.models.S23MSemanticDomains;
 import org.s23m.cell.api.models2.RepositoryStructure;
 import org.s23m.cell.api.models2.Visualization;
 
@@ -325,7 +325,7 @@ public class InstanceCoordinates {
 				return s;
 			}
 		}
-		throw new IllegalStateException("No artifacti visualizedGraph instance is found.");
+		throw new IllegalStateException("No artifact visualisation instance was found.");
 	}
 
 	public void updateCoordinatesOf(final Set instance, final Point location, final Set visualizedArtifact, final Set visualizationAspect) {
