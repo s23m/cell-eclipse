@@ -122,7 +122,7 @@ public final class Retrieve extends AbstractHandler {
 
 			private void retrievalInitialization() throws IllegalArgumentException, IllegalAccessException {
 				if (!SemanticStateOfInMemoryModel.cellEditorIsLive()) {
-					org.s23m.cell.platform.S23MPlatform.bootTemplate();
+					org.s23m.cell.platform.S23MPlatform.boot();
 					RunInstantiationSequence.run();
 					InstanceMap.getInstance();
 					S23MKernel.goLiveWithCellEditor();
