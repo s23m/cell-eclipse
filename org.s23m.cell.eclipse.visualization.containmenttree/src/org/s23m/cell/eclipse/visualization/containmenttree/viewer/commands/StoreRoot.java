@@ -42,7 +42,7 @@ import org.s23m.cell.api.models.Root;
 import org.s23m.cell.eclipse.visualization.containmenttree.viewer.ContainmentTreeManager;
 import org.s23m.cell.eclipse.visualization.containmenttree.viewer.ContainmentTreeViewerStatus;
 import org.s23m.cell.eclipse.visualization.containmenttree.viewer.Viewer;
-import org.s23m.cell.platform.models.CellPlatform;
+import org.s23m.cell.platform.api.models.CellPlatform;
 import org.s23m.cell.repository.client.RepositoryClient;
 import org.s23m.cell.repository.client.RepositoryClientImpl;
 import org.s23m.cell.cellplatform.testscripts.Test;

@@ -45,7 +45,7 @@ import org.s23m.cell.eclipse.visualization.containmenttree.viewer.ContainmentTre
 import org.s23m.cell.eclipse.visualization.containmenttree.viewer.ContainmentTreeViewerStatus;
 import org.s23m.cell.eclipse.visualization.containmenttree.viewer.Viewer;
 import org.s23m.cell.kernel.artifactinstantiation.RunInstantiationSequence;
-import org.s23m.cell.platform.models.CellPlatform;
+import org.s23m.cell.platform.api.models.CellPlatform;
 import org.s23m.cell.repository.client.RepositoryClient;
 import org.s23m.cell.repository.client.mediator.RepositoryClientMediator;
 import org.s23m.cell.serialization.container.ArtefactContainer;
