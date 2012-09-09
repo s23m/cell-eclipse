@@ -6,6 +6,9 @@
 	<packaging>pom</packaging>
 	<modules>
 		<!-- Plugins -->
+		<module>org.s23m.cell.artifactpool</module>
+		<module>org.s23m.cell.common</module>
+		<module>org.s23m.cell.connector</module>
 		<module>org.s23m.cell.eclipse.connector.database</module>
 		<module>org.s23m.cell.eclipse.connector.database.db2</module>
 		<module>org.s23m.cell.eclipse.connector.database.mysql</module>
@@ -13,6 +16,16 @@
 		<module>org.s23m.cell.eclipse.preferences</module>
 		<module>org.s23m.cell.eclipse.preferences.ui</module>
 		<module>org.s23m.cell.eclipse.search.widget</module>
+		<!--
+		<module>org.s23m.cell.editor.semanticdomain</module>
+		-->
+		<module>org.s23m.cell.generator</module>
+		<module>org.s23m.cell.hibernateosgi</module>
+		<module>org.s23m.cell.objectpool</module>
+		<module>org.s23m.cell.repository</module>
+		<module>org.s23m.cell.repository.client</module>
+		<module>org.s23m.cell.serialization</module>
+		<module>org.s23m.cell.statistics</module>
 		<module>org.s23m.cell.eclipse.visualization.containmenttree</module>
 		<module>org.s23m.cell.eclipse.visualization.graph</module>
 

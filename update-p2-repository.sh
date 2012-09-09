@@ -2,7 +2,11 @@
 set -e
 set -o posix
 
-DIR=`pwd`
+PWD=`pwd`
+# Quick hack for msysgit
+DIR=${PWD/\/C\//C:/}
+echo $DIR
+
 # Assume that cell is in the same directory
 CELL_DIR=$DIR/../cell
 BUNDLE_ROOT="$DIR/tycho-build/temp"
