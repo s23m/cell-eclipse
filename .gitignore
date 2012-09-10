@@ -2,3 +2,4 @@ target
 bin
 *.class
 org.s23m.cell.eclipse.openarchitectureware.tests/src-gen
+project-dependencies.graphml

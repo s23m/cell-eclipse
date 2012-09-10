@@ -43,6 +43,7 @@
 	</properties>
 	<build>
 		<plugins>
+			<!-- See http://wiki.eclipse.org/Tycho/Packaging_Types#eclipse-repository -->
 			<plugin>
 				<groupId>org.eclipse.tycho</groupId>
 				<artifactId>tycho-maven-plugin</artifactId>
@@ -62,7 +63,17 @@
 				<artifactId>maven-osgi-test-plugin</artifactId>
 				<version>${tycho-version}</version>
 			</plugin>
-			<!-- See http://wiki.eclipse.org/Tycho/Packaging_Types#eclipse-repository -->
+			
+			<!--
+			Example usage:
+			
+			mvn dependency:tree -DoutputType=graphml -DoutputFile=dependency.graphml
+			-->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-dependency-plugin</artifactId>
+				<version>2.2</version>
+			</plugin>
       <plugin>
         <groupId>org.eclipse.tycho</groupId>
         <artifactId>tycho-p2-repository-plugin</artifactId>
