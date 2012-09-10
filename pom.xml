@@ -10,9 +10,7 @@
 		<module>org.s23m.cell.common</module>
 		<module>org.s23m.cell.connector</module>
 		<module>org.s23m.cell.eclipse.connector.database</module>
-		<module>org.s23m.cell.eclipse.connector.database.db2</module>
 		<module>org.s23m.cell.eclipse.connector.database.mysql</module>
-		<module>org.s23m.cell.eclipse.connector.database.postgresql</module>
 		<module>org.s23m.cell.eclipse.preferences</module>
 		<module>org.s23m.cell.eclipse.preferences.ui</module>
 		<module>org.s23m.cell.eclipse.search.widget</module>

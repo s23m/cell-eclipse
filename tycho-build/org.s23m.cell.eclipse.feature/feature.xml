@@ -19,9 +19,7 @@
 	</license>
 
 	<plugin id="org.s23m.cell.eclipse.connector.database" version="1.0.0" unpack="false" download-size="0" install-size="0"></plugin>
-	<plugin id="org.s23m.cell.eclipse.connector.database.db2" version="1.0.0" unpack="false" download-size="0" install-size="0"></plugin>
 	<plugin id="org.s23m.cell.eclipse.connector.database.mysql" version="1.0.0" unpack="false" download-size="0" install-size="0"></plugin>
-	<plugin id="org.s23m.cell.eclipse.connector.database.postgresql" version="1.0.0" unpack="false" download-size="0" install-size="0"></plugin>
 	<plugin id="org.s23m.cell.eclipse.preferences" version="1.0.0" unpack="false" download-size="0" install-size="0"></plugin>
 	<plugin id="org.s23m.cell.eclipse.preferences.ui" version="1.0.0" unpack="false" download-size="0" install-size="0"></plugin>
 	<plugin id="org.s23m.cell.eclipse.search.widget" version="1.0.0" unpack="false" download-size="0" install-size="0"></plugin>
