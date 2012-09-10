@@ -18,6 +18,7 @@
 		<module>org.s23m.cell.eclipse.search.widget</module>
 		<module>org.s23m.cell.generator</module>
 		<module>org.s23m.cell.hibernateosgi</module>
+		<module>org.s23m.cell.objectpool</module>
 		<module>org.s23m.cell.repository</module>
 		<module>org.s23m.cell.repository.client</module>
 		<module>org.s23m.cell.serialization</module>
