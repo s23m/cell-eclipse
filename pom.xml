@@ -13,7 +13,9 @@
 		<module>org.s23m.cell.eclipse.connector.database.mysql</module>
 		<module>org.s23m.cell.eclipse.preferences</module>
 		<module>org.s23m.cell.eclipse.preferences.ui</module>
+		<!--
 		<module>org.s23m.cell.eclipse.search.widget</module>
+		-->
 		<module>org.s23m.cell.generator</module>
 		<module>org.s23m.cell.hibernateosgi</module>
 		<module>org.s23m.cell.objectpool</module>
