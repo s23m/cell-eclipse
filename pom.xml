@@ -21,7 +21,6 @@
 		<module>org.s23m.cell.repository</module>
 		<module>org.s23m.cell.repository.client</module>
 		<module>org.s23m.cell.serialization</module>
-		<module>org.s23m.cell.statistics</module>
 		<module>org.s23m.cell.eclipse.visualization.containmenttree</module>
 		<module>org.s23m.cell.eclipse.visualization.graph</module>
 
