@@ -100,10 +100,6 @@ public class StoreRoot extends AbstractHandler {
 				S23MKernel.goLiveWithCellEditor();
 			}
 
-			private void fullInstantiation() {
-				org.s23m.cell.platform.testscripts.Test.main(null);
-			}
-
 			private List<String> getAllArtifacts() throws Exception {
 				final Serializer sz = SerializerHolder.getS23MInstanceSerializer(SerializationType.XML);
 				final List<SerializationContent> sessionContent = sz.serializeRoot();
