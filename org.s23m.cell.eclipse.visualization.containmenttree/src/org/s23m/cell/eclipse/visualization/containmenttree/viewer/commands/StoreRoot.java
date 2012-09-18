@@ -45,7 +45,6 @@ import org.s23m.cell.eclipse.visualization.containmenttree.viewer.Viewer;
 import org.s23m.cell.platform.api.models.CellPlatform;
 import org.s23m.cell.repository.client.RepositoryClient;
 import org.s23m.cell.repository.client.RepositoryClientImpl;
-import org.s23m.cell.cellplatform.testscripts.Test;
 import org.s23m.cell.serialization.container.ArtefactContainer;
 import org.s23m.cell.serialization.container.ObjectFactoryHolder;
 import org.s23m.cell.serialization.serializer.SerializationContent;
@@ -102,7 +101,7 @@ public class StoreRoot extends AbstractHandler {
 			}
 
 			private void fullInstantiation() {
-				Test.main(null);
+				org.s23m.cell.platform.testscripts.Test.main(null);
 			}
 
 			private List<String> getAllArtifacts() throws Exception {
