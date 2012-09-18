@@ -1,1 +1,0 @@
-[![Build Status](https://buildhive.cloudbees.com/job/s23m/job/cell-eclipse/badge/icon)](https://buildhive.cloudbees.com/job/s23m/job/cell-eclipse/)
