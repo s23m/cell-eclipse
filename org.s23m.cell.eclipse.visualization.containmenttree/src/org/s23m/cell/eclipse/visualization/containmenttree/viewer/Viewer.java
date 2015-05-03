@@ -59,7 +59,6 @@ import org.eclipse.ui.IWorkbenchPartSite;
 import org.eclipse.ui.handlers.IHandlerService;
 import org.eclipse.ui.part.ViewPart;
 import org.s23m.cell.eclipse.visualization.containmenttree.viewer.commands.Retrieve;
-import org.s23m.cell.eclipse.visualization.containmenttree.viewer.commands.Search;
 import org.s23m.cell.eclipse.visualization.containmenttree.viewer.commands.StoreRoot;
 import org.s23m.cell.eclipse.visualization.containmenttree.viewer.handlers.EditorLoadingHandler;
 import org.s23m.cell.eclipse.visualization.containmenttree.viewer.image.TreeIcon;
@@ -136,9 +135,9 @@ public class Viewer extends ViewPart {
 		btnComposite.setLayout(btnCompositeLayout);
 		btnComposite.setLayoutData(btnCompositeLData);
 		btnToolbar = new ToolBar(btnComposite, SWT.NONE);
-		final ToolItem itemSearch = new ToolItem(btnToolbar, SWT.NONE);
-		itemSearch.setImage(TreeIcon.SEARCH.getImage());
-		itemSearch.setToolTipText(TreeIcon.SEARCH.name().toLowerCase());
+		//final ToolItem itemSearch = new ToolItem(btnToolbar, SWT.NONE);
+		//itemSearch.setImage(TreeIcon.SEARCH.getImage());
+		//itemSearch.setToolTipText(TreeIcon.SEARCH.name().toLowerCase());
 		final ToolItem itemRetrieve = new ToolItem(btnToolbar, SWT.NONE);
 		itemRetrieve.setImage(TreeIcon.RETRIEVE.getImage());
 		itemRetrieve.setToolTipText(TreeIcon.RETRIEVE.name().toLowerCase());
@@ -148,17 +147,19 @@ public class Viewer extends ViewPart {
 		itemStore.setEnabled(false);
 	    final Listener listener = new Listener() {
 	        public void handleEvent(final Event event) {
-	        	 if (event.widget.equals(itemSearch)) {
+	        	 /*if (event.widget.equals(itemSearch)) {
 	     	    	final String searchTerm = searchComposite.getText();
 	 				if (searchTerm.length() > 0) {
 						Viewer.setSearchText(searchTerm);
 						execCommand(Search.COMMAND_ID);
 					}
-	             } else if(event.widget.equals(itemRetrieve)) {
-	            	 execCommand(Retrieve.COMMAND_ID);
-	             } else if(event.widget.equals(itemStore)) {
-	            	 execCommand(StoreRoot.COMMAND_ID);
-	             }
+	             } else
+	             */
+	        	if(event.widget.equals(itemRetrieve)) {
+	        		execCommand(Retrieve.COMMAND_ID);
+	        	} else if(event.widget.equals(itemStore)) {
+	        		execCommand(StoreRoot.COMMAND_ID);
+	        	}
 	        }
 
 			private void execCommand(final String commandId) {
@@ -171,7 +172,7 @@ public class Viewer extends ViewPart {
 			}
 	      };
 
-	    itemSearch.addListener(SWT.Selection, listener);
+	    //itemSearch.addListener(SWT.Selection, listener);
 	    itemRetrieve.addListener(SWT.Selection, listener);
 		itemStore.addListener(SWT.Selection, listener);
 		createTree(mainComposite);

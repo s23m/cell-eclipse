@@ -26,7 +26,6 @@
 
 package org.s23m.cell.eclipse.visualization.containmenttree.viewer.commands;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -38,10 +37,6 @@ import org.eclipse.swt.custom.BusyIndicator;
 import org.eclipse.swt.widgets.Display;
 import org.s23m.cell.S23MKernel;
 import org.s23m.cell.platform.api.models.CellPlatform;
-import org.s23m.cell.serialization.serializer.SerializationContent;
-import org.s23m.cell.serialization.serializer.SerializationType;
-import org.s23m.cell.serialization.serializer.Serializer;
-import org.s23m.cell.serialization.serializer.SerializerHolder;
 
 public class StoreRoot extends AbstractHandler {
 
@@ -94,6 +89,7 @@ public class StoreRoot extends AbstractHandler {
 			}
 
 			private List<String> getAllArtifacts() throws Exception {
+				/*
 				final Serializer sz = SerializerHolder.getS23MInstanceSerializer(SerializationType.XML);
 				final List<SerializationContent> sessionContent = sz.serializeRoot();
 				final List<String> artifacts = new ArrayList<String>();
@@ -101,8 +97,8 @@ public class StoreRoot extends AbstractHandler {
 				for(final SerializationContent content : sessionContent) {
 					artifacts.add(content.getContent());
 				}
-
-				return artifacts;
+				*/
+				return null;
 			}
 
 	    });

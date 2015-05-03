@@ -34,7 +34,6 @@ import java.util.Map;
 import org.s23m.cell.S23MKernel;
 import org.s23m.cell.Set;
 import org.s23m.cell.api.models.Root;
-import org.s23m.cell.serialization.serializer.InstanceBuilder;
 
 public class ContainmentModel {
 
@@ -55,7 +54,7 @@ public class ContainmentModel {
 	private void setUpContentTree(final ContainmentTreeNode rootNode) {
 		final Set rootSet = rootNode.getSet();
 		for (final Set set : rootSet.filterInstances()) {
-			if (InstanceBuilder.isSerializableInstance(set) && set.properClass().isEqualTo(S23MKernel.coreGraphs.vertex)) {
+			if (isSerializableInstance(set) && set.properClass().isEqualTo(S23MKernel.coreGraphs.vertex)) {
 				final ContainmentTreeNode node = new ContainmentTreeNode(
 						rootNode, set);
 				setUpVertices(node);
@@ -118,6 +117,15 @@ public class ContainmentModel {
 				}
 			}
 		}
+	}
+
+	// taken from org.s23m.cell.serialization project
+	private static boolean isSerializableInstance(final Set set) {
+		return !set.identity().isPartOfKernel() ||
+		set.identity().isEqualToRepresentation(Root.cellengineering.identity()) ||
+		set.identity().isEqualToRepresentation(Root.semanticdomains.identity()) ||
+		set.identity().isEqualToRepresentation(Root.models.identity()) ||
+		set.container().identity().isEqualToRepresentation(Root.models.identity());
 	}
 
 	private void setUpLowerSets(final ContainmentTreeNode parentNode) {

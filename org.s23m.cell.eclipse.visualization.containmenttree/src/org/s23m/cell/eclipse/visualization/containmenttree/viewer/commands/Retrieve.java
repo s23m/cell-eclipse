@@ -38,14 +38,11 @@ import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Tree;
 import org.s23m.cell.S23MKernel;
-import org.s23m.cell.SemanticStateOfInMemoryModel;
-import org.s23m.cell.api.serializerinterface.Reconstitution;
 import org.s23m.cell.eclipse.visualization.containmenttree.viewer.ContainmentTreeManager;
 import org.s23m.cell.eclipse.visualization.containmenttree.viewer.ContainmentTreeViewerStatus;
 import org.s23m.cell.eclipse.visualization.containmenttree.viewer.Viewer;
 import org.s23m.cell.kernel.artifactinstantiation.RunInstantiationSequence;
 import org.s23m.cell.platform.api.models.CellPlatform;
-import org.s23m.cell.serialization.serializer.InstanceMap;
 
 public final class Retrieve extends AbstractHandler {
 
@@ -112,6 +109,7 @@ public final class Retrieve extends AbstractHandler {
 				S23MKernel.goLiveWithCellEditor();
 			}
 
+			/*
 			private void retrievalInitialization() throws IllegalArgumentException, IllegalAccessException {
 				if (!SemanticStateOfInMemoryModel.cellEditorIsLive()) {
 					org.s23m.cell.platform.S23MPlatform.boot();
@@ -133,6 +131,7 @@ public final class Retrieve extends AbstractHandler {
 				final InstanceHandler deSz = InstanceHandler.getInstance();
 				deSz.doInitialFullDeserialization();
 			}
+			*/
 	    });
 	    return null;
 	}

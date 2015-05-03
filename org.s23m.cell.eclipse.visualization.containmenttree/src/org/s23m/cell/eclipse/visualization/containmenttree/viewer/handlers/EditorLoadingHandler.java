@@ -26,13 +26,9 @@
 
 package org.s23m.cell.eclipse.visualization.containmenttree.viewer.handlers;
 
-import java.util.List;
-
 import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.PartInitException;
-import org.s23m.cell.serialization.container.SearchResultType;
-import org.s23m.cell.eclipse.visualization.containmenttree.viewer.SearchWidgetInput;
 import org.s23m.cell.eclipse.visualization.containmenttree.viewer.Viewer;
 import org.s23m.cell.eclipse.visualization.containmenttree.viewer.VisualizationInput;
 import org.s23m.cell.eclipse.visualization.containmenttree.viewer.model.ContainmentTreeNode;
@@ -56,6 +52,7 @@ public class EditorLoadingHandler {
 		return Viewer.getViewerSite().getPage();
 	}
 
+	/*
 	public static void openSearchResultsWidget(final String searchText, final List<SearchResultType> results) {
 		try {
 			 final IWorkbenchPage page = getActivePage();
@@ -64,7 +61,7 @@ public class EditorLoadingHandler {
 			java.util.logging.Logger.getLogger("global").log(
 					java.util.logging.Level.SEVERE, null, ex);
 		}
-
 	}
+	*/
 }
 

@@ -28,8 +28,6 @@ package org.s23m.cell.eclipse.visualization.containmenttree.viewer;
 
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.osgi.framework.BundleContext;
-import org.s23m.cell.serialization.serializer.SerializationType;
-import org.s23m.cell.serialization.serializer.SerializerHolder;
 
 /**
  * The activator class controls the plug-in life cycle
@@ -46,7 +44,6 @@ public class ContainmentTreeViewerPlugin extends AbstractUIPlugin {
 	public void start(final BundleContext context) throws Exception {
 		super.start(context);
 		plugin = this;
-		SerializerHolder.getS23MInstanceSerializer(SerializationType.XML); //to initialize the serializer
 		updateUIConfiguration();
 		addPreferencesChangeListener();
 	}
