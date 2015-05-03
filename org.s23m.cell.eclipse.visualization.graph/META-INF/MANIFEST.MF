@@ -15,8 +15,6 @@ Require-Bundle: org.eclipse.ui,
  org.s23m.cell.eclipse.visualization.containmenttree,
  org.eclipse.ui.forms,
  org.s23m.cell.kernel.tests,
- org.s23m.cell.serialization,
- org.s23m.cell.connector,
  org.s23m.cell.xtend2.templates
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
