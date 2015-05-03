@@ -26,7 +26,6 @@
 
 package org.s23m.cell.eclipse.visualization.containmenttree.viewer.commands;
 
-import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -35,16 +34,7 @@ import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.swt.custom.BusyIndicator;
 import org.eclipse.swt.widgets.Display;
-import org.eclipse.swt.widgets.Tree;
 import org.s23m.cell.eclipse.visualization.containmenttree.viewer.Viewer;
-import org.s23m.cell.eclipse.visualization.containmenttree.viewer.handlers.EditorLoadingHandler;
-import org.s23m.cell.repository.client.RepositoryClient;
-import org.s23m.cell.repository.client.mediator.RepositoryClientMediator;
-import org.s23m.cell.serialization.container.ArtefactContainer;
-import org.s23m.cell.serialization.container.ContainerTypeMapper;
-import org.s23m.cell.serialization.container.SearchResultType;
-import org.s23m.cell.serialization.serializer.ProtocolType;
-import org.s23m.cell.serialization.serializer.SerializationType;
 
 public class Search extends AbstractHandler {
 
@@ -65,6 +55,7 @@ public class Search extends AbstractHandler {
 		        }
 
 				private void doSearch() {
+					/*
 					final RepositoryClient repoClient = RepositoryClientMediator.getInstance().getComponent(ProtocolType.REPOSITORY_CLIENT);
 					final ArtefactContainer searchRequestContainer = ContainerTypeMapper.mapArugmentToArtefactContainerContent(searchTxt, SerializationType.SEARCH_ARGUMENTS);
 					final ArtefactContainer searchResultsContainer = repoClient.get(searchRequestContainer);
@@ -83,6 +74,7 @@ public class Search extends AbstractHandler {
 							}
 						});
 					}
+					*/
 				}
 			});
 		}

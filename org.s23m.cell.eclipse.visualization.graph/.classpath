@@ -6,5 +6,7 @@
 	<classpathentry kind="lib" path="lib/org.eclipse.draw2d_3.6.0.v20100525-1225.jar"/>
 	<classpathentry kind="lib" path="lib/org.eclipse.zest.core_1.2.0.v20100525-1225.jar"/>
 	<classpathentry kind="lib" path="lib/org.eclipse.zest.layouts_1.1.0.v20100616-1515.jar"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/org.s23m.cell.serialization"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/org.s23m.cell.xtend2.templates"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

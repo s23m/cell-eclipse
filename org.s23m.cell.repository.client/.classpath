@@ -8,5 +8,7 @@
 	<classpathentry kind="lib" path="lib/commons-collections-3.2.1.jar"/>
 	<classpathentry kind="lib" path="lib/commons-cli-1.1.jar"/>
 	<classpathentry kind="lib" path="lib/commons-io-1.4.jar"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/org.s23m.cell.objectpool"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/org.s23m.cell.connector"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

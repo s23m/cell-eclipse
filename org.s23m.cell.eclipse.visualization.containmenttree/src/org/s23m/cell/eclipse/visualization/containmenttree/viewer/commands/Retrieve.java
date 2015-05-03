@@ -39,23 +39,13 @@ import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Tree;
 import org.s23m.cell.S23MKernel;
 import org.s23m.cell.SemanticStateOfInMemoryModel;
-import org.s23m.cell.api.models.Root;
 import org.s23m.cell.api.serializerinterface.Reconstitution;
 import org.s23m.cell.eclipse.visualization.containmenttree.viewer.ContainmentTreeManager;
 import org.s23m.cell.eclipse.visualization.containmenttree.viewer.ContainmentTreeViewerStatus;
 import org.s23m.cell.eclipse.visualization.containmenttree.viewer.Viewer;
 import org.s23m.cell.kernel.artifactinstantiation.RunInstantiationSequence;
 import org.s23m.cell.platform.api.models.CellPlatform;
-import org.s23m.cell.repository.client.RepositoryClient;
-import org.s23m.cell.repository.client.mediator.RepositoryClientMediator;
-import org.s23m.cell.serialization.container.ArtefactContainer;
-import org.s23m.cell.serialization.container.ArtefactContainer.Content;
-import org.s23m.cell.serialization.container.ContentType;
-import org.s23m.cell.serialization.container.ObjectFactoryHolder;
-import org.s23m.cell.serialization.serializer.ArtifactContainerContentMapper;
 import org.s23m.cell.serialization.serializer.InstanceMap;
-import org.s23m.cell.serialization.serializer.ProtocolType;
-import org.s23m.cell.serialization.serializer.SerializationType;
 
 public final class Retrieve extends AbstractHandler {
 
@@ -94,6 +84,7 @@ public final class Retrieve extends AbstractHandler {
 		      });
 			}
 
+			/*
 			private void bootstrappingWithRepository() {
 				S23MKernel.completeCellKernelInitialization();
 				final RepositoryClient client = RepositoryClientMediator.getInstance().getComponent(ProtocolType.REPOSITORY_CLIENT);
@@ -112,6 +103,7 @@ public final class Retrieve extends AbstractHandler {
 				S23MKernel.goLiveWithCellEditor();
 				ContainmentTreeViewerStatus.getInstance().setKernelInitialized(true);
 			}
+			*/
 
 			private void bootstrappingByScripts() {
 				//org.s23m.cell.G.boot();

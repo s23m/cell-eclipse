@@ -8,5 +8,6 @@
 	<classpathentry kind="lib" path="lib/com.google.inject_3.0.0.no_aop.jar"/>
 	<classpathentry kind="lib" path="lib/org.eclipse.xtext.xbase.lib_2.2.1.v201112130541.jar"/>
 	<classpathentry kind="lib" path="lib/org.eclipse.xtext.xtend2.lib_2.2.1.v201112130541.jar"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/org.s23m.cell.generator"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

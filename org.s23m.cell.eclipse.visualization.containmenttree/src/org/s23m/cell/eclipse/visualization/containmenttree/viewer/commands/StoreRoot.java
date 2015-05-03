@@ -36,17 +36,8 @@ import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.swt.custom.BusyIndicator;
 import org.eclipse.swt.widgets.Display;
-import org.eclipse.swt.widgets.Tree;
 import org.s23m.cell.S23MKernel;
-import org.s23m.cell.api.models.Root;
-import org.s23m.cell.eclipse.visualization.containmenttree.viewer.ContainmentTreeManager;
-import org.s23m.cell.eclipse.visualization.containmenttree.viewer.ContainmentTreeViewerStatus;
-import org.s23m.cell.eclipse.visualization.containmenttree.viewer.Viewer;
 import org.s23m.cell.platform.api.models.CellPlatform;
-import org.s23m.cell.repository.client.RepositoryClient;
-import org.s23m.cell.repository.client.RepositoryClientImpl;
-import org.s23m.cell.serialization.container.ArtefactContainer;
-import org.s23m.cell.serialization.container.ObjectFactoryHolder;
 import org.s23m.cell.serialization.serializer.SerializationContent;
 import org.s23m.cell.serialization.serializer.SerializationType;
 import org.s23m.cell.serialization.serializer.Serializer;
@@ -69,6 +60,7 @@ public class StoreRoot extends AbstractHandler {
 	        }
 
 			private void storeRoot() throws Exception {
+				/*
 				if(!ContainmentTreeViewerStatus.getInstance().isKernelInitialized()) {
 					bootstrappingByScripts();
 					final RepositoryClient client = RepositoryClientImpl.getInstance();
@@ -91,6 +83,7 @@ public class StoreRoot extends AbstractHandler {
 			            Viewer.selectNode(Root.root.identity().uniqueRepresentationReference());
 					}
 				});
+				*/
 			}
 
 			private void bootstrappingByScripts() {

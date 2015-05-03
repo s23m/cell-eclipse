@@ -41,7 +41,6 @@ import org.eclipse.core.runtime.Platform;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.swt.SWT;
-import org.eclipse.swt.custom.BusyIndicator;
 import org.eclipse.swt.custom.CTabFolder;
 import org.eclipse.swt.custom.CTabItem;
 import org.eclipse.swt.events.SelectionAdapter;
@@ -52,7 +51,6 @@ import org.eclipse.swt.graphics.Rectangle;
 import org.eclipse.swt.layout.FillLayout;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
-import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Layout;
 import org.eclipse.swt.widgets.Menu;
 import org.eclipse.swt.widgets.MenuItem;
@@ -69,7 +67,6 @@ import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.zest.core.widgets.Graph;
 import org.eclipse.zest.core.widgets.ZestStyles;
 import org.s23m.cell.Set;
-import org.s23m.cell.api.Transaction;
 import org.s23m.cell.eclipse.visualization.containmenttree.viewer.VisualizationInput;
 import org.s23m.cell.eclipse.visualization.containmenttree.viewer.model.ContainmentTreeNode;
 import org.s23m.cell.eclipse.visualization.graph.Activator;
@@ -80,11 +77,6 @@ import org.s23m.cell.eclipse.visualization.graph.rendering.RenderingHistory;
 import org.s23m.cell.eclipse.visualization.graph.rendering.StructuralGraphRenderer;
 import org.s23m.cell.eclipse.visualization.graph.rendering.SuperSetGraphRenderer;
 import org.s23m.cell.eclipse.visualization.graph.rendering.VisibilityGraphRenderer;
-import org.s23m.cell.repository.client.RepositoryClient;
-import org.s23m.cell.repository.client.RepositoryClientImpl;
-import org.s23m.cell.serialization.container.ArtefactContainer;
-import org.s23m.cell.serialization.container.ObjectFactoryHolder;
-import org.s23m.cell.serialization.serializer.SerializationType;
 
 public class S23MGraphViewer extends SharedHeaderFormEditor implements IResourceChangeListener {
 
@@ -321,6 +313,7 @@ public class S23MGraphViewer extends SharedHeaderFormEditor implements IResource
 	@Override
 	public void doSave(final IProgressMonitor monitor) {
 
+		/*
 	  	BusyIndicator.showWhile(Display.getCurrent(), new Runnable() {
 			public void run() {
 				final RepositoryClient client = RepositoryClientImpl.getInstance();
@@ -331,6 +324,7 @@ public class S23MGraphViewer extends SharedHeaderFormEditor implements IResource
 				setDirty(false);
 	        }
 	  	});
+	  	*/
 	}
 
 	@Override
