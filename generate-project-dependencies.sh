@@ -1,1 +1,0 @@
-mvn dependency:tree -Dexcludes=p2.eclipse-plugin -Dincludes=::eclipse-plugin:: -DoutputType=graphml -DoutputFile=project-dependencies.graphml

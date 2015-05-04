@@ -1,5 +1,0 @@
-Store preferences
-Mask for password in dialog
-Secure storage of password
-No sound for message dialog for testing connection
-
