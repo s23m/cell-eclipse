@@ -13,9 +13,15 @@
 
 		<!-- Tests -->
 		<module>org.s23m.cell.xtend2.templates.tests</module>
+		
+		<!-- Features -->
+		<module>tycho-build/org.s23m.cell.eclipse.feature</module>
+
+		<!-- Update site -->
+		<module>tycho-build/p2-updatesite</module>
 	</modules>
 	<properties>
-		<tycho-version>0.22.0</tycho-version>
+		<tycho-version>0.25.0</tycho-version>
 	</properties>
 	<build>
 		<plugins>
