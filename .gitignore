@@ -3,3 +3,4 @@ bin
 *.class
 project-dependencies.graphml
 *._trace
+*.xtendbin
