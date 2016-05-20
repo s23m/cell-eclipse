@@ -1,0 +1,304 @@
+<html>
+	<head>
+		<style type="text/css">
+			span, td, th, h2 {
+				font-family: sans-serif;
+			}
+			
+			th, h2 {
+				color: gray;
+			}
+			
+			table, td, th {
+				cell-spacing: 0px;
+				cell-padding: 0px; 
+			}
+			
+			table {
+				border-collapse: collapse;
+			}
+		
+			td, th {
+				padding: 3px;
+				padding-left: 10px;
+				padding-right: 10px;
+				vertical-align: top;
+			}
+				
+			span.metaArtifactName {
+				color: #808080;
+			}
+			
+			span.setName {
+			}
+			
+			sub.flavored {
+				font-size: 9pt;
+				font-variant: small-caps;
+			}
+			
+			span.arrow {
+				font-size: 150%;
+			}
+			
+			div.flavorContainer {
+				margin: 0px 10px 10px;
+				padding: 0px 10px 10px;
+			}
+			
+			div.artifactContainer {
+				padding: 0px 5px;
+			}
+			
+			div.artifactContainer h2 {
+				margin: 10px;
+			}
+			
+			div.flavorContainer h2 {
+				margin: 10px 10px 10px 0;
+			}
+			
+			table, td, th, div.flavorContainer, div.artifactContainer {
+				border: 1px solid #c3c3c3;
+			}
+			
+			div.artifactContainer, div.flavorContainer {
+				// ignore for IE
+				border-radius: 5px;
+				-moz-border-radius: 5px;
+				-webkit-border-radius: 5px;
+			}
+			
+			span.cardinality {
+				color: red;
+			}
+		</style>
+	</head>
+	<body>
+		<!-- Artifact container - START -->
+		<div class="artifactContainer">
+			<h2><span class="metaArtifactName">cell</span> : <span class="setName">formula</span>
+			</h2>
+			
+			
+			
+			<div class="flavorContainer">
+				<h2>vertex<sub class="flavored">flavored</sub>
+				</h2>
+				<table>
+					<tr>
+						
+						<td><span class="metaArtifactName">cell</span> : <span class="setName">proper  subformula</span>
+						</td>
+					</tr>
+					<tr>
+						
+						<td><span class="metaArtifactName">cell</span> : <span class="setName">unary function</span>
+						</td>
+					</tr>
+					<tr>
+						
+						<td><span class="metaArtifactName">cell</span> : <span class="setName"><a href="bff13ad0-89ce-11df-a4ee-0800200c9a67">binary function</a></span>
+						</td>
+					</tr>
+					<tr>
+						
+						<td><span class="metaArtifactName">cell</span> : <span class="setName">n-ary function</span>
+						</td>
+					</tr>
+					<tr>
+						
+						<td><span class="metaArtifactName">cell</span> : <span class="setName">variable</span>
+						</td>
+					</tr>
+					<tr>
+						
+						<td><span class="metaArtifactName">cell</span> : <span class="setName">constant</span>
+						</td>
+					</tr>
+				</table>
+			</div>
+			
+			<div class="flavorContainer">
+				<h2>super set reference<sub class="flavored">flavored</sub>
+				</h2>
+				<table>
+					<tr>
+						<th>sub set</th>
+						<th>super set</th>
+					</tr>
+					<tr>
+						<td><span class="metaArtifactName">cell</span> : <span class="setName">proper  subformula</span>
+						</td>
+						<td><span class="metaArtifactName">dynamic vertex</span> : <span class="setName">cell</span>
+						</td>
+					</tr>
+					<tr>
+						<td><span class="metaArtifactName">cell</span> : <span class="setName">unary function</span>
+						</td>
+						<td><span class="metaArtifactName">cell</span> : <span class="setName">proper  subformula</span>
+						</td>
+					</tr>
+					<tr>
+						<td><span class="metaArtifactName">cell</span> : <span class="setName">binary function</span>
+						</td>
+						<td><span class="metaArtifactName">cell</span> : <span class="setName">proper  subformula</span>
+						</td>
+					</tr>
+					<tr>
+						<td><span class="metaArtifactName">cell</span> : <span class="setName">n-ary function</span>
+						</td>
+						<td><span class="metaArtifactName">cell</span> : <span class="setName">proper  subformula</span>
+						</td>
+					</tr>
+					<tr>
+						<td><span class="metaArtifactName">cell</span> : <span class="setName">variable</span>
+						</td>
+						<td><span class="metaArtifactName">cell</span> : <span class="setName">proper  subformula</span>
+						</td>
+					</tr>
+					<tr>
+						<td><span class="metaArtifactName">cell</span> : <span class="setName">constant</span>
+						</td>
+						<td><span class="metaArtifactName">cell</span> : <span class="setName">proper  subformula</span>
+						</td>
+					</tr>
+				</table>
+			</div>
+			
+			<div class="flavorContainer">
+				<h2>edge<sub class="flavored">flavored</sub>
+				</h2>
+				<table>
+					<tr>
+						<th><span class="arrow">&larr;</span></th>
+						<th>1<sup>st</sup>&nbsp;[min,&nbsp;max]</th>
+						<th>edge<sub class="flavored">flavored</sub>
+						</th>
+						<th>2<sup>nd</sup>&nbsp;[min,&nbsp;max]</th>
+						<th><span class="arrow">&rarr;</span></th>
+					</tr>
+					<tr>
+						<td><span class="metaArtifactName">ordered set</span> : <span class="setName">a transient result set 235711131719232931</span>
+						</td>
+						<td><td><span class="metaArtifactName">edge end</span> : <span class="setName">binary function</span>
+						&nbsp;<span class="cardinality">[1,1]</span></td>
+						</td>
+						<td><span class="metaArtifactName">dynamic connection</span> : <span class="setName">binary function to is associative</span>
+						</td>
+						<td><td><span class="metaArtifactName">edge end</span> : <span class="setName">is associative</span>
+						&nbsp;<span class="cardinality">[1,1]</span></td>
+						</td>
+						<td><span class="metaArtifactName">ordered set</span> : <span class="setName">a transient result set 235711131719232931</span>
+						</td>
+					</tr>
+					<tr>
+						<td><span class="metaArtifactName">ordered set</span> : <span class="setName">a transient result set 235711131719232931</span>
+						</td>
+						<td><td><span class="metaArtifactName">edge end</span> : <span class="setName">binary function</span>
+						&nbsp;<span class="cardinality">[1,1]</span></td>
+						</td>
+						<td><span class="metaArtifactName">dynamic connection</span> : <span class="setName">binary function to is associative</span>
+						</td>
+						<td><td><span class="metaArtifactName">edge end</span> : <span class="setName">is commutative</span>
+						&nbsp;<span class="cardinality">[1,1]</span></td>
+						</td>
+						<td><span class="metaArtifactName">ordered set</span> : <span class="setName">a transient result set 235711131719232931</span>
+						</td>
+					</tr>
+					<tr>
+						<td><span class="metaArtifactName">ordered set</span> : <span class="setName">a transient result set 235711131719232931</span>
+						</td>
+						<td><td><span class="metaArtifactName">edge end</span> : <span class="setName">binary function</span>
+						&nbsp;<span class="cardinality">[1,1]</span></td>
+						</td>
+						<td><span class="metaArtifactName">dynamic connection</span> : <span class="setName">binary function to has inverse elements</span>
+						</td>
+						<td><td><span class="metaArtifactName">edge end</span> : <span class="setName">has inverse elements</span>
+						&nbsp;<span class="cardinality">[1,1]</span></td>
+						</td>
+						<td><span class="metaArtifactName">ordered set</span> : <span class="setName">a transient result set 235711131719232931</span>
+						</td>
+					</tr>
+					<tr>
+						<td><span class="metaArtifactName">ordered set</span> : <span class="setName">a transient result set 235711131719232931</span>
+						</td>
+						<td><td><span class="metaArtifactName">edge end</span> : <span class="setName">unary function</span>
+						&nbsp;<span class="cardinality">[1,1]</span></td>
+						</td>
+						<td><span class="metaArtifactName">dynamic connection</span> : <span class="setName">unary function to term</span>
+						</td>
+						<td><td><span class="metaArtifactName">edge end</span> : <span class="setName">term</span>
+						&nbsp;<span class="cardinality">[1,1]</span></td>
+						</td>
+						<td><span class="metaArtifactName">ordered set</span> : <span class="setName">a transient result set 235711131719232931</span>
+						</td>
+					</tr>
+					<tr>
+						<td><span class="metaArtifactName">ordered set</span> : <span class="setName">a transient result set 235711131719232931</span>
+						</td>
+						<td><td><span class="metaArtifactName">edge end</span> : <span class="setName">binary function</span>
+						&nbsp;<span class="cardinality">[1,1]</span></td>
+						</td>
+						<td><span class="metaArtifactName">dynamic connection</span> : <span class="setName">binary function to terms</span>
+						</td>
+						<td><td><span class="metaArtifactName">edge end</span> : <span class="setName">term</span>
+						&nbsp;<span class="cardinality">[2,2]</span></td>
+						</td>
+						<td><span class="metaArtifactName">ordered set</span> : <span class="setName">a transient result set 235711131719232931</span>
+						</td>
+					</tr>
+					<tr>
+						<td><span class="metaArtifactName">ordered set</span> : <span class="setName">a transient result set 235711131719232931</span>
+						</td>
+						<td><td><span class="metaArtifactName">edge end</span> : <span class="setName">n-ary function</span>
+						&nbsp;<span class="cardinality">[1,1]</span></td>
+						</td>
+						<td><span class="metaArtifactName">dynamic connection</span> : <span class="setName">nary function to terms</span>
+						</td>
+						<td><td><span class="metaArtifactName">edge end</span> : <span class="setName">term</span>
+						&nbsp;<span class="cardinality">[2,*]</span></td>
+						</td>
+						<td><span class="metaArtifactName">ordered set</span> : <span class="setName">a transient result set 235711131719232931</span>
+						</td>
+					</tr>
+					<tr>
+						<td><span class="metaArtifactName">ordered set</span> : <span class="setName">a transient result set 235711131719232931</span>
+						</td>
+						<td><td><span class="metaArtifactName">edge end</span> : <span class="setName">variable</span>
+						&nbsp;<span class="cardinality">[1,1]</span></td>
+						</td>
+						<td><span class="metaArtifactName">dynamic connection</span> : <span class="setName">variable to representation</span>
+						</td>
+						<td><td><span class="metaArtifactName">edge end</span> : <span class="setName">representation</span>
+						&nbsp;<span class="cardinality">[0,1]</span></td>
+						</td>
+						<td><span class="metaArtifactName">ordered set</span> : <span class="setName">a transient result set 235711131719232931</span>
+						</td>
+					</tr>
+					<tr>
+						<td><span class="metaArtifactName">ordered set</span> : <span class="setName">a transient result set 235711131719232931</span>
+						</td>
+						<td><td><span class="metaArtifactName">edge end</span> : <span class="setName">constant</span>
+						&nbsp;<span class="cardinality">[1,1]</span></td>
+						</td>
+						<td><span class="metaArtifactName">dynamic connection</span> : <span class="setName">constant to representation</span>
+						</td>
+						<td><td><span class="metaArtifactName">edge end</span> : <span class="setName">representation</span>
+						&nbsp;<span class="cardinality">[0,1]</span></td>
+						</td>
+						<td><span class="metaArtifactName">ordered set</span> : <span class="setName">a transient result set 235711131719232931</span>
+						</td>
+					</tr>
+				</table>
+			</div>
+			
+			<div class="flavorContainer">
+				<h2>visibility<sub class="flavored">flavored</sub>
+				</h2>
+				<span><i>None</i></span>
+			</div>
+		</div>
+		<!-- Artifact container - END -->
+	</body>
+</html>
