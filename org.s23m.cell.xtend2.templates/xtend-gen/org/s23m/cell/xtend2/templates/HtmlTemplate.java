@@ -29,7 +29,6 @@ package org.s23m.cell.xtend2.templates;
 import java.util.UUID;
 import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
-import org.eclipse.xtext.xbase.lib.StringExtensions;
 import org.s23m.cell.Identity;
 import org.s23m.cell.Set;
 import org.s23m.cell.api.Query;
@@ -43,11 +42,11 @@ public class HtmlTemplate {
     _builder.newLine();
     _builder.append("\t");
     CharSequence _head = this.head();
-    _builder.append(_head, "	");
+    _builder.append(_head, "\t");
     _builder.newLineIfNotEmpty();
     _builder.append("\t");
     CharSequence _body = this.body(set);
-    _builder.append(_body, "	");
+    _builder.append(_body, "\t");
     _builder.newLineIfNotEmpty();
     _builder.append("</html>");
     _builder.newLine();
@@ -280,7 +279,7 @@ public class HtmlTemplate {
     _builder.append("\t\t");
     _builder.append("<h2>");
     CharSequence _displaySet = this.displaySet(set);
-    _builder.append(_displaySet, "		");
+    _builder.append(_displaySet, "\t\t");
     _builder.append("</h2>");
     _builder.newLineIfNotEmpty();
     _builder.append("\t\t");
@@ -290,50 +289,46 @@ public class HtmlTemplate {
     _builder.append("\t\t");
     _builder.newLine();
     _builder.append("\t\t");
-    final Function1<Set,CharSequence> _function = new Function1<Set,CharSequence>() {
-        public CharSequence apply(final Set it) {
-          CharSequence _vertexFlavorTable = HtmlTemplate.this.vertexFlavorTable(it);
-          return _vertexFlavorTable;
-        }
-      };
+    final Function1<Set, CharSequence> _function = new Function1<Set, CharSequence>() {
+      public CharSequence apply(final Set it) {
+        return HtmlTemplate.this.vertexFlavorTable(it);
+      }
+    };
     CharSequence _flavorContainer = this.flavorContainer(set, Query.vertex, _function);
-    _builder.append(_flavorContainer, "		");
+    _builder.append(_flavorContainer, "\t\t");
     _builder.newLineIfNotEmpty();
     _builder.append("\t\t");
     _builder.newLine();
     _builder.append("\t\t");
-    final Function1<Set,CharSequence> _function_1 = new Function1<Set,CharSequence>() {
-        public CharSequence apply(final Set it) {
-          CharSequence _supersetReferenceFlavorTable = HtmlTemplate.this.supersetReferenceFlavorTable(it);
-          return _supersetReferenceFlavorTable;
-        }
-      };
+    final Function1<Set, CharSequence> _function_1 = new Function1<Set, CharSequence>() {
+      public CharSequence apply(final Set it) {
+        return HtmlTemplate.this.supersetReferenceFlavorTable(it);
+      }
+    };
     CharSequence _flavorContainer_1 = this.flavorContainer(set, Query.superSetReference, _function_1);
-    _builder.append(_flavorContainer_1, "		");
+    _builder.append(_flavorContainer_1, "\t\t");
     _builder.newLineIfNotEmpty();
     _builder.append("\t\t");
     _builder.newLine();
     _builder.append("\t\t");
-    final Function1<Set,CharSequence> _function_2 = new Function1<Set,CharSequence>() {
-        public CharSequence apply(final Set it) {
-          CharSequence _edgeEndFlavorTable = HtmlTemplate.this.edgeEndFlavorTable(it);
-          return _edgeEndFlavorTable;
-        }
-      };
+    final Function1<Set, CharSequence> _function_2 = new Function1<Set, CharSequence>() {
+      public CharSequence apply(final Set it) {
+        return HtmlTemplate.this.edgeEndFlavorTable(it);
+      }
+    };
     CharSequence _flavorContainer_2 = this.flavorContainer(set, Query.edge, _function_2);
-    _builder.append(_flavorContainer_2, "		");
+    _builder.append(_flavorContainer_2, "\t\t");
     _builder.newLineIfNotEmpty();
     _builder.append("\t\t");
     _builder.newLine();
     _builder.append("\t\t");
-    final Function1<Set,CharSequence> _function_3 = new Function1<Set,CharSequence>() {
-        public CharSequence apply(final Set it) {
-          CharSequence _visibilityFlavorTable = HtmlTemplate.this.visibilityFlavorTable(it);
-          return _visibilityFlavorTable;
-        }
-      };
+    final Function1<Set, CharSequence> _function_3 = new Function1<Set, CharSequence>() {
+      public CharSequence apply(final Set it) {
+        return HtmlTemplate.this.visibilityFlavorTable(it);
+      }
+    };
     CharSequence _flavorContainer_3 = this.flavorContainer(set, Query.visibility, _function_3);
-    _builder.append(_flavorContainer_3, "		");
+    _builder.append(_flavorContainer_3, "\t\t");
     _builder.newLineIfNotEmpty();
     _builder.append("\t");
     _builder.append("</div>");
@@ -346,7 +341,7 @@ public class HtmlTemplate {
     return _builder;
   }
   
-  private CharSequence flavorContainer(final Set set, final Set flavor, final Function1<? super Set,? extends CharSequence> tableBody) {
+  private CharSequence flavorContainer(final Set set, final Set flavor, final Function1<? super Set, ? extends CharSequence> tableBody) {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("<div class=\"flavorContainer\">");
     _builder.newLine();
@@ -356,9 +351,9 @@ public class HtmlTemplate {
     _builder.append("\t");
     _builder.append("<h2>");
     String _identityName = this.identityName(flavor);
-    _builder.append(_identityName, "	");
+    _builder.append(_identityName, "\t");
     CharSequence _flavored = this.flavored();
-    _builder.append(_flavored, "	");
+    _builder.append(_flavored, "\t");
     _builder.append("</h2>");
     _builder.newLineIfNotEmpty();
     {
@@ -366,7 +361,7 @@ public class HtmlTemplate {
       if (_isEmpty) {
         _builder.append("\t");
         CharSequence _emptySet = this.emptySet();
-        _builder.append(_emptySet, "	");
+        _builder.append(_emptySet, "\t");
         _builder.newLineIfNotEmpty();
       } else {
         _builder.append("\t");
@@ -375,7 +370,7 @@ public class HtmlTemplate {
         _builder.append("\t");
         _builder.append("\t");
         CharSequence _apply = tableBody.apply(flavoredSet);
-        _builder.append(_apply, "		");
+        _builder.append(_apply, "\t\t");
         _builder.newLineIfNotEmpty();
         _builder.append("\t");
         _builder.append("</table>");
@@ -402,10 +397,10 @@ public class HtmlTemplate {
           boolean _isEmpty = _filterInstances.isEmpty();
           if (_isEmpty) {
             CharSequence _displaySet = this.displaySet(s);
-            _builder.append(_displaySet, "	");
+            _builder.append(_displaySet, "\t");
           } else {
             CharSequence _displayVertexFlavoredSet = this.displayVertexFlavoredSet(s);
-            _builder.append(_displayVertexFlavoredSet, "	");
+            _builder.append(_displayVertexFlavoredSet, "\t");
           }
         }
         _builder.append("</td>");
@@ -437,14 +432,14 @@ public class HtmlTemplate {
         _builder.append("<td>");
         Set _from = s.from();
         CharSequence _displaySet = this.displaySet(_from);
-        _builder.append(_displaySet, "	");
+        _builder.append(_displaySet, "\t");
         _builder.append("</td>");
         _builder.newLineIfNotEmpty();
         _builder.append("\t");
         _builder.append("<td>");
         Set _to = s.to();
         CharSequence _displaySet_1 = this.displaySet(_to);
-        _builder.append(_displaySet_1, "	");
+        _builder.append(_displaySet_1, "\t");
         _builder.append("</td>");
         _builder.newLineIfNotEmpty();
         _builder.append("</tr>");
@@ -468,9 +463,9 @@ public class HtmlTemplate {
     _builder.append("<th>");
     Set _kernelEdge = this.kernelEdge();
     String _identityName = this.identityName(_kernelEdge);
-    _builder.append(_identityName, "	");
+    _builder.append(_identityName, "\t");
     CharSequence _flavored = this.flavored();
-    _builder.append(_flavored, "	");
+    _builder.append(_flavored, "\t");
     _builder.append("</th>");
     _builder.newLineIfNotEmpty();
     _builder.append("\t");
@@ -495,32 +490,32 @@ public class HtmlTemplate {
         _builder.append("<td>");
         Set _filterFrom = s.filterFrom();
         CharSequence _displaySet = this.displaySet(_filterFrom);
-        _builder.append(_displaySet, "	");
+        _builder.append(_displaySet, "\t");
         _builder.append("</td>");
         _builder.newLineIfNotEmpty();
         _builder.append("\t");
         _builder.append("<td>");
         CharSequence _cardinalityOf = this.cardinalityOf(source);
-        _builder.append(_cardinalityOf, "	");
+        _builder.append(_cardinalityOf, "\t");
         _builder.append("</td>");
         _builder.newLineIfNotEmpty();
         _builder.append("\t");
         _builder.append("<td>");
         CharSequence _displaySet_1 = this.displaySet(s);
-        _builder.append(_displaySet_1, "	");
+        _builder.append(_displaySet_1, "\t");
         _builder.append("</td>");
         _builder.newLineIfNotEmpty();
         _builder.append("\t");
         _builder.append("<td>");
         CharSequence _cardinalityOf_1 = this.cardinalityOf(target);
-        _builder.append(_cardinalityOf_1, "	");
+        _builder.append(_cardinalityOf_1, "\t");
         _builder.append("</td>");
         _builder.newLineIfNotEmpty();
         _builder.append("\t");
         _builder.append("<td>");
         Set _filterTo = s.filterTo();
         CharSequence _displaySet_2 = this.displaySet(_filterTo);
-        _builder.append(_displaySet_2, "	");
+        _builder.append(_displaySet_2, "\t");
         _builder.append("</td>");
         _builder.newLineIfNotEmpty();
         _builder.append("</tr>");
@@ -572,14 +567,14 @@ public class HtmlTemplate {
         _builder.append("<td>");
         Set _from = s.from();
         CharSequence _displaySet = this.displaySet(_from);
-        _builder.append(_displaySet, "	");
+        _builder.append(_displaySet, "\t");
         _builder.append("</td>");
         _builder.newLineIfNotEmpty();
         _builder.append("\t");
         _builder.append("<td>");
         Set _to = s.to();
         CharSequence _displaySet_1 = this.displaySet(_to);
-        _builder.append(_displaySet_1, "	");
+        _builder.append(_displaySet_1, "\t");
         _builder.append("</td>");
         _builder.newLineIfNotEmpty();
         _builder.append("</tr>");
@@ -591,13 +586,12 @@ public class HtmlTemplate {
   
   private CharSequence displaySet(final Set set) {
     StringConcatenation _builder = new StringConcatenation();
-    final Function1<Set,String> _function = new Function1<Set,String>() {
-        public String apply(final Set s) {
-          Identity _identity = s.identity();
-          String _name = _identity.name();
-          return _name;
-        }
-      };
+    final Function1<Set, CharSequence> _function = new Function1<Set, CharSequence>() {
+      public CharSequence apply(final Set s) {
+        Identity _identity = s.identity();
+        return _identity.name();
+      }
+    };
     CharSequence _decorateSet = this.decorateSet(set, _function);
     _builder.append(_decorateSet, "");
     _builder.newLineIfNotEmpty();
@@ -606,25 +600,24 @@ public class HtmlTemplate {
   
   private CharSequence displayVertexFlavoredSet(final Set set) {
     StringConcatenation _builder = new StringConcatenation();
-    final Function1<Set,String> _function = new Function1<Set,String>() {
-        public String apply(final Set s) {
-          Identity _identity = set.identity();
-          UUID _identifier = _identity.identifier();
-          String _plus = StringExtensions.operator_plus("<a href=\"", _identifier);
-          String _plus_1 = StringExtensions.operator_plus(_plus, "\">");
-          String _identityName = HtmlTemplate.this.identityName(set);
-          String _plus_2 = StringExtensions.operator_plus(_plus_1, _identityName);
-          String _plus_3 = StringExtensions.operator_plus(_plus_2, "</a>");
-          return _plus_3;
-        }
-      };
+    final Function1<Set, CharSequence> _function = new Function1<Set, CharSequence>() {
+      public CharSequence apply(final Set s) {
+        Identity _identity = set.identity();
+        UUID _identifier = _identity.identifier();
+        String _plus = ("<a href=\"" + _identifier);
+        String _plus_1 = (_plus + "\">");
+        String _identityName = HtmlTemplate.this.identityName(set);
+        String _plus_2 = (_plus_1 + _identityName);
+        return (_plus_2 + "</a>");
+      }
+    };
     CharSequence _decorateSet = this.decorateSet(set, _function);
     _builder.append(_decorateSet, "");
     _builder.newLineIfNotEmpty();
     return _builder;
   }
   
-  private CharSequence decorateSet(final Set set, final Function1<? super Set,? extends CharSequence> setNameContents) {
+  private CharSequence decorateSet(final Set set, final Function1<? super Set, ? extends CharSequence> setNameContents) {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("<span class=\"metaArtifactName\">");
     Set _category = set.category();
@@ -640,8 +633,7 @@ public class HtmlTemplate {
   
   private String identityName(final Set set) {
     Identity _identity = set.identity();
-    String _name = _identity.name();
-    return _name;
+    return _identity.name();
   }
   
   private CharSequence flavored() {
