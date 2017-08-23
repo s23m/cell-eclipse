@@ -13,7 +13,7 @@
 
 		<!-- Tests -->
 		<module>org.s23m.cell.xtend2.templates.tests</module>
-		
+
 		<!-- Features -->
 		<module>tycho-build/org.s23m.cell.eclipse.feature</module>
 
@@ -21,7 +21,7 @@
 		<module>tycho-build/p2-updatesite</module>
 	</modules>
 	<properties>
-		<tycho-version>0.25.0</tycho-version>
+		<tycho-version>1.0.0</tycho-version>
 	</properties>
 	<build>
 		<plugins>
@@ -34,7 +34,7 @@
 					<target>1.6</target>
 				</configuration>
 			</plugin>
-			
+
 			<!-- See http://wiki.eclipse.org/Tycho/Packaging_Types#eclipse-repository -->
 			<plugin>
 				<groupId>org.eclipse.tycho</groupId>
@@ -55,10 +55,10 @@
 				<artifactId>maven-osgi-test-plugin</artifactId>
 				<version>${tycho-version}</version>
 			</plugin>
-			
+
 			<!--
 			Example usage:
-			
+
 			mvn dependency:tree -DoutputType=graphml -DoutputFile=dependency.graphml
 			-->
 			<plugin>
@@ -75,13 +75,13 @@
 				</configuration>
 			</plugin>
 
-			<plugin> 
-				<groupId>org.eclipse.tycho</groupId> 
+			<plugin>
+				<groupId>org.eclipse.tycho</groupId>
 				<artifactId>maven-osgi-packaging-plugin</artifactId>
 						<version>${tycho-version}</version>
-				<configuration> 
-					<deployableFeature>true</deployableFeature> 
-				</configuration> 
+				<configuration>
+					<deployableFeature>true</deployableFeature>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>
